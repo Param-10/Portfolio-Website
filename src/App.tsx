@@ -1,46 +1,37 @@
 import { useState, useEffect } from 'react';
-import { Terminal, Mail, Github, Linkedin, Code, Briefcase, GraduationCap, ExternalLink, Send } from 'lucide-react';
+import { Terminal, Mail, Github, Linkedin, Code, Briefcase, GraduationCap, Send } from 'lucide-react';
 
-function TypeWriter({ text, onComplete }: { text: string; onComplete?: () => void }) {
-  const [displayText, setDisplayText] = useState('');
-  
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < text.length) {
-        setDisplayText((prev) => prev + text.charAt(index));
-        index++;
-      } else {
-        clearInterval(timer);
-        onComplete?.();
-      }
-    }, 50);
-    
-    return () => clearInterval(timer);
-  }, [text, onComplete]);
-
-  return <span>{displayText}</span>;
+interface Project {
+  title: string;
+  description: string;
+  link: string;
+  demoLink: string;
 }
 
 function App() {
-  const [stage, setStage] = useState<'initial' | 'hacking' | 'complete'>('initial');
   const [showContent, setShowContent] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animationText, setAnimationText] = useState('');
   
   useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'Enter' && stage === 'initial') {
-        setStage('hacking');
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === 'Enter' && !isAnimating) {
+        setIsAnimating(true);
+        setAnimationText('Initiating sequence...');
         setTimeout(() => {
-          setStage('complete');
-          setShowContent(true);
-        }, 3000);
+          setAnimationText('Access granted...');
+          setTimeout(() => {
+            setShowContent(true);
+            setIsAnimating(false);
+          }, 1000);
+        }, 1000);
       }
     };
 
     window.addEventListener('keypress', handleKeyPress);
     return () => window.removeEventListener('keypress', handleKeyPress);
-  }, [stage]);
+  }, [isAnimating]);
 
   const portfolioData = {
     name: "Your Name",
@@ -55,18 +46,18 @@ function App() {
     skills: ["React", "TypeScript", "Node.js", "AWS", "Python", "Docker"],
     projects: [
       {
-        title: "Project Alpha",
-        description: "A real-time collaboration platform built with WebSocket",
-        link: "https://github.com/yourusername/project-alpha",
-        demoLink: "https://project-alpha-demo.com"
+        title: "Project 1",
+        description: "Description of project 1",
+        link: "https://github.com/yourusername/project1",
+        demoLink: "https://project1-demo.com"
       },
       {
-        title: "Project Beta",
-        description: "AI-powered data analytics dashboard",
-        link: "https://github.com/yourusername/project-beta",
-        demoLink: "https://project-beta-demo.com"
+        title: "Project 2",
+        description: "Description of project 2",
+        link: "https://github.com/yourusername/project2",
+        demoLink: "https://project2-demo.com"
       }
-    ]
+    ] as Project[]
   };
 
   return (
@@ -75,25 +66,10 @@ function App() {
 
 
       <div className="max-w-4xl mx-auto relative">
-        {stage === 'initial' && (
-          <div className="flex items-center space-x-2">
-            <Terminal className="w-5 h-5" />
-            <TypeWriter text="Press ENTER to hack this system..." />
-          </div>
-        )}
-        
-        {stage === 'hacking' && (
-          <div className="space-y-2">
-            <TypeWriter text="Initiating hack sequence..." />
-            <div className="animate-pulse">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="text-xs opacity-75">
-                  {Array.from({ length: 50 }).map(() => (
-                    Math.random() > 0.5 ? '1' : '0'
-                  )).join('')}
-                </div>
-              ))}
-            </div>
+        {!showContent && (
+          <div className="text-center space-y-2">
+            <p className="text-sm text-green-500">Press Enter to hack</p>
+            <p className="text-xs text-green-400 animate-pulse">{animationText}</p>
           </div>
         )}
         
@@ -178,14 +154,24 @@ function App() {
                         <h3 className="text-green-300">{project.title}</h3>
                         <p className="text-sm">{project.description}</p>
                       </div>
-                      <a 
-                        href={project.link}
-                        className="text-green-300 hover:text-green-400"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
+                      <div className="flex space-x-3">
+                        <a 
+                          href={project.link}
+                          className="text-green-300 hover:text-green-400"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-4 h-4" />
+                        </a>
+                        <a 
+                          href={project.demoLink}
+                          className="border border-green-500 px-2 py-1 rounded text-sm hover:bg-green-500 hover:text-black transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                      </div>
                     </div>
                   ))}
                 </div>
