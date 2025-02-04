@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: black;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add some terminal-like styling */
+input, textarea {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Add a terminal prompt to section titles */
+.section-title::before {
+  content: '> ';
+  color: #22c55e; /* green-500 */
+}
+
+/* Add a blinking cursor effect to section titles */
+.section-title::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
