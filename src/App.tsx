@@ -94,7 +94,7 @@ function App() {
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950/30 to-black text-white relative">
+    <div className="min-h-screen bg-black text-white relative">
       <div className="fixed inset-0" style={{ zIndex: 0 }}>
         <ParticleBackground />
       </div>
@@ -116,7 +116,7 @@ function App() {
 
       {/* Main Content */}
       <div className="relative z-10 pt-20">
-        <div className="container mx-auto px-6 space-y-32">
+        <div className="container mx-auto px-6 space-y-24">
           {/* Hero Section */}
           <section className="min-h-screen flex items-center">
             <div className="space-y-6 max-w-3xl flex items-start gap-12">
@@ -130,8 +130,33 @@ function App() {
                   <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-4">
                     Paramveer Singh Bhele
                   </h1>
-                  <p className="text-xl text-purple-200/80">University of South Florida</p>
-                  <p className="text-purple-400 mt-4">{typingText}</p>
+                  <p className="text-xl text-purple-200/80 mb-6">CS Junior @ University of South Florida</p>
+                  <p className="text-purple-400 mb-6">{typingText}</p>
+                  {/* Social Links */}
+                  <div className="flex gap-4">
+                    <a 
+                      href="https://github.com/Param-10" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-purple-400 hover:text-purple-300 transition-colors"
+                    >
+                      <Github className="w-6 h-6" />
+                    </a>
+                    <a 
+                      href="https://linkedin.com/in/paramveer-singh-bhele" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-purple-400 hover:text-purple-300 transition-colors"
+                    >
+                      <Linkedin className="w-6 h-6" />
+                    </a>
+                    <a 
+                      href="mailto:bheleparamveer@gmail.com" 
+                      className="text-purple-400 hover:text-purple-300 transition-colors"
+                    >
+                      <Mail className="w-6 h-6" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -143,8 +168,42 @@ function App() {
               <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
                 About Me
               </h2>
-              <div className="prose prose-invert prose-purple">
-                {/* Your about content */}
+              <div className="space-y-8 text-purple-200/80">
+                <div>
+                  <h3 className="text-xl font-semibold text-purple-400 mb-4">🚀 Innovator, Problem Solver, and Aspiring Tech Leader</h3>
+                  <p className="leading-relaxed">
+                    Driven by an insatiable curiosity for technology and a passion for creating impactful solutions, 
+                    I am pursuing a Bachelor of Science in Computer Science with a Minor in Entrepreneurship at the 
+                    University of South Florida. From building real-time applications to streamlining data systems, 
+                    I thrive at the intersection of logic, creativity, and innovation.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-purple-400 mb-4">🌟 Mission and What Drives Me</h3>
+                  <p className="leading-relaxed">
+                    My mission is to harness technology to solve real-world challenges while inspiring others to 
+                    explore the vast possibilities in the tech domain. I am fueled by a commitment to lifelong 
+                    learning, collaboration, and creating tools that empower users and enhance experiences.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-purple-400 mb-4">💡 Core Competencies</h3>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Proficient in programming languages including Python, JavaScript, and C++.</li>
+                    <li>Skilled in data manipulation, machine learning, visualization, frontend development.</li>
+                    <li>Adept at managing teams, fostering collaboration, and delivering results under tight deadlines.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-purple-400 mb-4">⬆️ Looking Ahead</h3>
+                  <p className="leading-relaxed">
+                    As a tech enthusiast and problem solver, I am excited to explore new challenges and contribute 
+                    to impactful projects. Let's connect and discuss how we can innovate and create together!
+                  </p>
+                </div>
               </div>
             </div>
           </section>
@@ -332,15 +391,10 @@ function App() {
             </div>
           </section>
 
-          {/* Footer */}
-          <footer className="py-16 text-center text-gray-400">
-            <div className="flex justify-center space-x-6 mb-4">
-              <a href="#" className="text-purple-500 hover:text-purple-400"><Github className="w-6 h-6" /></a>
-              <a href="#" className="text-purple-500 hover:text-purple-400"><Linkedin className="w-6 h-6" /></a>
-              <a href="#" className="text-purple-500 hover:text-purple-400"><Mail className="w-6 h-6" /></a>
-            </div>
+          {/* Copyright */}
+          <div className="py-8 text-center text-purple-400/60">
             <p>© {new Date().getFullYear()} Paramveer Singh Bhele. All rights reserved.</p>
-          </footer>
+          </div>
         </div>
       </div>
     </div>

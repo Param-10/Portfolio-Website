@@ -65,18 +65,3 @@ input, textarea {
 .animate-fadeIn {
   animation: fadeIn 0.5s ease-out forwards;
 }
-
-/* Custom cursor style */
-
-
-.cursor {
-  width: 8px;
-  height: 16px;
-  background-color: #22c55e;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
