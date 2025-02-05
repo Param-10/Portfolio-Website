@@ -1,41 +1,39 @@
-# Personal Portfolio Website
+# Paramveer's Portfolio Website
 
-A modern, minimalist portfolio website featuring a sleek dark theme with green accents, built using React, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built with React, TypeScript, and Vite. Features a dynamic particle background and smooth animations.
 
 ## 🚀 Live Demo
+[View Live Site](https://Param-10.github.io/Portfolio-Website/)
 
-[View Live Demo](your-deployed-url-here)
+## 🛠️ Built With
+- React
+- TypeScript
+- Vite
+- TailwindCSS
+- Particles.js
+- Lucide Icons
 
 ## ✨ Features
+- Responsive design
+- Interactive particle background
+- Smooth scrolling navigation
+- Dark theme with purple accents
+- Contact form integration
+- Project showcase
+- Experience timeline
 
-- Clean, minimalist design with dark theme
-- Interactive project showcase with GitHub and live demo links
-- Contact form functionality
-- Responsive layout for all devices
-- Smooth transitions and hover effects
-- Top-left positioned contact button for easy access
+## 🏃‍♂️ Running Locally
 
-## 🛠️ Technologies Used
-
-- React 18
-- TypeScript
-- Tailwind CSS
-- Vite
-- Lucide React (for icons)
-
-## 📦 Installation
-
-1. Clone the repository:
+1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
+git clone https://github.com/Param-10/Portfolio-Website.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd portfolio
+cd Portfolio-Website
 ```
 
 3. Install dependencies:
@@ -100,13 +98,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-Your Name
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
+Paramveer Singh Bhele
+- LinkedIn: [Paramveer Singh Bhele](https://www.linkedin.com/in/paramveer-singh-bhele/)
+- Email: bheleparamveer@gmail.com
+- GitHub: [@paramveerbhele](https://github.com/Param-10)
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/portfolio/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Param-10/Portfolio-Website/issues).
 
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
