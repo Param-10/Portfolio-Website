@@ -52,14 +52,22 @@ function ParticleBackground() {
         },
         particles: {
           color: {
-            value: "#00ff00",
+            value: ["#7c3aed", "#6d28d9", "#5b21b6", "#4c1d95"],
           },
           links: {
-            color: "#00ff00",
+            color: "#6d28d9",
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.4,
             width: 1,
+            triangles: {
+              enable: true,
+              color: "#4c1d95",
+              opacity: 0.1
+            }
+          },
+          collisions: {
+            enable: true,
           },
           move: {
             direction: "none",
@@ -68,7 +76,7 @@ function ParticleBackground() {
               default: "bounce",
             },
             random: false,
-            speed: 2,
+            speed: 1,
             straight: false,
           },
           number: {
@@ -87,6 +95,11 @@ function ParticleBackground() {
           size: {
             value: { min: 1, max: 5 },
           },
+          gradient: {
+            enable: true,
+            stops: [0, 50, 100],
+            colors: ["#7c3aed", "#5b21b6", "#4c1d95"]
+          }
         },
         detectRetina: true,
       }}

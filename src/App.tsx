@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { Mail, Github, Linkedin} from 'lucide-react';
+import { Mail, Github, Linkedin } from 'lucide-react';
 import ParticleBackground from './components/ParticleBackground';
 import profileImage from './assets/My_Image.jpg';
 
@@ -18,7 +18,6 @@ interface Experience {
 }
 
 function App() {
-  const [showContent, setShowContent] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [typingText, setTypingText] = useState('');
   const messages = useMemo(() => [
@@ -45,7 +44,6 @@ function App() {
         setIsAnimating(true);
         typeWriter(messages).then(() => {
           setTimeout(() => {
-            setShowContent(true);
             setIsAnimating(false);
           }, 1000);
         });
@@ -96,264 +94,254 @@ function App() {
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   return (
-    <div className="min-h-screen bg-black/0 text-white relative">
+    <div className="min-h-screen bg-gradient-to-br from-black via-purple-950/30 to-black text-white relative">
       <div className="fixed inset-0" style={{ zIndex: 0 }}>
         <ParticleBackground />
       </div>
 
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 bg-black bg-opacity-80 z-20 backdrop-blur-sm border-b border-green-500/20">
+      <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-black/80 via-purple-950/50 to-black/80 z-20 backdrop-blur-sm border-b border-purple-500/20">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-green-500 text-xl font-bold">~/paramveer</h1>
+            <h1 className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text text-xl font-bold">Paramveer</h1>
             <div className="flex space-x-6">
-              <a href="#about" className="text-green-500 hover:text-green-400 transition-colors">./about</a>
-              <a href="#experience" className="text-green-500 hover:text-green-400 transition-colors">./experience</a>
-              <a href="#projects" className="text-green-500 hover:text-green-400 transition-colors">./projects</a>
-              <a href="#contact" className="text-green-500 hover:text-green-400 transition-colors">./contact</a>
+              <a href="#about" className="text-purple-400 hover:text-purple-300 transition-colors">About</a>
+              <a href="#experience" className="text-purple-400 hover:text-purple-300 transition-colors">Experience</a>
+              <a href="#projects" className="text-purple-400 hover:text-purple-300 transition-colors">Projects</a>
+              <a href="#contact" className="text-purple-400 hover:text-purple-300 transition-colors">Contact</a>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="relative z-10">
-        {isAnimating ? (
-          <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-            <div className="text-green-500 font-mono">
-              <span className="inline-block">{'>'}</span>
-              <span className="inline-block ml-2">{typingText}</span>
-              <span className="inline-block animate-pulse">_</span>
+      <div className="relative z-10 pt-20">
+        <div className="container mx-auto px-6 space-y-32">
+          {/* Hero Section */}
+          <section className="min-h-screen flex items-center">
+            <div className="space-y-6 max-w-3xl flex items-start gap-12">
+              <img 
+                src={profileImage} 
+                alt="Paramveer Singh Bhele" 
+                className="w-64 h-64 object-cover rounded-lg border-2 border-purple-500/50 hover:border-purple-500 transition-colors shadow-lg shadow-purple-500/20"
+              />
+              <div className="space-y-8">
+                <div>
+                  <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-4">
+                    Paramveer Singh Bhele
+                  </h1>
+                  <p className="text-xl text-purple-200/80">University of South Florida</p>
+                  <p className="text-purple-400 mt-4">{typingText}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        ) : showContent ? (
-          <div className="container mx-auto px-6 space-y-48">
-            {/* Hero Section */}
-            <section className="min-h-screen flex items-center">
-              <div className="space-y-6 max-w-3xl flex items-start gap-12">
-                <img 
-                  src={profileImage} 
-                  alt="Paramveer Singh Bhele" 
-                  className="w-64 h-64 object-cover rounded-lg border-2 border-green-500/50 hover:border-green-500 transition-colors"
-                />
-                <div className="space-y-8">
-                  <div className="space-y-2">
-                    <p className="text-green-500">$ whoami</p>
-                    <h1 className="text-5xl font-bold text-green-500">Paramveer Singh Bhele</h1>
+          </section>
+
+          {/* About Section */}
+          <section id="about" className="min-h-screen py-16">
+            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
+                About Me
+              </h2>
+              <div className="prose prose-invert prose-purple">
+                {/* Your about content */}
+              </div>
+            </div>
+          </section>
+
+          {/* Experience Section */}
+          <section id="experience" className="min-h-screen py-16">
+            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
+                Experience
+              </h2>
+              <div className="space-y-8">
+                {portfolioData.experience.map((exp, index) => (
+                  <div key={index} className="border border-purple-500/20 rounded-lg p-6 hover:bg-black/50 transition-colors">
+                    <h3 className="text-xl font-bold text-purple-400">{exp.title}</h3>
+                    <p className="text-gray-400">{exp.company} • {exp.period}</p>
+                    <p className="mt-4 text-gray-300">{exp.description}</p>
                   </div>
-                  <div className="space-y-2">
-                    <p className="text-green-500">$ pwd</p>
-                    <p className="text-xl text-gray-300">~/University-of-South-Florida</p>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Projects Section */}
+          <section id="projects" className="min-h-screen py-16">
+            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
+                Projects
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {portfolioData.projects.map((project, index) => (
+                  <div key={index} className="border border-purple-500/20 rounded-lg p-6 hover:bg-black/50 transition-colors">
+                    <h3 className="text-xl font-bold text-purple-400">{project.title}</h3>
+                    <p className="mt-2 text-gray-300">{project.description}</p>
+                    <div className="mt-4 flex space-x-4">
+                      <a 
+                        href={project.link}
+                        className="text-purple-500 hover:text-purple-400 transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Github className="w-6 h-6" />
+                      </a>
+                      <a 
+                        href={project.demoLink}
+                        className="text-purple-500 hover:text-purple-400 transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live Demo
+                      </a>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            </section>
+            </div>
+          </section>
 
-            {/* About Section */}
-            <section id="about" className="min-h-screen py-16">
-              <div className="bg-black/40 backdrop-blur-[2px] rounded-lg p-8 border border-green-500/20 hover:bg-black/50 transition-colors">
-                <h2 className="text-3xl font-bold text-green-500 mb-8 section-title">About Me</h2>
-                <div className="prose prose-invert prose-green">
-                  {/* Your about content */}
-                </div>
-              </div>
-            </section>
-
-            {/* Experience Section */}
-            <section id="experience" className="min-h-screen py-16">
-              <div className="bg-black/40 backdrop-blur-[2px] rounded-lg p-8 border border-green-500/20 hover:bg-black/50 transition-colors">
-                <h2 className="text-3xl font-bold text-green-500 mb-8 section-title">Experience</h2>
-                <div className="space-y-8">
-                  {portfolioData.experience.map((exp, index) => (
-                    <div key={index} className="border border-green-500/20 rounded-lg p-6 hover:bg-black/50 transition-colors">
-                      <h3 className="text-xl font-bold text-green-400">{exp.title}</h3>
-                      <p className="text-gray-400">{exp.company} • {exp.period}</p>
-                      <p className="mt-4 text-gray-300">{exp.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* Projects Section */}
-            <section id="projects" className="min-h-screen py-16">
-              <div className="bg-black/40 backdrop-blur-[2px] rounded-lg p-8 border border-green-500/20 hover:bg-black/50 transition-colors">
-                <h2 className="text-3xl font-bold text-green-500 mb-8 section-title">Projects</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {portfolioData.projects.map((project, index) => (
-                    <div key={index} className="border border-green-500/20 rounded-lg p-6 hover:bg-black/50 transition-colors">
-                      <h3 className="text-xl font-bold text-green-400">{project.title}</h3>
-                      <p className="mt-2 text-gray-300">{project.description}</p>
-                      <div className="mt-4 flex space-x-4">
-                        <a 
-                          href={project.link}
-                          className="text-green-500 hover:text-green-400 transition-colors"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="w-6 h-6" />
-                        </a>
-                        <a 
-                          href={project.demoLink}
-                          className="text-green-500 hover:text-green-400 transition-colors"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Live Demo
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* Contact Section */}
-            <section id="contact" className="min-h-screen py-16">
-              <div className="bg-black/40 backdrop-blur-[2px] rounded-lg p-8 border border-green-500/20 hover:bg-black/50 transition-colors">
-                <h2 className="text-3xl font-bold text-green-500 mb-8 section-title">Contact Me</h2>
-                <div className="max-w-xl">
-                  <form 
-                    action="https://formspree.io/f/xanqjzyj" 
-                    method="POST"
-                    className="space-y-6"
-                    onSubmit={async (e) => {
-                      e.preventDefault();
-                      setFormStatus('sending');
-                      
-                      try {
-                        const form = e.target as HTMLFormElement;
-                        const response = await fetch(form.action, {
-                          method: 'POST',
-                          body: new FormData(form),
-                          headers: {
-                            'Accept': 'application/json'
-                          }
-                        });
-                        
-                        if (response.ok) {
-                          setFormStatus('sent');
-                          form.reset();
-                        } else {
-                          throw new Error('Form submission failed');
+          {/* Contact Section */}
+          <section id="contact" className="min-h-screen py-16">
+            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
+                Contact Me
+              </h2>
+              <div className="max-w-xl">
+                <form 
+                  action="https://formspree.io/f/xanqjzyj" 
+                  method="POST"
+                  className="space-y-6"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    setFormStatus('sending');
+                    
+                    try {
+                      const form = e.target as HTMLFormElement;
+                      const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                          'Accept': 'application/json'
                         }
-                      } catch {
-                        setFormStatus('error');
+                      });
+                      
+                      if (response.ok) {
+                        setFormStatus('sent');
+                        form.reset();
+                      } else {
+                        throw new Error('Form submission failed');
                       }
-                    }}
-                  >
-                    <div>
-                      <label htmlFor="name" className="block text-green-400 mb-2">
-                        Your Name <span className="text-green-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        className="w-full bg-black/30 border border-green-500/20 rounded-lg p-3 text-white focus:border-green-500 focus:outline-none"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-green-400 mb-2">
-                        Your Email <span className="text-green-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="w-full bg-black/30 border border-green-500/20 rounded-lg p-3 text-white focus:border-green-500 focus:outline-none"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="phone" className="block text-green-400 mb-2">
-                        Phone Number <span className="text-gray-400">(Optional)</span>
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        className="w-full bg-black/30 border border-green-500/20 rounded-lg p-3 text-white focus:border-green-500 focus:outline-none"
-                        placeholder="+1 (234) 567-8900"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block text-green-400 mb-2">
-                        Your Message <span className="text-green-500">*</span>
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        required
-                        rows={4}
-                        className="w-full bg-black/30 border border-green-500/20 rounded-lg p-3 text-white focus:border-green-500 focus:outline-none"
-                        placeholder="Hello! I'd like to connect about..."
-                      ></textarea>
-                    </div>
-
-                    {/* Hidden Recipient Email Field */}
-                    <input 
-                      type="hidden" 
-                      name="_replyto" 
-                      value="bheleparamveer@gmail.com"
+                    } catch {
+                      setFormStatus('error');
+                    }
+                  }}
+                >
+                  <div>
+                    <label htmlFor="name" className="block text-purple-400 mb-2">
+                      Your Name <span className="text-purple-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      placeholder="John Doe"
                     />
-                    
-                    <button
-                      type="submit"
-                      disabled={formStatus === 'sending'}
-                      className="bg-green-500 text-black px-6 py-3 rounded-lg hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
-                    >
-                      {formStatus === 'sending' ? (
-                        'Sending...'
-                      ) : formStatus === 'sent' ? (
-                        'Message Sent!'
-                      ) : formStatus === 'error' ? (
-                        'Error - Try Again'
-                      ) : (
-                        'Send Message'
-                      )}
-                    </button>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-purple-400 mb-2">
+                      Your Email <span className="text-purple-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      placeholder="john@example.com"
+                    />
+                  </div>
 
-                    {/* Form Status Messages */}
-                    {formStatus === 'sent' && (
-                      <p className="text-green-500 text-center">
-                        Thank you for your message! I'll get back to you soon.
-                      </p>
-                    )}
-                    {formStatus === 'error' && (
-                      <p className="text-red-500 text-center">
-                        Sorry, there was an error sending your message. Please try again.
-                      </p>
-                    )}
-                  </form>
-                </div>
-              </div>
-            </section>
+                  <div>
+                    <label htmlFor="phone" className="block text-purple-400 mb-2">
+                      Phone Number <span className="text-gray-400">(Optional)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      placeholder="+1 (234) 567-8900"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-purple-400 mb-2">
+                      Your Message <span className="text-purple-500">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={4}
+                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      placeholder="Hello! I'd like to connect about..."
+                    ></textarea>
+                  </div>
 
-            {/* Footer */}
-            <footer className="py-16 text-center text-gray-400">
-              <div className="flex justify-center space-x-6 mb-4">
-                <a href="#" className="text-green-500 hover:text-green-400"><Github className="w-6 h-6" /></a>
-                <a href="#" className="text-green-500 hover:text-green-400"><Linkedin className="w-6 h-6" /></a>
-                <a href="#" className="text-green-500 hover:text-green-400"><Mail className="w-6 h-6" /></a>
+                  {/* Hidden Recipient Email Field */}
+                  <input 
+                    type="hidden" 
+                    name="_replyto" 
+                    value="bheleparamveer@gmail.com"
+                  />
+                  
+                  <button
+                    type="submit"
+                    disabled={formStatus === 'sending'}
+                    className="bg-purple-500 text-black px-6 py-3 rounded-lg hover:bg-purple-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                  >
+                    {formStatus === 'sending' ? (
+                      'Sending...'
+                    ) : formStatus === 'sent' ? (
+                      'Message Sent!'
+                    ) : formStatus === 'error' ? (
+                      'Error - Try Again'
+                    ) : (
+                      'Send Message'
+                    )}
+                  </button>
+
+                  {/* Form Status Messages */}
+                  {formStatus === 'sent' && (
+                    <p className="text-purple-500 text-center">
+                      Thank you for your message! I'll get back to you soon.
+                    </p>
+                  )}
+                  {formStatus === 'error' && (
+                    <p className="text-red-500 text-center">
+                      Sorry, there was an error sending your message. Please try again.
+                    </p>
+                  )}
+                </form>
               </div>
-              <p>© {new Date().getFullYear()} Paramveer Singh Bhele. All rights reserved.</p>
-            </footer>
-          </div>
-        ) : (
-          <div className="h-screen flex items-center justify-center">
-            <div className="text-center space-y-2">
-              <p className="text-sm text-green-500">Press Enter to hack</p>
-              <p className="text-xs text-green-400 animate-pulse">System ready...</p>
             </div>
-          </div>
-        )}
+          </section>
+
+          {/* Footer */}
+          <footer className="py-16 text-center text-gray-400">
+            <div className="flex justify-center space-x-6 mb-4">
+              <a href="#" className="text-purple-500 hover:text-purple-400"><Github className="w-6 h-6" /></a>
+              <a href="#" className="text-purple-500 hover:text-purple-400"><Linkedin className="w-6 h-6" /></a>
+              <a href="#" className="text-purple-500 hover:text-purple-400"><Mail className="w-6 h-6" /></a>
+            </div>
+            <p>© {new Date().getFullYear()} Paramveer Singh Bhele. All rights reserved.</p>
+          </footer>
+        </div>
       </div>
     </div>
   );
