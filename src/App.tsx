@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Mail, Github, Linkedin} from 'lucide-react';
 import ParticleBackground from './components/ParticleBackground';
+import profileImage from './assets/My_Image.jpg';
 
 interface Project {
   title: string;
@@ -22,7 +23,6 @@ function App() {
   const [typingText, setTypingText] = useState('');
   const messages = useMemo(() => [
     'Initializing system...',
-    'Running security protocols...',
     'Accessing mainframe...',
     'Decrypting data...',
     'Access granted...'
@@ -57,8 +57,8 @@ function App() {
   }, [isAnimating, typeWriter, messages]);
 
   const portfolioData = {
-    name: "Your Name",
-    title: "Full Stack Developer",
+    name: "Paramveer Singh Bhele",
+    title: "Aspiring Software Developer",
     image: "https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a?w=300&h=300&fit=crop",
     about: "Passionate developer with expertise in React, Node.js, and cloud technologies.",
     experience: [
@@ -75,7 +75,7 @@ function App() {
         description: "Built and maintained multiple web applications."
       }
     ] as Experience[],
-    education: "B.S. Computer Science",
+    education: "B.S. in Computer Science @ University of South Florida",
     skills: ["React", "TypeScript", "Node.js", "AWS", "Python", "Docker"],
     projects: [
       {
@@ -102,10 +102,10 @@ function App() {
       </div>
 
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 bg-black/50 backdrop-blur-sm z-20 border-b border-green-500/20">
+      <nav className="fixed top-0 left-0 right-0 bg-black bg-opacity-80 z-20 backdrop-blur-sm border-b border-green-500/20">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-green-500 text-xl font-bold">~/your-name</h1>
+            <h1 className="text-green-500 text-xl font-bold">~/paramveer</h1>
             <div className="flex space-x-6">
               <a href="#about" className="text-green-500 hover:text-green-400 transition-colors">./about</a>
               <a href="#experience" className="text-green-500 hover:text-green-400 transition-colors">./experience</a>
@@ -130,18 +130,21 @@ function App() {
           <div className="container mx-auto px-6 space-y-48">
             {/* Hero Section */}
             <section className="min-h-screen flex items-center">
-              <div className="space-y-6 max-w-2xl">
-                <div className="space-y-2">
-                  <p className="text-green-500">$ whoami</p>
-                  <h1 className="text-5xl font-bold text-green-500">Your Name</h1>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-green-500">$ pwd</p>
-                  <p className="text-xl text-gray-300">~/position/company</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-green-500">$ cat about.txt</p>
-                  <p className="text-gray-400">Brief introduction about yourself</p>
+              <div className="space-y-6 max-w-3xl flex items-start gap-12">
+                <img 
+                  src={profileImage} 
+                  alt="Paramveer Singh Bhele" 
+                  className="w-64 h-64 object-cover rounded-lg border-2 border-green-500/50 hover:border-green-500 transition-colors"
+                />
+                <div className="space-y-8">
+                  <div className="space-y-2">
+                    <p className="text-green-500">$ whoami</p>
+                    <h1 className="text-5xl font-bold text-green-500">Paramveer Singh Bhele</h1>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-green-500">$ pwd</p>
+                    <p className="text-xl text-gray-300">~/University-of-South-Florida</p>
+                  </div>
                 </div>
               </div>
             </section>
@@ -340,7 +343,7 @@ function App() {
                 <a href="#" className="text-green-500 hover:text-green-400"><Linkedin className="w-6 h-6" /></a>
                 <a href="#" className="text-green-500 hover:text-green-400"><Mail className="w-6 h-6" /></a>
               </div>
-              <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Paramveer Singh Bhele. All rights reserved.</p>
             </footer>
           </div>
         ) : (
