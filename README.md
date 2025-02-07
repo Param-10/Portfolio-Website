@@ -117,7 +117,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Paramveer Singh Bhele
 - LinkedIn: [Paramveer Singh Bhele](https://www.linkedin.com/in/paramveer-singh-bhele/)
 - Email: bheleparamveer@gmail.com
-- GitHub: [@pParam-10](https://github.com/Param-10)
+- GitHub: [@Param-10](https://github.com/Param-10)
 
 ## 🤝 Contributing
 

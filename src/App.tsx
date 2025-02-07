@@ -187,7 +187,42 @@ function App() {
           "Path Planning"
         ]
       }
-    ] as (Project & { details?: string[]; timeline?: string; skills?: string[] })[]
+    ] as (Project & { details?: string[]; timeline?: string; skills?: string[] })[],
+    technicalSkills: {
+      languages: [
+        'Python (NumPy, Pandas, Matplotlib)',
+        'JavaScript/TypeScript',
+        'C/C++',
+        'HTML5/CSS3',
+        'SQL/MySQL',
+        'Java'
+      ],
+      frameworks: [
+        'React',
+        'Node.js',
+        'Flask',
+        'Mapbox GL JS',
+        'OpenCV'
+      ],
+      tools: [
+        'VS Code',
+        'Git/GitHub',
+        'PyCharm',
+        'Jupyter Notebook',
+        'Android Studio',
+        'Xcode',
+        'MySQL Workbench'
+      ],
+      courses: [
+        'Data Structures & Algorithms',
+        'Computer Logic & Design',
+        'Discrete Structures',
+        'Linear Systems',
+        'Automata Theory',
+        'Program Design',
+        'Cloud Computing Fundamentals'
+      ]
+    }
   };
 
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -206,7 +241,7 @@ function App() {
             <div className="flex space-x-6">
               <a href="#about" className="text-purple-400 hover:text-purple-300 transition-colors">About</a>
               <a href="#experience" className="text-purple-400 hover:text-purple-300 transition-colors">Experience</a>
-              <a href="#leadership" className="text-purple-400 hover:text-purple-300 transition-colors">Leadership</a>
+              <a href="#skills" className="text-purple-400 hover:text-purple-300 transition-colors">Skills</a>
               <a href="#projects" className="text-purple-400 hover:text-purple-300 transition-colors">Projects</a>
               <a href="#contact" className="text-purple-400 hover:text-purple-300 transition-colors">Contact</a>
             </div>
@@ -525,6 +560,50 @@ function App() {
                       Designed and customized database structures to suit the specific needs and requirements 
                       of SHPE, optimizing data storage and retrieval processes
                     </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Technical Skills Section */}
+          <section id="skills" className="py-8 scroll-mt-20">
+            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
+                Technical Skills
+              </h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Languages & Frameworks */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-purple-400">Languages & Frameworks</h3>
+                  <ul className="list-disc list-inside space-y-2 ml-4 text-purple-200">
+                    {portfolioData.technicalSkills.languages.map((skill, index) => (
+                      <li key={index}>{skill}</li>
+                    ))}
+                    {portfolioData.technicalSkills.frameworks.map((framework, index) => (
+                      <li key={index + 'f'}>{framework}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Developer Tools */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-purple-400">Developer Tools</h3>
+                  <ul className="list-disc list-inside space-y-2 ml-4 text-purple-200">
+                    {portfolioData.technicalSkills.tools.map((tool, index) => (
+                      <li key={index}>{tool}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Relevant Courses */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-purple-400">Relevant Courses</h3>
+                  <ul className="list-disc list-inside space-y-2 ml-4 text-purple-200">
+                    {portfolioData.technicalSkills.courses.map((course, index) => (
+                      <li key={index}>{course}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
