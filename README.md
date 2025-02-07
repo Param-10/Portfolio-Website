@@ -3,24 +3,40 @@
 A modern, responsive portfolio website built with React, TypeScript, and Vite. Features a dynamic particle background and smooth animations.
 
 ## 🚀 Live Demo
-[View Live Site](https://Param-10.github.io/Portfolio-Website/)
+[View Live Site](https://param-10.github.io/Portfolio-Website/)
 
 ## 🛠️ Built With
-- React
-- TypeScript
-- Vite
+- React + TypeScript + Vite
 - TailwindCSS
-- Particles.js
-- Lucide Icons
+- Three.js/Particles.js
+- Mapbox GL JS
+- Machine Learning Stack (Python/Scikit-learn)
 
 ## ✨ Features
-- Responsive design
-- Interactive particle background
-- Smooth scrolling navigation
-- Dark theme with purple accents
-- Contact form integration
-- Project showcase
-- Experience timeline
+- Real-time bus tracking integration (BullRunner Web App)
+- Fraud detection dashboard with ML models
+- AI-powered legal chatbot (LawyerUp)
+- Chrome extension development showcase
+- Interactive 3D particle background
+- Responsive mobile-first design
+- Dark mode with purple accent theme
+
+## 🌟 Featured Projects
+### **BullRunner Web Application**
+Real-time university bus tracking using Mapbox and PassioGo APIs
+`Tech:` Mapbox · JavaScript · API Integration · jQuery
+
+### **Fraud Detection Dashboard**
+ML-powered transaction analysis system with 89% accuracy
+`Tech:` Python · Scikit-learn · Pandas · DASH
+
+### **LawyerUp - KnightHacks UCF**
+AI-driven legal assistant chatbot
+`Tech:` Flask · OpenAI GPT-3.5 · CSS · Python
+
+### **Focus Timer Extension**
+Productivity Chrome extension with sound alerts
+`Tech:` Chrome APIs · JavaScript · HTML5
 
 ## 🏃‍♂️ Running Locally
 
