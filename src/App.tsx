@@ -226,6 +226,7 @@ function App() {
   };
 
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-black text-white relative">
@@ -235,15 +236,26 @@ function App() {
 
       {/* Navigation Bar */}
       <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-black/80 via-purple-950/50 to-black/80 z-20 backdrop-blur-sm border-b border-purple-500/20">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 md:px-6 py-4">
           <div className="flex justify-between items-center">
             <h1 className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text text-xl font-bold">Paramveer</h1>
-            <div className="flex space-x-6">
-              <a href="#about" className="text-purple-400 hover:text-purple-300 transition-colors">About</a>
-              <a href="#experience" className="text-purple-400 hover:text-purple-300 transition-colors">Experience</a>
-              <a href="#skills" className="text-purple-400 hover:text-purple-300 transition-colors">Skills</a>
-              <a href="#projects" className="text-purple-400 hover:text-purple-300 transition-colors">Projects</a>
-              <a href="#contact" className="text-purple-400 hover:text-purple-300 transition-colors">Contact</a>
+            <button
+              className="md:hidden text-purple-400 p-2 rounded-lg hover:bg-purple-900/50 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <div className="hidden md:flex space-x-4">
+              <a href="#about" className="text-purple-400 hover:text-purple-300 px-3 py-2">About</a>
+              <a href="#experience" className="text-purple-400 hover:text-purple-300 px-3 py-2">Experience</a>
+              <a href="#leadership" className="text-purple-400 hover:text-purple-300 px-3 py-2">Leadership</a>
+              <a href="#projects" className="text-purple-400 hover:text-purple-300 px-3 py-2">Projects</a>
+              <a href="#skills" className="text-purple-400 hover:text-purple-300 px-3 py-2">Skills</a>
+              <a href="#contact" className="text-purple-400 hover:text-purple-300 px-3 py-2">Contact</a>
             </div>
           </div>
         </div>
@@ -254,13 +266,13 @@ function App() {
         <div className="container mx-auto px-6 space-y-8">
           {/* Hero Section */}
           <section className="min-h-[calc(100vh-10rem)] flex items-center justify-center">
-            <div className="max-w-3xl flex items-start gap-12">
+            <div className="max-w-3xl flex flex-col md:flex-row items-center gap-8">
               <img 
                 src={profileImage} 
-                className="w-64 h-64 object-cover rounded-lg border-2 border-purple-500/50 shadow-lg shadow-purple-500/20"
+                className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg border-2 border-purple-500/50 shadow-lg shadow-purple-500/20"
               />
-              <div className="space-y-4">
-                <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
+              <div className="text-center md:text-left">
+                <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
                   Paramveer Singh Bhele
                 </h1>
                 <p className="text-xl text-purple-200/80 mb-6">CS Student @ University of South Florida</p>
@@ -317,9 +329,9 @@ function App() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="py-6 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
+          <section id="about" className="py-8 px-4 md:px-8 scroll-mt-20">
+            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-6 md:p-8 border border-purple-500/20">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8 font-mono text-center md:text-left">
                 About Me
               </h2>
               <div className="space-y-8 text-purple-200/80">
@@ -377,17 +389,17 @@ function App() {
               </h2>
               
               {/* Professional Experience */}
-              <div className="space-y-8 text-purple-200/80">
+              <div className="space-y-6 md:space-y-8 text-purple-200/80">
                 {/* University Library Experience */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-xl font-semibold text-purple-300">Student Assistant - Collections and Discovery</h3>
-                      <p className="text-purple-400">University of South Florida Libraries · Part-time</p>
+                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Student Assistant - Collections and Discovery</h3>
+                      <p className="text-purple-400 text-sm md:text-base">University of South Florida Libraries · Part-time</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-purple-400/80">Aug 2024 - Present</p>
-                      <p className="text-purple-400/70 text-sm">Tampa, Florida, United States · On-site</p>
+                    <div className="md:text-right">
+                      <p className="text-purple-400/80 text-sm md:text-base">Aug 2024 - Present</p>
+                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
                     </div>
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
@@ -401,15 +413,15 @@ function App() {
                 </div>
 
                 {/* Peer Mentor Experience */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-xl font-semibold text-purple-300">Peer Mentor for Learning Team</h3>
-                      <p className="text-purple-400">USF College of Engineering · Part-time</p>
+                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Peer Mentor for Learning Team</h3>
+                      <p className="text-purple-400 text-sm md:text-base">USF College of Engineering · Part-time</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-purple-400/80">Apr 2023 - Aug 2024</p>
-                      <p className="text-purple-400/70 text-sm">Tampa, Florida, United States · On-site</p>
+                    <div className="md:text-right">
+                      <p className="text-purple-400/80 text-sm md:text-base">Apr 2023 - Aug 2024</p>
+                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
                     </div>
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
@@ -429,15 +441,15 @@ function App() {
                 </div>
 
                 {/* Coefficient Software Internship */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-xl font-semibold text-purple-300">Summer Intern</h3>
-                      <p className="text-purple-400">COEFFICIENT SOFTWARE SYSTEMS PRIVATE LIMITED · Internship</p>
+                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Summer Intern</h3>
+                      <p className="text-purple-400 text-sm md:text-base">COEFFICIENT SOFTWARE SYSTEMS PRIVATE LIMITED · Internship</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-purple-400/80">May 2021 - Jul 2021</p>
-                      <p className="text-purple-400/70 text-sm">Navi Mumbai, India · Hybrid</p>
+                    <div className="md:text-right">
+                      <p className="text-purple-400/80 text-sm md:text-base">May 2021 - Jul 2021</p>
+                      <p className="text-purple-400/70 text-xs md:text-sm">Navi Mumbai, India · Hybrid</p>
                     </div>
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
@@ -479,15 +491,15 @@ function App() {
               
               <div className="space-y-8 text-purple-200/80">
                 {/* TEDx Experience */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-xl font-semibold text-purple-300">Head of Logistics</h3>
-                      <p className="text-purple-400">TEDx at USF</p>
+                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Head of Logistics</h3>
+                      <p className="text-purple-400 text-sm md:text-base">TEDx at USF</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-purple-400/80">June 2024 – Feb 2025</p>
-                      <p className="text-purple-400/70 text-sm">Tampa, Florida, United States</p>
+                    <div className="md:text-right">
+                      <p className="text-purple-400/80 text-sm md:text-base">June 2024 – Feb 2025</p>
+                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States</p>
                     </div>
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
@@ -501,15 +513,15 @@ function App() {
                 </div>
 
                 {/* Students of India Association */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-xl font-semibold text-purple-300">Vice President</h3>
-                      <p className="text-purple-400">Students of India Association at USF</p>
+                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Vice President</h3>
+                      <p className="text-purple-400 text-sm md:text-base">Students of India Association at USF</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-purple-400/80">Jan 2024 - May 2024</p>
-                      <p className="text-purple-400/70 text-sm">Tampa, Florida, United States · On-site</p>
+                    <div className="md:text-right">
+                      <p className="text-purple-400/80 text-sm md:text-base">Jan 2024 - May 2024</p>
+                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
                     </div>
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
@@ -532,15 +544,15 @@ function App() {
                 </div>
 
                 {/* SHPE Experience */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-xl font-semibold text-purple-300">Database Director</h3>
-                      <p className="text-purple-400">SHPE USF</p>
+                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Database Director</h3>
+                      <p className="text-purple-400 text-sm md:text-base">SHPE USF</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-purple-400/80">Jan 2024 - May 2024</p>
-                      <p className="text-purple-400/70 text-sm">Tampa, Florida, United States</p>
+                    <div className="md:text-right">
+                      <p className="text-purple-400/80 text-sm md:text-base">Jan 2024 - May 2024</p>
+                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States</p>
                     </div>
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
@@ -566,61 +578,17 @@ function App() {
             </div>
           </section>
 
-          {/* Technical Skills Section */}
-          <section id="skills" className="py-8 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
-                Technical Skills
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Languages & Frameworks */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-purple-400">Languages & Frameworks</h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4 text-purple-200">
-                    {portfolioData.technicalSkills.languages.map((skill, index) => (
-                      <li key={index}>{skill}</li>
-                    ))}
-                    {portfolioData.technicalSkills.frameworks.map((framework, index) => (
-                      <li key={index + 'f'}>{framework}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Developer Tools */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-purple-400">Developer Tools</h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4 text-purple-200">
-                    {portfolioData.technicalSkills.tools.map((tool, index) => (
-                      <li key={index}>{tool}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Relevant Courses */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-purple-400">Relevant Courses</h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4 text-purple-200">
-                    {portfolioData.technicalSkills.courses.map((course, index) => (
-                      <li key={index}>{course}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Projects Section */}
           <section id="projects" className="py-8 scroll-mt-20">
             <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
                 Projects
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {portfolioData.projects.map((project, index) => (
-                  <div key={index} className="border border-purple-500/20 rounded-lg p-6 hover:bg-black/50 transition-colors">
+                  <div key={index} className="flex flex-col p-6 bg-purple-900/10 rounded-lg">
                     <div className="flex justify-between items-start">
-                      <h3 className="text-xl font-bold text-purple-400">
+                      <h3 className="text-lg font-semibold text-purple-400">
                         {project.title}
                       </h3>
                       <div className="flex items-center gap-4">
@@ -672,17 +640,64 @@ function App() {
             </div>
           </section>
 
+          {/* Technical Skills Section */}
+          <section id="skills" className="py-8 scroll-mt-20">
+            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8 font-mono">
+                Technical Skills
+              </h2>
+              
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+                {/* Languages Column */}
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Languages</h3>
+                  <ul className="space-y-2">
+                    {portfolioData.technicalSkills.languages.map((lang) => (
+                      <li key={lang} className="text-purple-200 text-sm md:text-base">
+                        {lang}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Frameworks Column */}
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Frameworks</h3>
+                  <ul className="space-y-2">
+                    {portfolioData.technicalSkills.frameworks.map((framework) => (
+                      <li key={framework} className="text-purple-200 text-sm md:text-base">
+                        {framework}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Courses Column */}
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Courses</h3>
+                  <ul className="space-y-2">
+                    {portfolioData.technicalSkills.courses.map((course) => (
+                      <li key={course} className="text-purple-200 text-sm md:text-base">
+                        {course}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Contact Section */}
           <section id="contact" className="py-8 scroll-mt-20">
             <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
                 Contact Me
               </h2>
-              <div className="max-w-xl">
+              <div className="max-w-md mx-auto">
                 <form 
                   action="https://formspree.io/f/xanqjzyj" 
                   method="POST"
-                  className="space-y-6"
+                  className="space-y-4"
                   onSubmit={async (e) => {
                     e.preventDefault();
                     setFormStatus('sending');
@@ -717,7 +732,7 @@ function App() {
                       id="name"
                       name="name"
                       required
-                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
                       placeholder="John Doe"
                     />
                   </div>
@@ -731,7 +746,7 @@ function App() {
                       id="email"
                       name="email"
                       required
-                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -744,7 +759,7 @@ function App() {
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
                       placeholder="+1 (234) 567-8900"
                     />
                   </div>
@@ -758,7 +773,7 @@ function App() {
                       name="message"
                       required
                       rows={4}
-                      className="w-full bg-black/30 border border-purple-500/20 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none"
+                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
                       placeholder="Hello! I'd like to connect about..."
                     ></textarea>
                   </div>
@@ -773,7 +788,7 @@ function App() {
                   <button
                     type="submit"
                     disabled={formStatus === 'sending'}
-                    className="bg-purple-500 text-black px-6 py-3 rounded-lg hover:bg-purple-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
                   >
                     {formStatus === 'sending' ? (
                       'Sending...'
@@ -808,6 +823,36 @@ function App() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-black/95 z-50 backdrop-blur-sm">
+          <div className="flex flex-col items-center justify-center h-full space-y-6 relative">
+            <button
+              className="absolute top-4 right-4 text-purple-400 p-2"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <nav className="flex flex-col items-center space-y-6" role="navigation">
+              {['About', 'Experience', 'Leadership', 'Projects', 'Skills', 'Contact'].map((item) => (
+                <a 
+                  key={item} 
+                  href={`#${item.toLowerCase()}`}
+                  className="text-2xl text-purple-400 hover:text-purple-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
