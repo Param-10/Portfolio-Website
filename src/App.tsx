@@ -80,6 +80,28 @@ function App() {
     skills: ["React", "TypeScript", "Node.js", "AWS", "Python", "Docker"],
     projects: [
       {
+        title: "Portfolio-Website",
+        timeline: "Feb 2025",
+        description: "Personal Portfolio Website by Me",
+        link: "https://github.com/Param-10/Portfolio-Website",
+        demoLink: "#",
+        details: [
+          "Engineered a responsive portfolio website using React, TypeScript, and Tailwind CSS to showcase personal projects and skills.",
+          "Designed and built a dynamic user interface, emphasizing clean code and maintainability."
+        ],
+        skills: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vite",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Responsive Design",
+          "UI Development"
+        ]
+      },
+      {
         title: "BullRunner Web Application",
         timeline: "Jul 2024 - Aug 2024",
         description: "Real-time bus tracking system for university transportation",
