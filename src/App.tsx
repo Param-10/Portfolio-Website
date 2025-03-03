@@ -422,16 +422,19 @@ function App() {
                       <p className="text-purple-400 text-sm md:text-base">RARE Lab, University of South Florida · Part-time</p>
                     </div>
                     <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">Aug 2024 - Present</p>
+                      <p className="text-purple-400/80 text-sm md:text-base">Feb 2025 - Present</p>
                       <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
                     </div>
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li className="text-purple-200">
-                      Conducting research in Human-Robot Interaction (HRI) and AI, focusing on data-driven decision-making for robotics.
+                      Gained in-depth understanding of human-robot interaction by designing and implementing comprehensive survey instruments to collect qualitative and quantitative data
                     </li>
                     <li className="text-purple-200">
-                      Utilizing Python, Pandas, and NumPy to analyze large datasets from human-robot interactions and extract key behavioral insights.
+                      Identified critical behavioral trends and patterns in human-robot interaction by utilizing Python, Pandas, and NumPy for advanced statistical analysis on large datasets from interactions and survey responses
+                    </li>
+                    <li className="text-purple-200">
+                      Advanced safety and social perception understanding of female-presenting robotic platforms by contributing to a project focused on developing physical protective solutions for the Pepper robot within Human-Robot Interaction (HRI) and AI research
                     </li>
                   </ul>
                 </div>
@@ -450,10 +453,10 @@ function App() {
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li className="text-purple-200">
-                      Managed metadata for 1,000+ library materials, ensuring accurate cataloging and retrieval
+                      Improved cataloging accuracy and retrieval efficiency for over 1,000 library materials by meticulously managing and standardizing metadata
                     </li>
                     <li className="text-purple-200">
-                      Supported data entry for over 10,000 library items, enhancing collection organization
+                      Enhanced library collection organization and accessibility for over 10,000 items by providing accurate and efficient data entry support
                     </li>
                   </ul>
                 </div>
@@ -472,16 +475,16 @@ function App() {
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li className="text-purple-200">
-                      Mentored first-year engineering students in Calculus concepts and problem-solving techniques
+                      Elevated academic performance in Calculus for first-year engineering students through personalized mentoring and targeted problem-solving instruction
                     </li>
                     <li className="text-purple-200">
-                      Facilitated weekly Learning Team course (EGN 4930) with interactive group problem solving
+                      Enhanced collaborative learning and problem-solving skills for students in EGN 4930 by facilitating interactive weekly Learning Team sessions
                     </li>
                     <li className="text-purple-200">
-                      Conducted one-on-one academic counseling sessions throughout semesters
+                      Improved student academic success and retention through consistent one-on-one academic counseling sessions throughout the semester
                     </li>
                     <li className="text-purple-200">
-                      Organized and led exam preparation study sessions for 50+ students
+                      Increased student confidence and exam readiness for 50+ students by organizing and leading comprehensive exam preparation study sessions
                     </li>
                   </ul>
                 </div>
@@ -500,19 +503,19 @@ function App() {
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li className="text-purple-200">
-                      Compiled and analyzed data on top universities across USA, Canada, UK, and Australia
+                      Gained comprehensive insights into global higher education trends by compiling and analyzing data on top universities across the USA, Canada, UK, and Australia
                     </li>
                     <li className="text-purple-200">
-                      Learned and applied UI/UX design principles for cross-platform mobile applications
+                      Enhanced mobile application usability by applying UI/UX design principles to cross-platform projects
                     </li>
                     <li className="text-purple-200">
-                      Contributed to "Word of the Day" app with 100,000+ downloads and 4.1/5 Play Store rating
+                      Drove user engagement and contributed to the success of the "Word of the Day" app, achieving 100,000+ downloads and a 4.1/5 Play Store rating
                     </li>
                     <li className="text-purple-200">
-                      Provided technical support for existing reports and dashboards
+                      Optimized reporting processes by providing technical support for existing reports and dashboards
                     </li>
                     <li className="text-purple-200">
-                      Conducted functionality testing during application development phases
+                      Ensured high-quality application releases by conducting thorough functionality testing during development phases
                     </li>
                   </ul>
                   <a 
@@ -550,10 +553,10 @@ function App() {
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li className="text-purple-200">
-                      Coordinated logistics for TEDx at USF, managing a team of 10+ volunteers and prepared them for the event
+                      Ensured seamless execution of TEDx at USF by coordinating logistics and managing a team of 10+ volunteers, preparing them for the event
                     </li>
                     <li className="text-purple-200">
-                      Oversaw venue arrangements, including seating for 100 attendees, speaker accommodations, and security
+                      Oversaw venue arrangements, including seating for 100 attendees, speaker accommodations, and security measures
                     </li>
                   </ul>
                 </div>
@@ -572,19 +575,19 @@ function App() {
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li className="text-purple-200">
-                      Increased organizational budget through strategic financial management and fundraising initiatives
+                      Secured increased financial resources by implementing strategic financial management and fundraising initiatives, resulting in an expanded organizational budget
                     </li>
                     <li className="text-purple-200">
-                      Led and mentored a team of 26 members, fostering collaboration and productivity
+                      Enhanced team performance and collaboration by leading and mentoring a team of 26 members, driving increased productivity and achieving organizational goals
                     </li>
                     <li className="text-purple-200">
-                      Chaired Election Committee to ensure transparent leadership transitions
+                      Ensured fair and transparent leadership transitions by chairing the Election Committee, upholding organizational integrity
                     </li>
                     <li className="text-purple-200">
-                      Organized large-scale events including Holi celebration with 1000+ attendees
+                      Cultivated strong community engagement and cultural celebration by organizing large-scale events, including a Holi celebration with 1000+ attendees, fostering a vibrant community atmosphere
                     </li>
                     <li className="text-purple-200">
-                      Collaborated with cross-organizational teams to expand community engagement
+                      Expanded community reach and impact by collaborating with cross-organizational teams, strengthening partnerships and broadening engagement initiatives
                     </li>
                   </ul>
                 </div>
@@ -603,20 +606,16 @@ function App() {
                   </div>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li className="text-purple-200">
-                      Conducted a meticulous audit of years' worth of accumulated files, precisely categorizing 
-                      and structuring them into a logical, intuitive folder hierarchy
+                      Improved data accessibility and organization by conducting a meticulous audit and creating a logical, intuitive folder hierarchy for years' worth of accumulated files
                     </li>
                     <li className="text-purple-200">
-                      Orchestrated a comprehensive overhaul of SHPE's document management system, streamlining 
-                      access to critical organizational data and historical records
+                      Enhanced organizational efficiency and data retrieval by orchestrating a comprehensive overhaul of SHPE's document management system, streamlining access to critical organizational data and historical records
                     </li>
                     <li className="text-purple-200">
-                      Implemented a standardized file-naming convention and metadata tagging system, ensuring 
-                      consistent and searchable document identification
+                      Ensured consistent document identification and searchability by implementing a standardized file-naming convention and metadata tagging system across all organizational documents
                     </li>
                     <li className="text-purple-200">
-                      Designed and customized database structures to suit the specific needs and requirements 
-                      of SHPE, optimizing data storage and retrieval processes
+                      Optimized data storage and retrieval processes by designing and customizing database structures to meet the specific needs and requirements of SHPE
                     </li>
                   </ul>
                 </div>
