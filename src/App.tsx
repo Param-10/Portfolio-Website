@@ -84,7 +84,7 @@ function App() {
         timeline: "Feb 2025",
         description: "Personal Portfolio Website by Me",
         link: "https://github.com/Param-10/Portfolio-Website",
-        demoLink: "#",
+        demoLink: "https://paramveerbhele.com/",
         details: [
           "Engineered a responsive portfolio website using React, TypeScript, and Tailwind CSS to showcase personal projects and skills.",
           "Designed and built a dynamic user interface, emphasizing clean code and maintainability."
@@ -212,7 +212,7 @@ function App() {
     ] as (Project & { details?: string[]; timeline?: string; skills?: string[] })[],
     technicalSkills: {
       languages: [
-        'Python (NumPy, Pandas, Matplotlib)',
+        'Python (NumPy, Pandas, Matplotlib, PyTorch)',
         'JavaScript/TypeScript',
         'C/C++',
         'HTML5/CSS3',
@@ -233,7 +233,8 @@ function App() {
         'Jupyter Notebook',
         'Android Studio',
         'Xcode',
-        'MySQL Workbench'
+        'MySQL Workbench',
+        'Choregraphe'
       ],
       courses: [
         'Data Structures & Algorithms',
@@ -242,7 +243,8 @@ function App() {
         'Linear Systems',
         'Automata Theory',
         'Program Design',
-        'Cloud Computing Fundamentals'
+        'Analysis of Algorithms',
+        'Secure Coding'
       ]
     }
   };
@@ -412,6 +414,28 @@ function App() {
               
               {/* Professional Experience */}
               <div className="space-y-6 md:space-y-8 text-purple-200/80">
+              {/* Undergraduate Researcher RARE Lab*/}
+              <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Undergraduate Researcher</h3>
+                      <p className="text-purple-400 text-sm md:text-base">RARE Lab, University of South Florida · Part-time</p>
+                    </div>
+                    <div className="md:text-right">
+                      <p className="text-purple-400/80 text-sm md:text-base">Aug 2024 - Present</p>
+                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
+                    </div>
+                  </div>
+                  <ul className="list-disc list-inside space-y-1 ml-4">
+                    <li className="text-purple-200">
+                      Conducting research in Human-Robot Interaction (HRI) and AI, focusing on data-driven decision-making for robotics.
+                    </li>
+                    <li className="text-purple-200">
+                      Utilizing Python, Pandas, and NumPy to analyze large datasets from human-robot interactions and extract key behavioral insights.
+                    </li>
+                  </ul>
+                </div>
+
                 {/* University Library Experience */}
                 <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
