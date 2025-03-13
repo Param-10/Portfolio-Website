@@ -61,7 +61,7 @@ function App() {
     name: "Paramveer Singh Bhele",
     title: "Aspiring Software Developer",
     image: "https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a?w=300&h=300&fit=crop",
-    about: "Passionate developer with expertise in React, Node.js, and cloud technologies.",
+    about: "Passionate developer with expertise in Machine Learning, Software Engineering, ",
     experience: [
       { 
         title: "Senior Developer", 
@@ -101,6 +101,7 @@ function App() {
           "UI Development"
         ]
       },
+      
       {
         title: "BullRunner Web Application",
         timeline: "Jul 2024 - Aug 2024",
@@ -497,7 +498,7 @@ function App() {
                       <p className="text-purple-400 text-sm md:text-base">COEFFICIENT SOFTWARE SYSTEMS PRIVATE LIMITED · Internship</p>
                     </div>
                     <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">May 2021 - Jul 2021</p>
+                      <p className="text-purple-400/80 text-sm md:text-base">May 2022 - Jul 2022</p>
                       <p className="text-purple-400/70 text-xs md:text-sm">Navi Mumbai, India · Hybrid</p>
                     </div>
                   </div>
