@@ -1,0 +1,15 @@
+.skills-showcase {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  margin: 2rem auto;
+}
+
+.skill-card {
+  position: absolute;
+  background-color: var(--card-bg);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}

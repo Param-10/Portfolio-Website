@@ -1,906 +1,137 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { Mail, Github, Linkedin } from 'lucide-react';
-import ParticleBackground from './components/ParticleBackground';
-import profileImage from './assets/My_Image.jpg';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react'; // Import sun and moon icons
+import Home from './components/Home';
+// Lazy load non-critical components
+const About = lazy(() => import('./components/About'));
+const Experience = lazy(() => import('./components/Experience'));
+const Leadership = lazy(() => import('./components/Leadership'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Contact = lazy(() => import('./components/Contact'));
 
-interface Project {
-  title: string;
-  description: string;
-  link: string;
-  demoLink: string;
-  details?: string[];
-  timeline?: string;
-  skills?: string[];
-}
-
-interface Experience {
-  title: string;
-  company: string;
-  period: string;
-  description: string;
-}
+import { portfolioData } from './data';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [typingText, setTypingText] = useState('');
-  const messages = useMemo(() => [
-    'Initializing system...',
-    'Accessing mainframe...',
-    'Decrypting data...',
-    'Access granted...'
-  ], []);
-
-  const typeWriter = useCallback(async (messages: string[]) => {
-    for (const message of messages) {
-      setIsAnimating(true);
-      for (let i = 0; i < message.length; i++) {
-        setTypingText(prev => prev + message[i]);
-        await new Promise(resolve => setTimeout(resolve, 50));
-      }
-      await new Promise(resolve => setTimeout(resolve, 800));
-    }
-  }, []);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    // Load the theme from localStorage or default to 'light'
+    return localStorage.getItem('theme') || 'light';
+  });
 
   useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'Enter' && !isAnimating) {
-        setIsAnimating(true);
-        typeWriter(messages).then(() => {
-          setTimeout(() => {
-            setIsAnimating(false);
-          }, 1000);
-        });
-      }
-    };
+    // Apply the theme to the document root
+    document.documentElement.setAttribute('data-theme', theme);
+    // Save the theme to localStorage
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
-    window.addEventListener('keypress', handleKeyPress);
-    return () => window.removeEventListener('keypress', handleKeyPress);
-  }, [isAnimating, typeWriter, messages]);
-
-  const portfolioData = {
-    name: "Paramveer Singh Bhele",
-    title: "Aspiring Software Developer",
-    image: "https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a?w=300&h=300&fit=crop",
-    about: "Passionate developer with expertise in Machine Learning, Software Engineering, ",
-    experience: [
-      { 
-        title: "Senior Developer", 
-        company: "Tech Corp", 
-        period: "2020-Present",
-        description: "Led development of key features and mentored junior developers."
-      },
-      { 
-        title: "Full Stack Developer", 
-        company: "StartupX", 
-        period: "2018-2020",
-        description: "Built and maintained multiple web applications."
-      }
-    ] as Experience[],
-    education: "B.S. in Computer Science @ University of South Florida",
-    skills: ["React", "TypeScript", "Node.js", "AWS", "Python", "Docker"],
-    projects: [
-      {
-        title: "Portfolio-Website",
-        timeline: "Feb 2025",
-        description: "Personal Portfolio Website by Me",
-        link: "https://github.com/Param-10/Portfolio-Website",
-        demoLink: "https://paramveerbhele.com/",
-        details: [
-          "Engineered a responsive portfolio website using React, TypeScript, and Tailwind CSS to showcase personal projects and skills.",
-          "Designed and built a dynamic user interface, emphasizing clean code and maintainability."
-        ],
-        skills: [
-          "React",
-          "TypeScript",
-          "Tailwind CSS",
-          "Vite",
-          "JavaScript",
-          "HTML",
-          "CSS",
-          "Responsive Design",
-          "UI Development"
-        ]
-      },
-      
-      {
-        title: "BullRunner Web Application",
-        timeline: "Jul 2024 - Aug 2024",
-        description: "Real-time bus tracking system for university transportation",
-        link: "https://github.com/Param-10/bullrunner-2",
-        demoLink: "https://param-10.github.io/bullrunner-2/",
-        details: [
-          "Developed real-time bus tracking application for university students with live location updates",
-          "Integrated Mapbox API and PassioGo API for interactive maps and accurate tracking",
-          "Implemented campus route visualization and schedule optimization features"
-        ],
-        skills: [
-          "Mapbox",
-          "JavaScript",
-          "API Integration",
-          "jQuery",
-          "Git",
-          "JSON",
-          "CSS",
-          "HTML5"
-        ]
-      },
-      {
-        title: "Focus Timer Extension",
-        timeline: "Jul 2024",
-        description: "Chrome extension for managing focus/break sessions with customizable timers.",
-        link: "https://github.com/Param-10/Focus-Timer-Extension",
-        demoLink: "https://chromewebstore.google.com/detail/focus-timer-pro/bbmnnmmfgdefdhipfjiefioodbfhohde",
-        details: [
-          "Developed Chrome extension with customizable focus/break timers and sound alerts",
-          "Implemented timer controls (start/pause/reset) with user-defined durations",
-          "Integrated Chrome extension APIs for background scripts and notifications",
-          "Added error handling for reliable performance across browsing sessions"
-        ],
-        skills: [
-          "Chrome Extensions",
-          "JavaScript",
-          "HTML5",
-          "CSS",
-          "Chrome DevTools",
-          "Web APIs"
-        ]
-      },
-      {
-        title: "Fraud Detection Dashboard",
-        timeline: "Jun 2024",
-        description: "Machine learning-powered dashboard for detecting fraudulent transactions.",
-        link: "https://github.com/Param-10/Fraud-Detection-Dashboard",
-        demoLink: "#",
-        details: [
-          "Developed a comprehensive dashboard using machine learning to identify fraudulent transactions with high accuracy.",
-          "Implemented a Logistic Regression model achieving over 89% accuracy on training and test datasets.",
-          "Conducted data preprocessing (scaling, feature selection, missing value handling) for optimal model performance.",
-          "Created interactive visualizations (ROC curves, confusion matrices, heatmaps) for actionable insights."
-        ],
-        skills: [
-          "Machine Learning",
-          "Flask",
-          "Pandas",
-          "Python",
-          "Data Visualization",
-          "Feature Engineering",
-          "Logistic Regression",
-          "NumPy",
-          "Scikit-Learn",
-          "DASH"
-        ]
-      },
-      {
-        title: "LawyerUp - KnightHacks UCF",
-        timeline: "Oct 2023",
-        description: "Group project merging legal technology with AI-driven insights.",
-        link: "https://github.com/Param-10/knight-hacks",
-        demoLink: "#",
-        details: [
-          "Collaborated on a Flask-based chatbot leveraging OpenAI GPT-3.5-turbo.",
-          "Engineered dynamic recommendations from user-specified case types.",
-          "Delivered detailed lawyer profiles including contacts and expertise."
-        ],
-        skills: [
-          "API Testing",
-          "JSON",
-          "JavaScript",
-          "Flask",
-          "Cascading Style Sheets (CSS)",
-          "Python",
-          "Artificial Intelligence (AI)"
-        ]
-      },
-      {
-        title: "Object Avoiding Vehicle",
-        timeline: "Aug 2022 - Dec 2022",
-        description: "Autonomous obstacle avoidance system for a miniature tank.",
-        link: "https://github.com/Param-10/egn-3000L",
-        demoLink: "#",
-        details: [
-          "Led development of an obstacle avoidance system as Software Lead.",
-          "Integrated Arduino sensors for real-time data processing.",
-          "Implemented adaptive path planning algorithms for dynamic navigation."
-        ],
-        skills: [
-          "Arduino",
-          "C++",
-          "Sensor Integration",
-          "Real-time Systems",
-          "Path Planning"
-        ]
-      }
-    ] as (Project & { details?: string[]; timeline?: string; skills?: string[] })[],
-    technicalSkills: {
-      languages: [
-        'Python (NumPy, Pandas, Matplotlib, PyTorch)',
-        'JavaScript/TypeScript',
-        'C/C++',
-        'HTML5/CSS3',
-        'SQL/MySQL',
-        'Java'
-      ],
-      frameworks: [
-        'React',
-        'Node.js',
-        'Flask',
-        'Mapbox GL JS',
-        'OpenCV'
-      ],
-      tools: [
-        'VS Code',
-        'Git/GitHub',
-        'PyCharm',
-        'Jupyter Notebook',
-        'Android Studio',
-        'Xcode',
-        'MySQL Workbench',
-        'Choregraphe'
-      ],
-      courses: [
-        'Data Structures & Algorithms',
-        'Computer Logic & Design',
-        'Discrete Structures',
-        'Linear Systems',
-        'Automata Theory',
-        'Program Design',
-        'Analysis of Algorithms',
-        'Secure Coding'
-      ]
-    }
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
-  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-black text-white relative">
-      <div className="fixed inset-0" style={{ zIndex: 0 }}>
-        <ParticleBackground />
-      </div>
-
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-black/80 via-purple-950/50 to-black/80 z-20 backdrop-blur-sm border-b border-purple-500/20">
-        <div className="container mx-auto px-4 md:px-6 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text text-xl font-bold">Paramveer</h1>
-            <button
-              className="md:hidden text-purple-400 p-2 rounded-lg hover:bg-purple-900/50 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={isMenuOpen}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-            <div className="hidden md:flex space-x-4">
-              <a href="#about" className="text-purple-400 hover:text-purple-300 px-3 py-2">About</a>
-              <a href="#experience" className="text-purple-400 hover:text-purple-300 px-3 py-2">Experience</a>
-              <a href="#leadership" className="text-purple-400 hover:text-purple-300 px-3 py-2">Leadership</a>
-              <a href="#projects" className="text-purple-400 hover:text-purple-300 px-3 py-2">Projects</a>
-              <a href="#skills" className="text-purple-400 hover:text-purple-300 px-3 py-2">Skills</a>
-              <a href="#contact" className="text-purple-400 hover:text-purple-300 px-3 py-2">Contact</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Main Content */}
-      <div className="relative z-10 pt-28">
-        <div className="container mx-auto px-6 space-y-8">
-          {/* Hero Section */}
-          <section className="min-h-[calc(100vh-10rem)] flex items-center justify-center">
-            <div className="max-w-3xl flex flex-col md:flex-row items-center gap-8">
-              <img 
-                src={profileImage} 
-                className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg border-2 border-purple-500/50 shadow-lg shadow-purple-500/20"
-              />
-              <div className="text-center md:text-left">
-                <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
-                  Paramveer Singh Bhele
-                </h1>
-                <p className="text-xl text-purple-200/80 mb-6">CS Student @ University of South Florida</p>
-                <p className="text-purple-400 mb-6">{typingText}</p>
+    <Router>
+      {/* Create a separate component for route prefetching */}
+      <RouteHandler />
+      
+      <div className="min-h-screen relative">
+        {/* Navigation Bar */}
+        <nav className="fixed top-0 left-0 right-0 z-20 backdrop-blur-sm">
+          <div className="container mx-auto px-4 md:px-6 py-4">
+            <div className="flex justify-between items-center">
+              <Link 
+                to="/" 
+                className="text-3xl font-bold hover:translate-y-[-2px] transition-transform duration-200"
+              >
+                Paramveer
+              </Link>
+              <button
+                className="md:hidden transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle navigation menu"
+                aria-expanded={isMenuOpen}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+              <div className="hidden md:flex space-x-4 items-center">
+                <Link to="/about" className="px-3 py-2">About</Link>
+                <Link to="/experience" className="px-3 py-2">Experience</Link>
+                <Link to="/leadership" className="px-3 py-2">Leadership</Link>
+                <Link to="/projects" className="px-3 py-2">Projects</Link>
+                <Link to="/skills" className="px-3 py-2">Skills</Link>
+                <Link to="/contact" className="px-3 py-2">Contact</Link>
                 
-                {/* Education Details */}
-                <div className="mb-6 space-y-2">
-                  <p className="text-purple-300">
-                    B.S. Computer Science · 2022 - 2026
-                    <span className="block text-purple-400/80 text-sm">Minor in Entrepreneurship</span>
-                  </p>
-                  <div className="space-y-1">
-                    <p className="text-purple-300 text-sm">Scholarships:</p>
-                    <ul className="list-disc list-inside ml-4 space-y-1">
-                      <li className="text-purple-400/90">
-                        <span className="text-purple-300">Annette L. Raymund Endowed Scholarship</span>
-                        <span className="text-purple-400/70 ml-2">- 2023</span>
-                      </li>
-                      <li className="text-purple-400/90">
-                        <span className="text-purple-300">USF Green & Gold Director's Award</span>
-                        <span className="text-purple-400/70 ml-2">- 2022</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Social Links */}
-                <div className="flex gap-4">
-                  <a 
-                    href="https://github.com/Param-10" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-purple-400 hover:text-purple-300 transition-colors"
-                  >
-                    <Github className="w-6 h-6" />
-                  </a>
-                  <a 
-                    href="https://linkedin.com/in/paramveer-singh-bhele" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-purple-400 hover:text-purple-300 transition-colors"
-                  >
-                    <Linkedin className="w-6 h-6" />
-                  </a>
-                  <a 
-                    href="mailto:bheleparamveer@gmail.com" 
-                    className="text-purple-400 hover:text-purple-300 transition-colors"
-                  >
-                    <Mail className="w-6 h-6" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* About Section */}
-          <section id="about" className="py-8 px-4 md:px-8 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-6 md:p-8 border border-purple-500/20">
-              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8 font-mono text-center md:text-left">
-                About Me
-              </h2>
-              <div className="space-y-8 text-purple-200/80">
-                <div>
-                  <h3 className="text-xl font-semibold text-purple-400 mb-4">🚀 AI & Data Enthusiast | Aspiring Tech Leader</h3>
-                  <p className="leading-relaxed">
-                    I am a Computer Science student at the University of South Florida with a Minor in Entrepreneurship, 
-                    passionate about leveraging AI, machine learning, and cloud computing to solve real-world challenges. 
-                    My experience spans building ML models, crafting data-driven solutions, and developing scalable applications.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-purple-400 mb-4">🌟 Mission</h3>
-                  <p className="leading-relaxed">
-                    Committed to using technology to drive innovation and empower users, I aim to create impactful tools 
-                    while inspiring others to explore the transformative potential of AI and data.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-purple-400 mb-4">💡 Core Skills</h3>
-                  <ul className="space-y-4 ml-4">
-                    <li>
-                      <span className="font-medium text-purple-300">AI/ML:</span> Developing predictive models (e.g., Logistic Regression), 
-                      pre-processing data, and creating interactive dashboards for insights.
-                    </li>
-                    <li>
-                      <span className="font-medium text-purple-300">Data & Cloud:</span> Expertise in data manipulation, visualization 
-                      (Python libraries), and integrating APIs into cloud-ready applications.
-                    </li>
-                    <li>
-                      <span className="font-medium text-purple-300">Programming:</span> Proficient in Python, JavaScript, C++, SQL, 
-                      and frontend tools like HTML/CSS.
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-purple-400 mb-4">⬆️ Looking Ahead</h3>
-                  <p className="leading-relaxed">
-                    Excited to tackle challenges in AI-driven innovation and scalable cloud solutions. Let's connect to collaborate 
-                    on impactful projects!
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Experience Section */}
-          <section id="experience" className="py-8 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-12 font-mono">
-                Experience
-              </h2>
-              
-              {/* Professional Experience */}
-              <div className="space-y-6 md:space-y-8 text-purple-200/80">
-              {/* Undergraduate Researcher RARE Lab*/}
-              <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Undergraduate Researcher</h3>
-                      <p className="text-purple-400 text-sm md:text-base">RARE Lab, University of South Florida · Part-time</p>
-                    </div>
-                    <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">Feb 2025 - Present</p>
-                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li className="text-purple-200">
-                      Gained in-depth understanding of human-robot interaction by designing and implementing comprehensive survey instruments to collect qualitative and quantitative data
-                    </li>
-                    <li className="text-purple-200">
-                      Identified critical behavioral trends and patterns in human-robot interaction by utilizing Python, Pandas, and NumPy for advanced statistical analysis on large datasets from interactions and survey responses
-                    </li>
-                    <li className="text-purple-200">
-                      Advanced safety and social perception understanding of female-presenting robotic platforms by contributing to a project focused on developing physical protective solutions for the Pepper robot within Human-Robot Interaction (HRI) and AI research
-                    </li>
-                  </ul>
-                </div>
-
-                {/* University Library Experience */}
-                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Student Assistant - Collections and Discovery</h3>
-                      <p className="text-purple-400 text-sm md:text-base">University of South Florida Libraries · Part-time</p>
-                    </div>
-                    <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">Aug 2024 - Present</p>
-                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li className="text-purple-200">
-                      Improved cataloging accuracy and retrieval efficiency for over 1,000 library materials by meticulously managing and standardizing metadata
-                    </li>
-                    <li className="text-purple-200">
-                      Enhanced library collection organization and accessibility for over 10,000 items by providing accurate and efficient data entry support
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Peer Mentor Experience */}
-                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Peer Mentor for Learning Team</h3>
-                      <p className="text-purple-400 text-sm md:text-base">USF College of Engineering · Part-time</p>
-                    </div>
-                    <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">Apr 2023 - Aug 2024</p>
-                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li className="text-purple-200">
-                      Elevated academic performance in Calculus for first-year engineering students through personalized mentoring and targeted problem-solving instruction
-                    </li>
-                    <li className="text-purple-200">
-                      Enhanced collaborative learning and problem-solving skills for students in EGN 4930 by facilitating interactive weekly Learning Team sessions
-                    </li>
-                    <li className="text-purple-200">
-                      Improved student academic success and retention through consistent one-on-one academic counseling sessions throughout the semester
-                    </li>
-                    <li className="text-purple-200">
-                      Increased student confidence and exam readiness for 50+ students by organizing and leading comprehensive exam preparation study sessions
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Coefficient Software Internship */}
-                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Summer Intern</h3>
-                      <p className="text-purple-400 text-sm md:text-base">COEFFICIENT SOFTWARE SYSTEMS PRIVATE LIMITED · Internship</p>
-                    </div>
-                    <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">May 2022 - Jul 2022</p>
-                      <p className="text-purple-400/70 text-xs md:text-sm">Navi Mumbai, India · Hybrid</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li className="text-purple-200">
-                      Gained comprehensive insights into global higher education trends by compiling and analyzing data on top universities across the USA, Canada, UK, and Australia
-                    </li>
-                    <li className="text-purple-200">
-                      Enhanced mobile application usability by applying UI/UX design principles to cross-platform projects
-                    </li>
-                    <li className="text-purple-200">
-                      Drove user engagement and contributed to the success of the "Word of the Day" app, achieving 100,000+ downloads and a 4.1/5 Play Store rating
-                    </li>
-                    <li className="text-purple-200">
-                      Optimized reporting processes by providing technical support for existing reports and dashboards
-                    </li>
-                    <li className="text-purple-200">
-                      Ensured high-quality application releases by conducting thorough functionality testing during development phases
-                    </li>
-                  </ul>
-                  <a 
-                    href="https://bit.ly/googlestore1" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 text-purple-400 hover:text-purple-300 text-sm"
-                  >
-                    View on Google Play Store →
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Leadership Section */}
-          <section id="leadership" className="py-8 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-12 font-mono">
-                Leadership
-              </h2>
-              
-              <div className="space-y-8 text-purple-200/80">
-                {/* TEDx Experience */}
-                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Head of Logistics</h3>
-                      <p className="text-purple-400 text-sm md:text-base">TEDx at USF</p>
-                    </div>
-                    <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">June 2024 – Feb 2025</p>
-                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li className="text-purple-200">
-                      Ensured seamless execution of TEDx at USF by coordinating logistics and managing a team of 10+ volunteers, preparing them for the event
-                    </li>
-                    <li className="text-purple-200">
-                      Oversaw venue arrangements, including seating for 100 attendees, speaker accommodations, and security measures
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Students of India Association */}
-                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Vice President</h3>
-                      <p className="text-purple-400 text-sm md:text-base">Students of India Association at USF</p>
-                    </div>
-                    <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">Jan 2024 - May 2024</p>
-                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li className="text-purple-200">
-                      Secured increased financial resources by implementing strategic financial management and fundraising initiatives, resulting in an expanded organizational budget
-                    </li>
-                    <li className="text-purple-200">
-                      Enhanced team performance and collaboration by leading and mentoring a team of 26 members, driving increased productivity and achieving organizational goals
-                    </li>
-                    <li className="text-purple-200">
-                      Ensured fair and transparent leadership transitions by chairing the Election Committee, upholding organizational integrity
-                    </li>
-                    <li className="text-purple-200">
-                      Cultivated strong community engagement and cultural celebration by organizing large-scale events, including a Holi celebration with 1000+ attendees, fostering a vibrant community atmosphere
-                    </li>
-                    <li className="text-purple-200">
-                      Expanded community reach and impact by collaborating with cross-organizational teams, strengthening partnerships and broadening engagement initiatives
-                    </li>
-                  </ul>
-                </div>
-
-                {/* SHPE Experience */}
-                <div className="p-4 md:p-6 bg-purple-900/10 rounded-lg">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-semibold text-purple-300">Database Director</h3>
-                      <p className="text-purple-400 text-sm md:text-base">SHPE USF</p>
-                    </div>
-                    <div className="md:text-right">
-                      <p className="text-purple-400/80 text-sm md:text-base">Jan 2024 - May 2024</p>
-                      <p className="text-purple-400/70 text-xs md:text-sm">Tampa, Florida, United States</p>
-                    </div>
-                  </div>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li className="text-purple-200">
-                      Improved data accessibility and organization by conducting a meticulous audit and creating a logical, intuitive folder hierarchy for years' worth of accumulated files
-                    </li>
-                    <li className="text-purple-200">
-                      Enhanced organizational efficiency and data retrieval by orchestrating a comprehensive overhaul of SHPE's document management system, streamlining access to critical organizational data and historical records
-                    </li>
-                    <li className="text-purple-200">
-                      Ensured consistent document identification and searchability by implementing a standardized file-naming convention and metadata tagging system across all organizational documents
-                    </li>
-                    <li className="text-purple-200">
-                      Optimized data storage and retrieval processes by designing and customizing database structures to meet the specific needs and requirements of SHPE
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Projects Section */}
-          <section id="projects" className="py-8 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
-                Projects
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {portfolioData.projects.map((project, index) => (
-                  <div key={index} className="flex flex-col p-6 bg-purple-900/10 rounded-lg">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-lg font-semibold text-purple-400">
-                        {project.title}
-                      </h3>
-                      <div className="flex items-center gap-4">
-                        {project.timeline && (
-                          <span className="italic text-sm text-gray-400">{project.timeline}</span>
-                        )}
-                        <div className="flex gap-2">
-                          <a 
-                            href={project.link}
-                            className="text-purple-500 hover:text-purple-400 transition-colors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Github className="w-6 h-6" />
-                          </a>
-                          {project.demoLink && project.demoLink !== "#" && (
-                            <a 
-                              href={project.demoLink}
-                              className="text-purple-500 hover:text-purple-400 transition-colors text-sm flex items-center"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Live
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="mt-2 text-gray-300">{project.description}</p>
-                    {project.details && project.details.length > 0 && (
-                      <ul className="mt-2 list-disc list-inside text-gray-300">
-                        {project.details.map((detail, idx) => (
-                          <li key={idx}>{detail}</li>
-                        ))}
-                      </ul>
-                    )}
-                    {/* Skills Section */}
-                    {project.skills && project.skills.length > 0 && (
-                      <div className="mt-2">
-                        <strong className="text-purple-400">Skills:</strong>
-                        <span className="text-gray-300"> {" "}
-                          {project.skills.join(' · ')}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Technical Skills Section */}
-          <section id="skills" className="py-8 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8 font-mono">
-                Technical Skills
-              </h2>
-              
-              <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-                {/* Languages Column */}
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Languages</h3>
-                  <ul className="space-y-2">
-                    {portfolioData.technicalSkills.languages.map((lang) => (
-                      <li key={lang} className="text-purple-200 text-sm md:text-base">
-                        {lang}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Frameworks Column */}
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Frameworks</h3>
-                  <ul className="space-y-2">
-                    {portfolioData.technicalSkills.frameworks.map((framework) => (
-                      <li key={framework} className="text-purple-200 text-sm md:text-base">
-                        {framework}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Courses Column */}
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg font-semibold text-purple-300 mb-3">Courses</h3>
-                  <ul className="space-y-2">
-                    {portfolioData.technicalSkills.courses.map((course) => (
-                      <li key={course} className="text-purple-200 text-sm md:text-base">
-                        {course}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Contact Section */}
-          <section id="contact" className="py-8 scroll-mt-20">
-            <div className="bg-gradient-to-br from-purple-950/30 via-black/50 to-purple-950/30 backdrop-blur-sm rounded-lg p-8 border border-purple-500/20">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text mb-8">
-                Contact Me
-              </h2>
-              <div className="max-w-md mx-auto">
-                <form 
-                  action="https://formspree.io/f/xanqjzyj" 
-                  method="POST"
-                  className="space-y-4"
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    setFormStatus('sending');
-                    
-                    try {
-                      const form = e.target as HTMLFormElement;
-                      const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: {
-                          'Accept': 'application/json'
-                        }
-                      });
-                      
-                      if (response.ok) {
-                        setFormStatus('sent');
-                        form.reset();
-                      } else {
-                        throw new Error('Form submission failed');
-                      }
-                    } catch {
-                      setFormStatus('error');
-                    }
-                  }}
+                {/* Theme toggle button with icons */}
+                <button 
+                  onClick={toggleTheme} 
+                  className="p-2 rounded-full bg-gray-800 hover:bg-gray-700 text-white transition-transform transform hover:scale-110 shadow-lg"
+                  aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                 >
-                  <div>
-                    <label htmlFor="name" className="block text-purple-400 mb-2">
-                      Your Name <span className="text-purple-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-purple-400 mb-2">
-                      Your Email <span className="text-purple-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-purple-400 mb-2">
-                      Phone Number <span className="text-gray-400">(Optional)</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="+1 (234) 567-8900"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-purple-400 mb-2">
-                      Your Message <span className="text-purple-500">*</span>
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={4}
-                      className="w-full p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="Hello! I'd like to connect about..."
-                    ></textarea>
-                  </div>
-
-                  {/* Hidden Recipient Email Field */}
-                  <input 
-                    type="hidden" 
-                    name="_replyto" 
-                    value="bheleparamveer@gmail.com"
-                  />
-                  
-                  <button
-                    type="submit"
-                    disabled={formStatus === 'sending'}
-                    className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
-                  >
-                    {formStatus === 'sending' ? (
-                      'Sending...'
-                    ) : formStatus === 'sent' ? (
-                      'Message Sent!'
-                    ) : formStatus === 'error' ? (
-                      'Error - Try Again'
-                    ) : (
-                      'Send Message'
-                    )}
-                  </button>
-
-                  {/* Form Status Messages */}
-                  {formStatus === 'sent' && (
-                    <p className="text-purple-500 text-center">
-                      Thank you for your message! I'll get back to you soon.
-                    </p>
+                  {theme === 'dark' ? (
+                    <Sun className="w-5 h-5" />
+                  ) : (
+                    <Moon className="w-5 h-5" />
                   )}
-                  {formStatus === 'error' && (
-                    <p className="text-red-500 text-center">
-                      Sorry, there was an error sending your message. Please try again.
-                    </p>
-                  )}
-                </form>
+                </button>
               </div>
             </div>
-          </section>
+          </div>
+        </nav>
 
-          {/* Copyright */}
-          <div className="py-4 text-center text-purple-400/60">
-            <p>© {new Date().getFullYear()} Paramveer Singh Bhele. All rights reserved.</p>
+        {/* Main Content */}
+        <div className="relative z-10 pt-24">
+          <div className="container mx-auto px-6 space-y-4">
+            <AnimatePresence>
+              <Suspense fallback={<div className="flex justify-center py-12">Loading...</div>}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/experience" element={<Experience />} />
+                  <Route path="/leadership" element={<Leadership />} />
+                  <Route path="/projects" element={<Projects projects={portfolioData.projects} />} />
+                  <Route path="/skills" element={<Skills technicalSkills={portfolioData.technicalSkills} />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </Suspense>
+            </AnimatePresence>
+
+            {/* Copyright */}
+            <div className="py-4 text-center">
+              <p>© {new Date().getFullYear()} Paramveer Singh Bhele. All rights reserved.</p>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-black/95 z-50 backdrop-blur-sm">
-          <div className="flex flex-col items-center justify-center h-full space-y-6 relative">
-            <button
-              className="absolute top-4 right-4 text-purple-400 p-2"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            
-            <nav className="flex flex-col items-center space-y-6" role="navigation">
-              {['About', 'Experience', 'Leadership', 'Projects', 'Skills', 'Contact'].map((item) => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`}
-                  className="text-2xl text-purple-400 hover:text-purple-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
-    </div>
+    </Router>
   );
+}
+
+// Create a separate component that can use Router hooks safely
+function RouteHandler() {
+  const location = useLocation(); // Now this is used within Router context
+  
+  useEffect(() => {
+    // Prefetch components for common routes when user is on the home page
+    if (location.pathname === '/') {
+      const prefetchRoutes = async () => {
+        // Wait a bit after initial load before prefetching
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Prefetch critical routes
+        import('./components/About');
+        import('./components/Experience');
+        import('./components/Projects');
+      };
+      
+      prefetchRoutes();
+    }
+  }, [location]);
+
+  return null; // This component doesn't render anything
 }
 
 export default App;
