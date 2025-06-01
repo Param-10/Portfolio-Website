@@ -3,9 +3,11 @@ export interface Project {
   description: string;
   link: string;
   demoLink: string;
+  devpostLink?: string;
   details?: string[];
   timeline?: string;
   skills?: string[];
+  featured?: boolean;
 }
 
 export interface Experience {
@@ -20,6 +22,7 @@ export interface TechnicalSkills {
   frameworks: string[];
   tools: string[];
   courses: string[];
+  machineLearning: string[];
 }
 
 export const portfolioData = {
@@ -40,6 +43,7 @@ export const portfolioData = {
       description: "Personal Portfolio Website by Me",
       link: "https://github.com/Param-10/Portfolio-Website",
       demoLink: "https://paramveerbhele.com/",
+      featured: true,
       details: [
         "Engineered a responsive portfolio website using React, TypeScript, and Tailwind CSS to showcase personal projects and skills.",
         "Designed and built a dynamic user interface, emphasizing clean code and maintainability."
@@ -58,11 +62,64 @@ export const portfolioData = {
     },
 
     {
+      title: "Stock Analysis Tool",
+      timeline: "2024",
+      description: "Dynamic stock analysis application with real-time price wave detection and Fibonacci level visualization.",
+      link: "#",
+      demoLink: "#",
+      featured: true,
+      details: [
+        "Built dynamic stock analysis UI to detect price waves and draw live Fibonacci levels with real-time confirmations",
+        "Enabled wave simulation via drag, animation, and control buttons, with instant validation and feedback",
+        "Validated 1,000+ candles using peak/valley detection, Fibonacci math, and visual confirmation markers"
+      ],
+      skills: [
+        "C#",
+        "WinForms",
+        ".NET",
+        "Charting",
+        "Algorithmic Validation",
+        "LINQ",
+        "OOP",
+        "UI Development",
+        "Real-time Systems"
+      ]
+    },
+
+    {
+      title: "CarbonCTRL (Hackathon Winner)",
+      timeline: "Apr 2025",
+      description: "Award-winning carbon management platform that quantifies emissions and provides AI-driven reduction strategies.",
+      link: "https://github.com/Param-10/CarbonCTRL",
+      demoLink: "https://carbonctrl.us",
+      devpostLink: "https://devpost.com/software/carbonctrl",
+      featured: true,
+      details: [
+        "Built an end-to-end platform that quantifies emissions and surfaces AI-driven cut/offset plans in real time",
+        "Integrated React/Next.js front-end with Gemini AI, for dynamic dashboards, authentication, and personalized insights",
+        "Ranked 1st of 70+ projects at HackaBull 2025 for Best Use of Gemini API Track"
+      ],
+      skills: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "Supabase",
+        "Gemini AI",
+        "TensorFlow",
+        "Tailwind CSS",
+        "Full Stack Development",
+        "API Integration"
+      ]
+    },
+
+    {
       title: "BullRunner Web Application",
       timeline: "Jul 2024 - Aug 2024",
       description: "Real-time bus tracking system for university transportation",
       link: "https://github.com/Param-10/bullrunner-2",
       demoLink: "https://param-10.github.io/bullrunner-2/",
+      featured: true,
       details: [
         "Developed real-time bus tracking application for university students with live location updates",
         "Integrated Mapbox API and PassioGo API for interactive maps and accurate tracking",
@@ -106,23 +163,23 @@ export const portfolioData = {
       description: "Machine learning-powered dashboard for detecting fraudulent transactions.",
       link: "https://github.com/Param-10/Fraud-Detection-Dashboard",
       demoLink: "#",
+      featured: true,
       details: [
-        "Developed a comprehensive dashboard using machine learning to identify fraudulent transactions with high accuracy.",
-        "Implemented a Logistic Regression model achieving over 89% accuracy on training and test datasets.",
-        "Conducted data preprocessing (scaling, feature selection, missing value handling) for optimal model performance.",
-        "Created interactive visualizations (ROC curves, confusion matrices, heatmaps) for actionable insights."
+        "Achieved 89% accuracy on card-fraud data with Logistic Regression, lifting performance 15% via scaling",
+        "Reduced false-positive alerts by 12% through class-weight tuning and threshold calibration",
+        "Delivered Flask/Dash app that plots ROC, confusion, heatmaps, speeding analyst review cycles by 2 times"
       ],
       skills: [
+        "NumPy",
+        "Scikit-learn",
         "Machine Learning",
         "Flask",
-        "Pandas",
+        "Logistic Regression",
+        "DASH",
         "Python",
         "Data Visualization",
         "Feature Engineering",
-        "Logistic Regression",
-        "NumPy",
-        "Scikit-Learn",
-        "DASH"
+        "Pandas"
       ]
     },
     {
@@ -165,42 +222,63 @@ export const portfolioData = {
         "Path Planning"
       ]
     }
-  ] as (Project & { details?: string[]; timeline?: string; skills?: string[] })[],
+  ] as (Project & { details?: string[]; timeline?: string; skills?: string[]; featured?: boolean })[],
   technicalSkills: {
     languages: [
-      'Python (NumPy, Pandas, Matplotlib, PyTorch)',
-      'JavaScript/TypeScript',
-      'C/C++',
-      'HTML5/CSS3',
-      'SQL/MySQL',
-      'Java'
+      'Python',
+      'C++',
+      'C',
+      'C#',
+      'Java',
+      'TypeScript',
+      'JavaScript',
+      'SQL'
     ],
     frameworks: [
-      'React',
+      'React.js',
+      'Next.js',
       'Node.js',
+      'Express',
+      '.NET',
       'Flask',
-      'Mapbox GL JS',
-      'OpenCV'
+      'Supabase',
+      'Gemini API',
+      'OpenAI API',
+      'REST APIs'
     ],
     tools: [
+      'AWS Cloud',
+      'Docker',
+      'GitHub',
       'VS Code',
-      'Git/GitHub',
-      'PyCharm',
-      'Jupyter Notebook',
+      'Jupyter',
+      'MySQL',
+      'Excel',
       'Android Studio',
       'Xcode',
-      'MySQL Workbench',
-      'Choregraphe'
+      'Microsoft 365'
+    ],
+    machineLearning: [
+      'NumPy',
+      'Pandas',
+      'Scikit-learn',
+      'TensorFlow',
+      'PyTorch',
+      'OpenCV',
+      'Matplotlib',
+      'DeepFace'
     ],
     courses: [
       'Data Structures & Algorithms',
+      'Automata Theory',
+      'Software Engineering',
+      'Advanced OOP in C++',
+      'Secure Coding',
       'Computer Logic & Design',
       'Discrete Structures',
       'Linear Systems',
-      'Automata Theory',
       'Program Design',
-      'Analysis of Algorithms',
-      'Secure Coding'
+      'Analysis of Algorithms'
     ]
   }
 };

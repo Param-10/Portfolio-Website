@@ -2,72 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
 @layer base {
-  /* Add hardware acceleration for smoother animations */
-  .will-change-transform {
-    will-change: transform;
+  /* Reset and base styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
   
-  /* Use perspective for smoother transitions */
-  .transform-gpu {
-    transform: translateZ(0);
-  }
-  
-  /* Other base styles */
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
+    /* Smooth theme transition */
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   body {
-    font-family: 'Inconsolata', monospace;
-    background-color: var(--background);
-    color: var(--text-primary);
-    text-rendering: optimizeSpeed;
+    font-family: 'Inter', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Smooth theme transition */
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  :root {
-    --background: #FFFFFF;
-    --text-primary: #1A202C;
-    --text-secondary: #718096;
-    --accent: #4299E1;
+  /* Ensure all elements have smooth theme transitions */
+  *,
+  *::before,
+  *::after {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
   }
 
-  [data-theme='dark'] {
-    --background: #1A202C;
-    --text-primary: #FFFFFF;
-    --text-secondary: #A0AEC0;
-    --accent: #90CDF4;
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(243 244 246); /* Slightly darker for the tinted theme */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(156 163 175); /* Better contrast */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(107 114 128);
+  }
+
+  /* Dark theme scrollbar */
+  .dark ::-webkit-scrollbar-track {
+    background: rgb(15 23 42);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgb(71 85 105);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgb(100 116 139);
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgb(37 99 235 / 0.2);
+    color: rgb(37 99 235);
+  }
+
+  .dark ::selection {
+    background-color: rgb(59 130 246 / 0.3);
+    color: rgb(147 197 253);
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid rgb(37 99 235);
+    outline-offset: 2px;
+  }
+
+  .dark :focus-visible {
+    outline-color: rgb(59 130 246);
+  }
+
+  /* Theme-specific root styles */
+  .light {
+    background-color: rgb(249 250 251); /* Very subtle gray tint instead of pure white */
+    color: rgb(15 23 42);
+  }
+
+  .dark {
+    background-color: rgb(15 23 42);
+    color: rgb(248 250 252);
   }
 }
 
-/* Splash Effect */
-.splash-effect {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: rgba(66, 153, 225, 0.5); /* Accent color */
-  border-radius: 50%;
-  transform: scale(0);
-  animation: splash 0.6s ease-out forwards;
-  pointer-events: none;
-}
-
-@keyframes splash {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-/* Hover Effect for Name */
-.group:hover .relative {
-  transform: translateY(-2px);
-  transition: transform 0.2s ease-out;
-}
-
-/* Add these optimizations for animations */
 @layer components {
-  /* Optimize animations by using transform instead of other properties */
+  /* Button styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-mono text-sm rounded transition-all duration-300 hover:bg-blue-700 hover:scale-105 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-blue-600 text-blue-600 hover:bg-blue-600/10 font-mono text-sm rounded transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  .dark .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 focus:ring-blue-400;
+  }
+
+  .dark .btn-outline {
+    @apply border-blue-400 text-blue-400 hover:bg-blue-400/10 focus:ring-blue-400;
+  }
+
+  /* Section styles */
+  .section-heading {
+    @apply text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-8;
+  }
+
+  .section-heading::before {
+    content: counter(section) ".";
+    counter-increment: section;
+    @apply text-blue-600 dark:text-blue-400 font-mono text-lg mr-2;
+  }
+
+  /* Animations */
   .hover-lift {
     transition: transform 0.2s ease-out;
   }
@@ -75,9 +148,46 @@
   .hover-lift:hover {
     transform: translateY(-2px);
   }
+
+  /* Writing mode utilities */
+  .writing-mode-vertical-rl {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    @apply p-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:border-blue-600/50 dark:hover:border-blue-400/50 shadow-sm;
+  }
+}
+
+@layer utilities {
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
   
-  /* Optimize scrolling */
+  .transform-gpu {
+    transform: translateZ(0);
+  }
+  
   .smooth-scroll {
     -webkit-overflow-scrolling: touch;
   }
+
+  /* Custom backdrop blur */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Theme-aware transitions */
+  .transition-theme {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+/* Counter for section numbering */
+body {
+  counter-reset: section;
 }

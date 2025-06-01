@@ -1,53 +1,89 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import profileImage from '../assets/My_Image.jpg';
 
 function About() {
+  const technologies = [
+    'JavaScript (ES6+)',
+    'TypeScript',
+    'React',
+    'Node.js',
+    'Python',
+    'C++',
+    'SQL',
+    'MongoDB',
+    'AWS',
+    'TensorFlow',
+    'Scikit-learn',
+    'Git'
+  ];
+
   return (
-    <section id="about" className="py-4 scroll-mt-20">
-      <div className="rounded-lg p-6 border">
-        <div className="flex flex-col items-start">
-          <h2 className="text-2xl font-bold mb-4 w-full text-center">
-            About Me
-          </h2>
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">🚀 AI & Data Enthusiast | Aspiring Tech Leader</h3>
-              <p className="leading-relaxed">
-                I am a Computer Science student at the University of South Florida with a Minor in Entrepreneurship,
-                passionate about leveraging AI, machine learning, and cloud computing to solve real-world challenges.
-                My experience spans building ML models, crafting data-driven solutions, and developing scalable applications.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-2">🌟 Mission</h3>
-              <p className="leading-relaxed">
-                Committed to using technology to drive innovation and empower users, I aim to create impactful tools
-                while inspiring others to explore the transformative potential of AI and data.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-2">💡 Core Skills</h3>
-              <ul className="space-y-2 ml-4">
-                <li>
-                  <span className="font-medium">AI/ML:</span> Developing predictive models (e.g., Logistic Regression),
-                  pre-processing data, and creating interactive dashboards for insights.
+    <div className="container mx-auto px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="max-w-4xl mx-auto"
+      >
+        <h2 className="section-heading">About Me</h2>
+        
+        <div className="grid md:grid-cols-3 gap-12 items-start">
+          <div className="md:col-span-2 space-y-4">
+            <p className="text-slate-600 dark:text-slate-400">
+              Hello! My name is Paramveer and I enjoy creating things that live on the internet. 
+              My interest in web development started back in 2021 when I decided to try editing 
+              custom Tumblr themes — turns out hacking together a custom reblog button taught me 
+              a lot about HTML & CSS!
+            </p>
+            
+            <p className="text-slate-600 dark:text-slate-400">
+              Fast-forward to today, and I've had the privilege of working on various projects 
+              ranging from machine learning applications to full-stack web development. 
+              I'm currently a Computer Science student at the University of South Florida 
+              with a Minor in Entrepreneurship, passionate about leveraging AI, machine learning, 
+              and cloud computing to solve real-world challenges.
+            </p>
+            
+            <p className="text-slate-600 dark:text-slate-400">
+              My main focus these days is building accessible, inclusive products and digital 
+              experiences at various companies for a variety of clients.
+            </p>
+            
+            <p className="text-slate-600 dark:text-slate-400">
+              Here are a few technologies I've been working with recently:
+            </p>
+            
+            <ul className="grid grid-cols-2 gap-2 text-sm font-mono text-slate-600 dark:text-slate-400">
+              {technologies.map((tech, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="text-blue-600 dark:text-blue-400 mr-2">▹</span>
+                  {tech}
                 </li>
-                <li>
-                  <span className="font-medium">Data & Cloud:</span> Expertise in data manipulation, visualization
-                  (Python libraries), and integrating APIs into cloud-ready applications.
-                </li>
-                <li>
-                  <span className="font-medium">Programming:</span> Proficient in Python, JavaScript, C++, SQL,
-                  and frontend tools like HTML/CSS.
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="flex justify-center md:justify-end">
+            <motion.div
+              className="relative group"
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="relative z-10 w-64 h-64 rounded overflow-hidden">
+                <img
+                  src={profileImage}
+                  alt="Paramveer Singh Bhele"
+                  className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+              <div className="absolute top-5 left-5 w-64 h-64 border-2 border-blue-600 dark:border-blue-400 rounded -z-10 group-hover:top-3 group-hover:left-3 transition-all duration-300"></div>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </div>
   );
 }
 

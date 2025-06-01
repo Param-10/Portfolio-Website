@@ -1,131 +1,167 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
+
+interface ExperienceItem {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  duration: string;
+  type: string;
+  description: string[];
+  link?: string;
+}
 
 function Experience() {
+  const experiences: ExperienceItem[] = [
+    {
+      id: 'ai4all',
+      title: 'AI4ALL Ignite Fellow',
+      company: 'AI4ALL',
+      location: 'Remote',
+      duration: 'May 2025 - Present',
+      type: 'Internship',
+      description: [
+        'Selected for the highly competitive AI4ALL Ignite, a comprehensive 13-week, national accelerator designed to equip undergraduate students with the skills and connections for successful careers in AI and machine learning',
+        'Developing an AI technical portfolio project through live virtual classes, peer collaboration, and mentorship from AI industry professionals',
+        'Focusing on responsible AI and ethical practices while building expertise in artificial intelligence and machine learning applications'
+      ]
+    },
+    {
+      id: 'rare-lab',
+      title: 'Undergraduate Research Assistant',
+      company: 'RARE Lab',
+      location: 'University of South Florida',
+      duration: 'Feb 2025 - Present',
+      type: 'Part-time',
+      description: [
+        'Designed and deployed survey tools to analyze human-robot interaction studies, capturing key behavioral insights',
+        'Utilized Pandas and NumPy to assess the datasets generated, and improve interaction models by 20%',
+        'Collaborated on AI/ML projects for multiple robots, training models and implementing intelligent control'
+      ],
+      link: 'https://therarelab.com/people/paramveer-singh-bhele/'
+    },
+    {
+      id: 'usf-library',
+      title: 'Student Assistant - Collections and Discovery',
+      company: 'USF Libraries',
+      location: 'University of South Florida',
+      duration: 'Aug 2024 - Present',
+      type: 'Part-time',
+      description: [
+        'Indexed 10,000+ images in Excel, enriching metadata to cut classification errors by 25% and boost catalog recall',
+        'Improved cataloging accuracy by standardizing metadata, resulting in efficient retrieval for 1,000+ items'
+      ]
+    },
+    {
+      id: 'peer-mentor',
+      title: 'Peer Mentor For Learning Teams',
+      company: 'USF College of Engineering',
+      location: 'University of South Florida',
+      duration: 'Apr 2023 - Aug 2024',
+      type: 'Part-time',
+      description: [
+        'Strengthened Calculus mastery for 25+ engineering students via tailored classes and problem-solving drills',
+        'Secured 100% engagement in EGN 4930 by orchestrating interactive peer-learning sessions weekly'
+      ]
+    },
+    {
+      id: 'coefficient',
+      title: 'App Developer Intern',
+      company: 'Coefficient Software Systems',
+      location: 'Navi Mumbai, India',
+      duration: 'May 2022 - Jul 2022',
+      type: 'Internship',
+      description: [
+        'Profiled 500+ US, UK, and Australian universities, producing benchmarking dashboards for product positioning',
+        'Improved UI/UX for Learn English app, maintaining 100,000+ downloads and a 4.4/5 on the Google Play Store'
+      ],
+      link: 'https://play.google.com/store/apps/details?id=com.vocabulary.wordoftheday&hl=en_US'
+    }
+  ];
+
+  const [activeExperience, setActiveExperience] = useState(experiences[0].id);
+  const currentExperience = experiences.find(exp => exp.id === activeExperience) || experiences[0];
+
   return (
-    <section id="experience" className="py-4 scroll-mt-20">
-      <div className="rounded-lg p-6 border">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Experience
-        </h2>
-
-        {/* Professional Experience */}
-        <div className="space-y-4">
-          {/* Undergraduate Researcher RARE Lab*/}
-          <div className="p-4 rounded-lg">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold">Undergraduate Researcher</h3>
-                <p className="text-sm md:text-base">RARE Lab, University of South Florida · Part-time</p>
-              </div>
-              <div className="md:text-right">
-                <p className="text-sm md:text-base">Feb 2025 - Present</p>
-                <p className="text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
-              </div>
+    <div className="container mx-auto px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="max-w-4xl mx-auto"
+      >
+        <h2 className="section-heading">Where I've Worked</h2>
+        
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Tab Navigation */}
+          <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
+            <div className="flex lg:flex-col border-b-2 lg:border-b-0 lg:border-l-2 border-slate-200 dark:border-slate-700 min-w-max lg:min-w-0">
+              {experiences.map((exp) => (
+                <button
+                  key={exp.id}
+                  onClick={() => setActiveExperience(exp.id)}
+                  className={`text-left px-4 py-3 text-sm font-mono whitespace-nowrap lg:whitespace-normal transition-all duration-300 border-b-2 lg:border-b-0 lg:border-l-2 ${
+                    activeExperience === exp.id
+                      ? 'text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400 bg-blue-600/5 dark:bg-blue-400/5'
+                      : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                  }`}
+                >
+                  {exp.company}
+                </button>
+              ))}
             </div>
-            <ul className="list-disc list-inside space-y-1 mt-2 ml-4">
-              <li>
-                Gained in-depth understanding of human-robot interaction by designing and implementing comprehensive survey instruments to collect qualitative and quantitative data
-              </li>
-              <li>
-                Identified critical behavioral trends and patterns in human-robot interaction by utilizing Python, Pandas, and NumPy for advanced statistical analysis on large datasets from interactions and survey responses
-              </li>
-              <li>
-                Advanced safety and social perception understanding of female-presenting robotic platforms by contributing to a project focused on developing physical protective solutions for the Pepper robot within Human-Robot Interaction (HRI) and AI research
-              </li>
-            </ul>
           </div>
 
-          {/* University Library Experience */}
-          <div className="p-4 rounded-lg">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold">Student Assistant - Collections and Discovery</h3>
-                <p className="text-sm md:text-base">University of South Florida Libraries · Part-time</p>
-              </div>
-              <div className="md:text-right">
-                <p className="text-sm md:text-base">Aug 2024 - Present</p>
-                <p className="text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
-              </div>
-            </div>
-            <ul className="list-disc list-inside space-y-1 mt-2 ml-4">
-              <li>
-                Improved cataloging accuracy and retrieval efficiency for over 1,000 library materials by meticulously managing and standardizing metadata
-              </li>
-              <li>
-                Enhanced library collection organization and accessibility for over 10,000 items by providing accurate and efficient data entry support
-              </li>
-            </ul>
-          </div>
-
-          {/* Peer Mentor Experience */}
-          <div className="p-4 rounded-lg">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-semibold">Peer Mentor for Learning Team</h3>
-                <p className="text-sm md:text-base">USF College of Engineering · Part-time</p>
-              </div>
-              <div className="md:text-right">
-                <p className="text-sm md:text-base">Apr 2023 - Aug 2024</p>
-                <p className="text-xs md:text-sm">Tampa, Florida, United States · On-site</p>
-              </div>
-            </div>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>
-                Elevated academic performance in Calculus for first-year engineering students through personalized mentoring and targeted problem-solving instruction
-              </li>
-              <li>
-                Enhanced collaborative learning and problem-solving skills for students in EGN 4930 by facilitating interactive weekly Learning Team sessions
-              </li>
-              <li>
-                Improved student academic success and retention through consistent one-on-one academic counseling sessions throughout the semester
-              </li>
-              <li>
-                Increased student confidence and exam readiness for 50+ students by organizing and leading comprehensive exam preparation study sessions
-              </li>
-            </ul>
-          </div>
-
-          {/* Coefficient Software Internship */}
-          <div className="p-4 rounded-lg">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-semibold">Summer Intern</h3>
-                <p className="text-sm md:text-base">COEFFICIENT SOFTWARE SYSTEMS PRIVATE LIMITED · Internship</p>
-              </div>
-              <div className="md:text-right">
-                <p className="text-sm md:text-base">May 2022 - Jul 2022</p>
-                <p className="text-xs md:text-sm">Navi Mumbai, India · Hybrid</p>
-              </div>
-            </div>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>
-                Gained comprehensive insights into global higher education trends by compiling and analyzing data on top universities across the USA, Canada, UK, and Australia
-              </li>
-              <li>
-                Enhanced mobile application usability by applying UI/UX design principles to cross-platform projects
-              </li>
-              <li>
-                Drove user engagement and contributed to the success of the "Word of the Day" app, achieving 100,000+ downloads and a 4.1/5 Play Store rating
-              </li>
-              <li>
-                Optimized reporting processes by providing technical support for existing reports and dashboards
-              </li>
-              <li>
-                Ensured high-quality application releases by conducting thorough functionality testing during development phases
-              </li>
-            </ul>
-            <a
-              href="https://bit.ly/googlestore1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-2 text-sm"
+          {/* Content */}
+          <div className="flex-1">
+            <motion.div
+              key={activeExperience}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-4"
             >
-              View on Google Play Store →
-            </a>
+              <div>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+                  {currentExperience.title}
+                  <span className="text-blue-600 dark:text-blue-400"> @ {currentExperience.company}</span>
+                </h3>
+                <p className="text-sm font-mono text-slate-600 dark:text-slate-400 mt-1">
+                  {currentExperience.duration}
+                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {currentExperience.location} · {currentExperience.type}
+                </p>
+              </div>
+
+              <ul className="space-y-3">
+                {currentExperience.description.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-blue-600 dark:text-blue-400 mr-3 mt-1 flex-shrink-0">▹</span>
+                    <span className="text-slate-600 dark:text-slate-400">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {currentExperience.link && (
+                <a
+                  href={currentExperience.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-mono text-sm"
+                >
+                  View Project
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              )}
+            </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </div>
   );
 }
 
