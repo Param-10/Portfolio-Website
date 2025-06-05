@@ -1,1 +1,0 @@
-import{b as r}from"./react-vendor-DYtWf-gR.js";import"./framer-motion-D8kDcqIy.js";var o,t={};var e=function(){if(o)return t;o=1;var e=r();return t.createRoot=e.createRoot,t.hydrateRoot=e.hydrateRoot,t}();export{e as c};
