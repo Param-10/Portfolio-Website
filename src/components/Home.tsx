@@ -51,7 +51,7 @@ const Home = () => {
         
         <motion.h2
           variants={itemVariants}
-          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-600 dark:text-slate-400 mb-6"
+          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-600 dark:text-slate-400 mb-6 whitespace-nowrap"
         >
           I build real world full stack projects.
         </motion.h2>
