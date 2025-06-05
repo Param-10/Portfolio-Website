@@ -28,7 +28,9 @@ import {
   SiGithub,
   SiJupyter,
   SiXcode,
-  SiAndroidstudio
+  SiAndroidstudio,
+  SiJira,
+  SiGit
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 import { VscCode } from 'react-icons/vsc';
@@ -86,7 +88,10 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
     'VS Code': { icon: VscCode, color: '#007ACC' },
     'Jupyter': { icon: SiJupyter, color: '#F37626' },
     'Android Studio': { icon: SiAndroidstudio, color: '#3DDC84' },
-    'Xcode': { icon: SiXcode, color: '#147EFB' }
+    'Xcode': { icon: SiXcode, color: '#147EFB' },
+    'Git': { icon: SiGit, color: '#F05032' },
+    'Jira': { icon: SiJira, color: '#0052CC' },
+    'Microsoft 365': { icon: SiMysql, color: '#D83B01' }
   };
 
   const skillCategories = [
@@ -94,25 +99,33 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
       title: 'Languages',
       icon: Code,
       skills: technicalSkills.languages,
-      color: 'text-blue-600 dark:text-blue-400'
+      color: 'text-blue-600 dark:text-blue-400',
+      bgColor: 'bg-blue-50 dark:bg-blue-950/30',
+      borderColor: 'border-blue-200 dark:border-blue-800'
     },
     {
       title: 'Frameworks & Libraries',
       icon: Database,
       skills: technicalSkills.frameworks,
-      color: 'text-green-600 dark:text-green-400'
+      color: 'text-green-600 dark:text-green-400',
+      bgColor: 'bg-green-50 dark:bg-green-950/30',
+      borderColor: 'border-green-200 dark:border-green-800'
     },
     {
       title: 'Machine Learning',
       icon: Brain,
       skills: technicalSkills.machineLearning,
-      color: 'text-red-600 dark:text-red-400'
+      color: 'text-red-600 dark:text-red-400',
+      bgColor: 'bg-red-50 dark:bg-red-950/30',
+      borderColor: 'border-red-200 dark:border-red-800'
     },
     {
       title: 'Tools & Technologies',
       icon: Cloud,
       skills: technicalSkills.tools,
-      color: 'text-purple-600 dark:text-purple-400'
+      color: 'text-purple-600 dark:text-purple-400',
+      bgColor: 'bg-purple-50 dark:bg-purple-950/30',
+      borderColor: 'border-purple-200 dark:border-purple-800'
     }
   ];
 
@@ -123,64 +136,115 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto"
+        className="max-w-6xl mx-auto"
       >
         <h2 className="section-heading">Skills & Technologies</h2>
         
-        <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-slate-800 p-6 rounded-lg border border-gray-200 dark:border-slate-700 shadow-sm"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <category.icon className={`w-6 h-6 ${category.color}`} />
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                  {category.title}
-                </h3>
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => {
-                  const iconData = skillIcons[skill];
-                  return (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
-                      viewport={{ once: true }}
-                      className="flex items-center gap-2 px-3 py-1 bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded-full text-sm font-mono hover:border-blue-600/50 dark:hover:border-blue-400/50 transition-colors"
-                    >
-                      {iconData && (
-                        <iconData.icon className="w-4 h-4 flex-shrink-0" style={{ color: iconData.color }} />
-                      )}
-                      <span className="text-slate-700 dark:text-slate-300">{skill}</span>
-                    </motion.span>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Single unified view with all skills */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-white dark:bg-slate-800 p-8 rounded-xl border border-gray-200 dark:border-slate-700 shadow-lg"
+        >
+          <div className="space-y-8">
+            {skillCategories.map((category, categoryIndex) => (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`p-2 rounded-lg ${category.bgColor} ${category.borderColor} border`}>
+                    <category.icon className={`w-5 h-5 ${category.color}`} />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+                    {category.title}
+                  </h3>
+                  <div className="flex-1 h-px bg-gradient-to-r from-gray-300 dark:from-slate-600 to-transparent"></div>
+                </div>
+                
+                {/* Skills Grid */}
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill, skillIndex) => {
+                    const iconData = skillIcons[skill];
+                    return (
+                      <motion.div
+                        key={skill}
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        transition={{ 
+                          duration: 0.3, 
+                          delay: categoryIndex * 0.1 + skillIndex * 0.03,
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20
+                        }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-lg text-sm font-mono hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-200 hover:shadow-md cursor-pointer group"
+                      >
+                        {iconData && (
+                          <iconData.icon 
+                            className="w-4 h-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" 
+                            style={{ color: iconData.color }} 
+                          />
+                        )}
+                        <span className="text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors duration-200">
+                          {skill}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Additional Skills Summary */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 text-center"
+          className="mt-12"
         >
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            I'm always eager to learn new technologies and stay up-to-date with the latest developments 
-            in software engineering, machine learning, and web development. Currently exploring 
-            advanced AI/ML techniques and modern web frameworks.
-          </p>
+          <div className="bg-white dark:bg-slate-800 p-8 rounded-xl border border-gray-200 dark:border-slate-700 shadow-lg">
+            <div className="flex items-start gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                  <Brain className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">
+                  Continuous Learning & Growth
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                  I'm always eager to learn new technologies and stay up-to-date with the latest developments 
+                  in software engineering, machine learning, and web development. Currently exploring 
+                  advanced AI/ML techniques and modern web frameworks to build innovative solutions.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
+                    Always Learning
+                  </span>
+                  <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium rounded-full">
+                    Innovation Focused
+                  </span>
+                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium rounded-full">
+                    Future-Ready
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </div>

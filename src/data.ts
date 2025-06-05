@@ -251,48 +251,50 @@ export const portfolioData = {
   ] as (Project & { details?: string[]; timeline?: string; skills?: string[]; featured?: boolean })[],
   technicalSkills: {
     languages: [
-      'Python',
-      'C++',
       'C',
       'C#',
+      'C++',
       'Java',
-      'TypeScript',
       'JavaScript',
-      'SQL'
+      'Python',
+      'SQL',
+      'TypeScript'
     ],
     frameworks: [
-      'React.js',
+      '.NET',
+      'Express',
+      'Flask',
+      'Gemini API',
       'Next.js',
       'Node.js',
-      'Express',
-      '.NET',
-      'Flask',
-      'Supabase',
-      'Gemini API',
       'OpenAI API',
-      'REST APIs'
+      'React.js',
+      'REST APIs',
+      'Supabase'
     ],
     tools: [
+      'Android Studio',
       'AWS Cloud',
       'Docker',
-      'GitHub',
-      'VS Code',
-      'Jupyter',
-      'MySQL',
       'Excel',
-      'Android Studio',
-      'Xcode',
-      'Microsoft 365'
+      'Git',
+      'GitHub',
+      'Jira',
+      'Jupyter',
+      'Microsoft 365',
+      'MySQL',
+      'VS Code',
+      'Xcode'
     ],
     machineLearning: [
-      'NumPy',
-      'Pandas',
-      'Scikit-learn',
-      'TensorFlow',
-      'PyTorch',
-      'OpenCV',
+      'DeepFace',
       'Matplotlib',
-      'DeepFace'
+      'NumPy',
+      'OpenCV',
+      'Pandas',
+      'PyTorch',
+      'Scikit-learn',
+      'TensorFlow'
     ]
   }
 };

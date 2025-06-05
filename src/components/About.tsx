@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import profileImage from '../assets/My_Image.jpg';
 
@@ -36,17 +35,21 @@ function About() {
           <div className="flex justify-center md:justify-end">
             <motion.div
               className="relative group"
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -5, scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="relative z-10 w-64 h-64 rounded overflow-hidden">
+              <div className="relative z-10 w-64 h-64 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl">
                 <img
                   src={profileImage}
                   alt="Paramveer Singh Bhele"
-                  className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-full h-full object-cover object-center filter grayscale hover:grayscale-0 transition-all duration-300"
+                  style={{ 
+                    objectPosition: 'center 50%',
+                    transform: 'scale(1.5)'
+                  }}
                 />
               </div>
-              <div className="absolute top-5 left-5 w-64 h-64 border-2 border-blue-600 dark:border-blue-400 rounded -z-10 group-hover:top-3 group-hover:left-3 transition-all duration-300"></div>
+              <div className="absolute top-5 left-5 w-64 h-64 border-2 border-blue-600 dark:border-blue-400 rounded-full -z-10 group-hover:top-3 group-hover:left-3 transition-all duration-300"></div>
             </motion.div>
           </div>
         </div>

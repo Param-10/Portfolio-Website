@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
@@ -17,7 +17,7 @@ function Experience() {
   const experiences: ExperienceItem[] = [
     {
       id: 'mano',
-      title: 'Mano',
+      title: 'Software Developer',
       company: 'Mano',
       location: 'Remote',
       duration: 'May 2025 - Present',

@@ -83,7 +83,9 @@ const Home = () => {
             onClick={() => {
               const element = document.getElementById('contact');
               if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                const yOffset = -64; // Adjust this value to match your navbar height
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
               }
             }}
             className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 font-mono text-sm rounded transition-all duration-300 hover:scale-105"
