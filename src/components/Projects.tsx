@@ -156,7 +156,7 @@ function Projects({ projects }: ProjectsProps) {
   };
 
   return (
-    <div className="container mx-auto px-6">
+    <div className="container mx-auto px-4 md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +200,7 @@ function Projects({ projects }: ProjectsProps) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
           >
             {displayedProjects.map((project, index) => (
               <motion.div
@@ -211,18 +211,18 @@ function Projects({ projects }: ProjectsProps) {
                 animate="visible"
                 exit="exit"
                 whileHover="hover"
-                className="bg-white dark:bg-slate-800 p-6 rounded-lg border border-gray-200 dark:border-slate-700 hover:border-blue-600/50 dark:hover:border-blue-400/50 transition-all duration-300 hover:shadow-xl group shadow-sm"
+                className="bg-white dark:bg-slate-800 p-4 md:p-6 rounded-lg border border-gray-200 dark:border-slate-700 hover:border-blue-600/50 dark:hover:border-blue-400/50 transition-all duration-300 hover:shadow-xl group shadow-sm"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 {/* Project Header */}
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-3 md:mb-4">
                   <motion.div
                     whileHover={{ rotate: 5, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 600, damping: 15, duration: 0.2 }}
                   >
-                    <Folder className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+                    <Folder className="w-8 h-8 md:w-10 md:h-10 text-blue-600 dark:text-blue-400" />
                   </motion.div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-2 md:gap-3">
                     {project.link && project.link !== "#" && (
                       <motion.a
                         href={project.link}
@@ -234,7 +234,7 @@ function Projects({ projects }: ProjectsProps) {
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 600, damping: 15, duration: 0.2 }}
                       >
-                        <Github className="w-5 h-5" />
+                        <Github className="w-4 h-4 md:w-5 md:h-5" />
                       </motion.a>
                     )}
                     {project.demoLink && project.demoLink !== "#" && (
@@ -248,7 +248,7 @@ function Projects({ projects }: ProjectsProps) {
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 600, damping: 15, duration: 0.2 }}
                       >
-                        <ExternalLink className="w-5 h-5" />
+                        <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                       </motion.a>
                     )}
                     {project.devpostLink && (
@@ -262,20 +262,20 @@ function Projects({ projects }: ProjectsProps) {
                         whileTap={{ scale: 0.9 }}
                         transition={{ type: "spring", stiffness: 600, damping: 15, duration: 0.2 }}
                       >
-                        <Award className="w-5 h-5" />
+                        <Award className="w-4 h-4 md:w-5 md:h-5" />
                       </motion.a>
                     )}
                   </div>
                 </div>
 
                 {/* Project Content */}
-                <div className="space-y-3">
+                <div className="space-y-2 md:space-y-3">
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                       {project.title}
                     </h3>
                     {project.timeline && (
-                      <p className="text-sm font-mono text-slate-600 dark:text-slate-400">
+                      <p className="text-xs md:text-sm font-mono text-slate-600 dark:text-slate-400">
                         {project.timeline}
                       </p>
                     )}
@@ -377,16 +377,11 @@ function Projects({ projects }: ProjectsProps) {
               <span>
                 {showAllProjects ? 'Show Featured Projects' : `See All Projects (${remainingProjectsCount} more)`}
               </span>
-              <motion.div
-                animate={{ rotate: showAllProjects ? 180 : 0 }}
-                transition={{ duration: 0.3, type: "spring", stiffness: 200 }}
-              >
-                {showAllProjects ? (
-                  <ChevronUp className="w-4 h-4" />
-                ) : (
-                  <ChevronDown className="w-4 h-4" />
-                )}
-              </motion.div>
+              {showAllProjects ? (
+                <ChevronUp className="w-4 h-4" />
+              ) : (
+                <ChevronDown className="w-4 h-4" />
+              )}
             </motion.button>
           </motion.div>
         )}

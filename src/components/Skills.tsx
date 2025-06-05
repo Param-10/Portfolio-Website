@@ -130,7 +130,7 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
   ];
 
   return (
-    <div className="container mx-auto px-6">
+    <div className="container mx-auto px-4 md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -146,9 +146,9 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-white dark:bg-slate-800 p-8 rounded-xl border border-gray-200 dark:border-slate-700 shadow-lg"
+          className="bg-white dark:bg-slate-800 p-4 md:p-6 lg:p-8 rounded-xl border border-gray-200 dark:border-slate-700 shadow-lg"
         >
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
@@ -156,21 +156,21 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
                 viewport={{ once: true }}
-                className="space-y-4"
+                className="space-y-3 md:space-y-4"
               >
                 {/* Category Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-2 rounded-lg ${category.bgColor} ${category.borderColor} border`}>
-                    <category.icon className={`w-5 h-5 ${category.color}`} />
+                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                  <div className={`p-1.5 md:p-2 rounded-lg ${category.bgColor} ${category.borderColor} border`}>
+                    <category.icon className={`w-4 h-4 md:w-5 md:h-5 ${category.color}`} />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 dark:text-slate-100">
                     {category.title}
                   </h3>
                   <div className="flex-1 h-px bg-gradient-to-r from-gray-300 dark:from-slate-600 to-transparent"></div>
                 </div>
                 
                 {/* Skills Grid */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 md:gap-3">
                   {category.skills.map((skill, skillIndex) => {
                     const iconData = skillIcons[skill];
                     return (
@@ -187,11 +187,11 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
                           damping: 20
                         }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-lg text-sm font-mono hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-200 hover:shadow-md cursor-pointer group"
+                        className="flex items-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-4 md:py-2 bg-gray-50 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-lg text-xs md:text-sm font-mono hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-200 hover:shadow-md cursor-pointer group"
                       >
                         {iconData && (
                           <iconData.icon 
-                            className="w-4 h-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" 
+                            className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" 
                             style={{ color: iconData.color }} 
                           />
                         )}

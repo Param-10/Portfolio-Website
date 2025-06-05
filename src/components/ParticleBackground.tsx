@@ -1,5 +1,5 @@
 import { useCallback, memo, useEffect, useState } from "react";
-import type { Container, Engine } from "tsparticles-engine";
+import type { Engine } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 
@@ -21,7 +21,7 @@ function ParticleBackground() {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
+  const particlesLoaded = useCallback(async () => {
     // Avoid console log in production
   }, []);
 

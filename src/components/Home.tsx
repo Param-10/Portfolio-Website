@@ -28,7 +28,7 @@ const Home = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 flex items-center justify-center min-h-screen">
+    <div className="container mx-auto px-4 md:px-6 flex items-center justify-center min-h-screen">
       <motion.div
         className="max-w-4xl w-full text-center lg:text-left"
         variants={containerVariants}
@@ -37,28 +37,29 @@ const Home = () => {
       >
         <motion.p
           variants={itemVariants}
-          className="text-blue-600 dark:text-blue-400 font-mono text-lg mb-4"
+          className="text-blue-600 dark:text-blue-400 font-mono text-base md:text-lg mb-3 md:mb-4"
         >
           Hi, my name is
         </motion.p>
         
         <motion.h1
           variants={itemVariants}
-          className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 dark:text-slate-100 mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 dark:text-slate-100 mb-3 md:mb-4 leading-tight"
         >
           Paramveer Singh Bhele.
         </motion.h1>
         
         <motion.h2
           variants={itemVariants}
-          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-600 dark:text-slate-400 mb-6 whitespace-nowrap"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-600 dark:text-slate-400 mb-4 md:mb-6 leading-tight"
         >
-          I build real world full stack projects.
+          <span className="block sm:inline">I build real world</span>{' '}
+          <span className="block sm:inline">full stack projects.</span>
         </motion.h2>
         
         <motion.p
           variants={itemVariants}
-          className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8"
+          className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed px-2 md:px-0"
         >
           I'm an aspiring Software Developer and Computer Science student at the University of South Florida, 
           passionate about creating impactful applications and digital solutions. With experience in building 
@@ -68,13 +69,13 @@ const Home = () => {
         
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start px-2 md:px-0"
         >
           <a
             href="/Paramveer_Singh_Bhele_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-8 py-4 border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600/10 dark:hover:bg-blue-400/10 font-mono text-sm rounded transition-all duration-300 hover:scale-105"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline w-full sm:w-auto"
           >
             Check out my resume!
           </a>
@@ -88,8 +89,8 @@ const Home = () => {
                 window.scrollTo({ top: y, behavior: 'smooth' });
               }
             }}
-            className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 font-mono text-sm rounded transition-all duration-300 hover:scale-105"
-        >
+            className="btn-primary w-full sm:w-auto"
+          >
             Get In Touch
           </button>
         </motion.div>

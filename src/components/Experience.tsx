@@ -132,11 +132,31 @@ function Experience() {
     }
   ];
 
-  const [activeExperience, setActiveExperience] = useState(experiences[0].id);
-  const currentExperience = experiences.find(exp => exp.id === activeExperience) || experiences[0];
+  // Helper to parse the start date from the duration string
+  function parseStartDate(duration: string): Date {
+    // Example: 'May 2025 - Present' or 'Jan 2024 - May 2024'
+    const match = duration.match(/([A-Za-z]+) (\d{4})/);
+    if (!match) return new Date(0);
+    const [, month, year] = match;
+    const monthMap: { [key: string]: number } = {
+      'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+      'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+    };
+    return new Date(parseInt(year), monthMap[month] || 0, 1);
+  }
+
+  // Sort experiences from latest to oldest by start date
+  const sortedExperiences = [...experiences].sort((a, b) => {
+    const dateA = parseStartDate(a.duration);
+    const dateB = parseStartDate(b.duration);
+    return dateB.getTime() - dateA.getTime();
+  });
+
+  const [activeExperience, setActiveExperience] = useState(sortedExperiences[0].id);
+  const currentExperience = sortedExperiences.find(exp => exp.id === activeExperience) || sortedExperiences[0];
 
   return (
-    <div className="container mx-auto px-6">
+    <div className="container mx-auto px-4 md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -146,28 +166,34 @@ function Experience() {
       >
         <h2 className="section-heading">Where I've Worked</h2>
         
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Tab Navigation */}
-          <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
-            <div className="flex lg:flex-col border-b-2 lg:border-b-0 lg:border-l-2 border-slate-200 dark:border-slate-700 min-w-max lg:min-w-0">
-              {experiences.map((exp) => (
+          <div className="relative flex lg:flex-col overflow-x-auto lg:overflow-x-visible scrollbar-hide pb-2 lg:pb-0">
+            {/* Left fade for scroll hint */}
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-4 bg-gradient-to-r from-slate-100 dark:from-slate-900 to-transparent z-10 block lg:hidden" />
+            <div className="flex lg:flex-col border-b-2 lg:border-b-0 lg:border-l-2 border-slate-200 dark:border-slate-700 min-w-max lg:min-w-0 px-2 lg:px-0">
+              {sortedExperiences.map((exp) => (
                 <button
                   key={exp.id}
                   onClick={() => setActiveExperience(exp.id)}
-                  className={`text-left px-4 py-3 text-sm font-mono whitespace-nowrap lg:whitespace-normal transition-all duration-300 border-b-2 lg:border-b-0 lg:border-l-2 ${
+                  className={`text-left px-3 py-2 lg:px-6 lg:py-3 text-sm lg:text-base font-mono whitespace-nowrap lg:whitespace-normal transition-all duration-300 border-b-2 lg:border-b-0 lg:border-l-2 mx-1 first:ml-2 last:mr-2 lg:mx-0 lg:first:ml-0 lg:last:mr-0 rounded-lg lg:rounded-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 shadow-sm ${
                     activeExperience === exp.id
-                      ? 'text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400 bg-blue-600/5 dark:bg-blue-400/5'
+                      ? 'text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400 bg-blue-600/10 dark:bg-blue-400/10'
                       : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50'
                   }`}
+                  style={{ minWidth: '100px' }}
                 >
-                  {exp.company}
+                  <span className="block lg:hidden text-xs">{exp.company.split(' ')[0]}</span>
+                  <span className="hidden lg:block">{exp.company}</span>
                 </button>
               ))}
             </div>
+            {/* Right fade for scroll hint */}
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-4 bg-gradient-to-l from-slate-100 dark:from-slate-900 to-transparent z-10 block lg:hidden" />
           </div>
 
           {/* Content */}
-              <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <motion.div
               key={activeExperience}
               initial={{ opacity: 0, x: 20 }}
@@ -176,9 +202,11 @@ function Experience() {
               className="space-y-4"
             >
               <div>
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                  {currentExperience.title}
-                  <span className="text-blue-600 dark:text-blue-400"> @ {currentExperience.company}</span>
+                <h3 className="text-lg lg:text-xl font-semibold text-slate-900 dark:text-slate-100 leading-tight">
+                  <span className="block sm:inline">{currentExperience.title}</span>
+                  <span className="text-blue-600 dark:text-blue-400 block sm:inline sm:ml-1">
+                    @ {currentExperience.company}
+                  </span>
                 </h3>
                 <p className="text-sm font-mono text-slate-600 dark:text-slate-400 mt-1">
                   {currentExperience.duration}
@@ -186,27 +214,29 @@ function Experience() {
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   {currentExperience.location} · {currentExperience.type}
                 </p>
-          </div>
+              </div>
 
               <ul className="space-y-3">
                 {currentExperience.description.map((item, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="text-blue-600 dark:text-blue-400 mr-3 mt-1 flex-shrink-0">▹</span>
-                    <span className="text-slate-600 dark:text-slate-400">{item}</span>
-              </li>
+                    <span className="text-blue-600 dark:text-blue-400 mr-2 lg:mr-3 mt-1 flex-shrink-0">▹</span>
+                    <span className="text-slate-600 dark:text-slate-400 text-sm lg:text-base leading-relaxed">
+                      {item}
+                    </span>
+                  </li>
                 ))}
-            </ul>
+              </ul>
 
               {currentExperience.link && (
                 <a
                   href={currentExperience.link}
-              target="_blank"
-              rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-mono text-sm"
-            >
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-mono text-sm transition-colors"
+                >
                   View Project
                   <ExternalLink className="w-4 h-4" />
-            </a>
+                </a>
               )}
             </motion.div>
           </div>
