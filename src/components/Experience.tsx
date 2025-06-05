@@ -116,7 +116,7 @@ function Experience() {
           </div>
 
           {/* Content */}
-          <div className="flex-1">
+              <div className="flex-1">
             <motion.div
               key={activeExperience}
               initial={{ opacity: 0, x: 20 }}
@@ -135,33 +135,33 @@ function Experience() {
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   {currentExperience.location} · {currentExperience.type}
                 </p>
-              </div>
+          </div>
 
               <ul className="space-y-3">
                 {currentExperience.description.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-blue-600 dark:text-blue-400 mr-3 mt-1 flex-shrink-0">▹</span>
                     <span className="text-slate-600 dark:text-slate-400">{item}</span>
-                  </li>
+              </li>
                 ))}
-              </ul>
+            </ul>
 
               {currentExperience.link && (
                 <a
                   href={currentExperience.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-mono text-sm"
-                >
+            >
                   View Project
                   <ExternalLink className="w-4 h-4" />
-                </a>
+            </a>
               )}
             </motion.div>
           </div>
         </div>
       </motion.div>
-    </div>
+      </div>
   );
 }
 

@@ -66,9 +66,9 @@ function Projects({ projects }: ProjectsProps) {
                       <Github className="w-5 h-5" />
                     </a>
                   )}
-                  {project.demoLink && project.demoLink !== "#" && (
-                    <a
-                      href={project.demoLink}
+                    {project.demoLink && project.demoLink !== "#" && (
+                      <a
+                        href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -80,14 +80,14 @@ function Projects({ projects }: ProjectsProps) {
                   {project.devpostLink && (
                     <a
                       href={project.devpostLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       aria-label="Devpost"
-                    >
+                      >
                       <Award className="w-5 h-5" />
-                    </a>
-                  )}
+                      </a>
+                    )}
                 </div>
               </div>
 
@@ -105,19 +105,19 @@ function Projects({ projects }: ProjectsProps) {
                 </div>
 
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                  {project.description}
-                </p>
+                {project.description}
+              </p>
 
-                {project.details && project.details.length > 0 && (
+              {project.details && project.details.length > 0 && (
                   <ul className="space-y-1">
                     {project.details.slice(0, 2).map((detail, idx) => (
                       <li key={idx} className="text-xs text-slate-600 dark:text-slate-400 flex items-start">
                         <span className="text-blue-600 dark:text-blue-400 mr-2 mt-1 flex-shrink-0 text-xs">▹</span>
                         {detail}
                       </li>
-                    ))}
-                  </ul>
-                )}
+                  ))}
+                </ul>
+              )}
 
                 {project.skills && (
                   <div className="mt-4">
@@ -129,7 +129,7 @@ function Projects({ projects }: ProjectsProps) {
                           className="text-xs font-mono text-slate-600 dark:text-slate-400 bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded"
                         >
                           {skill}
-                        </span>
+                  </span>
                       ))}
                       
                       {/* Show remaining skills with animation when expanded */}
@@ -161,14 +161,14 @@ function Projects({ projects }: ProjectsProps) {
                         </button>
                       )}
                     </div>
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
             </motion.div>
           ))}
         </div>
       </motion.div>
-    </div>
+      </div>
   );
 }
 

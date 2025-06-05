@@ -14,6 +14,7 @@
   
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* Account for fixed navbar */
     font-size: 16px;
     /* Smooth theme transition */
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -25,6 +26,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* Enhanced smooth scrolling */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
     /* Smooth theme transition */
     transition: background-color 0.3s ease, color 0.3s ease;
   }
@@ -173,6 +177,23 @@
   
   .smooth-scroll {
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced scrolling performance */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .scroll-section {
+    scroll-margin-top: 6rem; /* Account for fixed navbar */
+    scroll-snap-align: start;
+  }
+
+  /* Optimize scroll performance */
+  * {
+    scroll-margin-top: 6rem;
   }
 
   /* Custom backdrop blur */

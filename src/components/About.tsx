@@ -32,27 +32,33 @@ function About() {
         <div className="grid md:grid-cols-3 gap-12 items-start">
           <div className="md:col-span-2 space-y-4">
             <p className="text-slate-600 dark:text-slate-400">
-              Hello! My name is Paramveer and I enjoy creating things that live on the internet. 
-              My interest in web development started back in 2021 when I decided to try editing 
-              custom Tumblr themes — turns out hacking together a custom reblog button taught me 
-              a lot about HTML & CSS!
+              Hello! My name is Paramveer and I'm passionate about building software that solves real-world problems. 
+              My journey into software development began in 2022 when I started experimenting with web technologies, 
+              and I quickly discovered my love for creating digital solutions that make a meaningful impact.
             </p>
             
             <p className="text-slate-600 dark:text-slate-400">
-              Fast-forward to today, and I've had the privilege of working on various projects 
-              ranging from machine learning applications to full-stack web development. 
-              I'm currently a Computer Science student at the University of South Florida 
-              with a Minor in Entrepreneurship, passionate about leveraging AI, machine learning, 
-              and cloud computing to solve real-world challenges.
+              As a Computer Science student at the University of South Florida with a Minor in Entrepreneurship, 
+              I've gained hands-on experience through internships, research positions, and competitive programming. 
+              I've had the privilege of working at companies like AI4ALL, Coefficient Software, and the RARE Lab, 
+              where I've contributed to cutting-edge projects in AI/ML, mobile app development, and human-robot interaction.
             </p>
             
             <p className="text-slate-600 dark:text-slate-400">
-              My main focus these days is building accessible, inclusive products and digital 
-              experiences at various companies for a variety of clients.
+              I'm particularly excited about hackathons and collaborative development — recently winning 1st place 
+              at HackaBull 2025 with CarbonCTRL, an AI-powered carbon management platform. I thrive on building 
+              end-to-end applications, from face detection systems deployed on cloud platforms to real-time 
+              tracking applications serving university students.
             </p>
             
             <p className="text-slate-600 dark:text-slate-400">
-              Here are a few technologies I've been working with recently:
+              My goal is to become a full-stack software developer, specializing in creating scalable, 
+              user-centric applications that leverage modern technologies like React, Python, and cloud computing 
+              to drive innovation and positive change.
+            </p>
+            
+            <p className="text-slate-600 dark:text-slate-400">
+              Here are some technologies I've been working with recently:
             </p>
             
             <ul className="grid grid-cols-2 gap-2 text-sm font-mono text-slate-600 dark:text-slate-400">

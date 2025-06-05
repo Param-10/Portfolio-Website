@@ -15,26 +15,26 @@ function App() {
   const [theme, setTheme] = useState(() => {
     // Check if we're on the client side
     if (typeof window !== 'undefined') {
-      // First check localStorage, then system preference, default to light
+      // First check localStorage, then system preference, default to dark
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
         return savedTheme;
       }
       
       // Check system preference
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
       }
     }
     
-    return 'light';
+    return 'dark';
   });
 
   const sections = [
     { id: 'home', label: 'Home', number: '01' },
     { id: 'about', label: 'About', number: '01' },
     { id: 'experience', label: 'Experience', number: '02' },
-    { id: 'projects', label: 'Work', number: '03' },
+    { id: 'projects', label: 'Projects', number: '03' },
     { id: 'skills', label: 'Skills', number: '04' },
     { id: 'contact', label: 'Contact', number: '05' },
   ];
@@ -88,12 +88,16 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [sections]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offsetTop = element.offsetTop - 100; // Account for fixed navbar with padding
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
     }
     setIsMenuOpen(false);
   };
@@ -103,7 +107,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300 scroll-smooth">
       {/* Fixed Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/90 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
         <div className="container mx-auto px-4 md:px-6 py-4">
@@ -229,27 +233,27 @@ function App() {
 
       {/* Main Content */}
       <main className="pt-20">
-        <section id="home" className="min-h-screen">
+        <section id="home" className="">
           <Home />
         </section>
         
-        <section id="about" className="min-h-screen py-20">
+        <section id="about" className=" py-8">
           <About />
         </section>
         
-        <section id="experience" className="min-h-screen py-20">
+        <section id="experience" className=" py-8">
           <Experience />
         </section>
         
-        <section id="projects" className="min-h-screen py-20">
+        <section id="projects" className=" py-8">
           <Projects projects={portfolioData.projects} />
         </section>
         
-        <section id="skills" className="min-h-screen py-20">
+        <section id="skills" className=" py-8">
           <Skills technicalSkills={portfolioData.technicalSkills} />
         </section>
         
-        <section id="contact" className="min-h-screen py-20">
+        <section id="contact" className=" pt-0 pb-0">
           <Contact />
         </section>
       </main>

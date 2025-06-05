@@ -53,16 +53,17 @@ const Home = () => {
           variants={itemVariants}
           className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-600 dark:text-slate-400 mb-6"
         >
-          I build things for the web.
+          I build real world full stack projects.
         </motion.h2>
         
         <motion.p
           variants={itemVariants}
           className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8"
         >
-          I'm a passionate Computer Science student at the University of South Florida, 
-          specializing in creating exceptional digital experiences. Currently focused on 
-          building accessible, human-centered products.
+          I'm an aspiring Software Developer and Computer Science student at the University of South Florida, 
+          passionate about creating impactful applications and digital solutions. With experience in building 
+          real-world projects and winning hackathons, I specialize in full-stack development, AI/ML, and 
+          scalable software systems.
         </motion.p>
         
         <motion.div

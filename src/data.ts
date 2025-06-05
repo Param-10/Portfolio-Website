@@ -21,7 +21,6 @@ export interface TechnicalSkills {
   languages: string[];
   frameworks: string[];
   tools: string[];
-  courses: string[];
   machineLearning: string[];
 }
 
@@ -38,32 +37,8 @@ export const portfolioData = {
   skills: ["React", "TypeScript", "Node.js", "AWS", "Python", "Docker"],
   projects: [
     {
-      title: "Portfolio-Website",
-      timeline: "Feb 2025",
-      description: "Personal Portfolio Website by Me",
-      link: "https://github.com/Param-10/Portfolio-Website",
-      demoLink: "https://paramveerbhele.com/",
-      featured: true,
-      details: [
-        "Engineered a responsive portfolio website using React, TypeScript, and Tailwind CSS to showcase personal projects and skills.",
-        "Designed and built a dynamic user interface, emphasizing clean code and maintainability."
-      ],
-      skills: [
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "Vite",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Responsive Design",
-        "UI Development"
-      ]
-    },
-
-    {
       title: "Stock Analysis Tool",
-      timeline: "2024",
+      timeline: "Jan 2025 - May 2025",
       description: "Dynamic stock analysis application with real-time price wave detection and Fibonacci level visualization.",
       link: "#",
       demoLink: "#",
@@ -110,6 +85,57 @@ export const portfolioData = {
         "Tailwind CSS",
         "Full Stack Development",
         "API Integration"
+      ]
+    },
+
+    {
+      title: "Face Detection App",
+      timeline: "Mar 2025",
+      description: "Python-based face detection application with Flask and OpenCV, featuring online deployment and enhanced local analysis.",
+      link: "https://github.com/Param-10/FaceDetection_App",
+      demoLink: "https://facedetection-webapp-go5s.onrender.com",
+      featured: true,
+      details: [
+        "Developed face detection application using Flask and OpenCV Haar Cascade, achieving real-time processing for 500KB+ images",
+        "Deployed memory-optimized web app on Render platform with webcam integration, supporting both upload and live detection features", 
+        "Enhanced local version with DeepFace integration for emotion, age, and gender analysis using TensorFlow and PyTorch models"
+      ],
+      skills: [
+        "Python",
+        "Flask",
+        "OpenCV",
+        "DeepFace",
+        "TensorFlow",
+        "PyTorch",
+        "NumPy",
+        "HTML5",
+        "CSS",
+        "JavaScript",
+        "Render Deployment"
+      ]
+    },
+
+    {
+      title: "Portfolio-Website",
+      timeline: "Feb 2025",
+      description: "Personal Portfolio Website by Me",
+      link: "https://github.com/Param-10/Portfolio-Website",
+      demoLink: "https://paramveerbhele.com/",
+      featured: true,
+      details: [
+        "Engineered a responsive portfolio website using React, TypeScript, and Tailwind CSS to showcase personal projects and skills.",
+        "Designed and built a dynamic user interface, emphasizing clean code and maintainability."
+      ],
+      skills: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Responsive Design",
+        "UI Development"
       ]
     },
 
@@ -182,6 +208,7 @@ export const portfolioData = {
         "Pandas"
       ]
     },
+
     {
       title: "LawyerUp - KnightHacks UCF",
       timeline: "Oct 2023",
@@ -267,18 +294,6 @@ export const portfolioData = {
       'OpenCV',
       'Matplotlib',
       'DeepFace'
-    ],
-    courses: [
-      'Data Structures & Algorithms',
-      'Automata Theory',
-      'Software Engineering',
-      'Advanced OOP in C++',
-      'Secure Coding',
-      'Computer Logic & Design',
-      'Discrete Structures',
-      'Linear Systems',
-      'Program Design',
-      'Analysis of Algorithms'
     ]
   }
 };

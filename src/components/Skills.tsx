@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Cloud, Palette, Brain } from 'lucide-react';
+import { Code, Database, Cloud, Brain } from 'lucide-react';
 
 interface TechnicalSkills {
   languages: string[];
   frameworks: string[];
   tools: string[];
-  courses: string[];
   machineLearning: string[];
 }
 
@@ -39,12 +38,6 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
       icon: Cloud,
       skills: technicalSkills.tools,
       color: 'text-purple-600 dark:text-purple-400'
-    },
-    {
-      title: 'Coursework',
-      icon: Palette,
-      skills: technicalSkills.courses,
-      color: 'text-orange-600 dark:text-orange-400'
     }
   ];
 
