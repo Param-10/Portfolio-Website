@@ -1,6 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Cloud, Brain } from 'lucide-react';
+import {
+  SiPython,
+  SiCplusplus,
+  SiC,
+  SiSharp,
+  SiTypescript,
+  SiJavascript,
+  SiMysql,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiDotnet,
+  SiFlask,
+  SiSupabase,
+  SiGooglegemini,
+  SiOpencv,
+  SiTensorflow,
+  SiPytorch,
+  SiScikitlearn,
+  SiPandas,
+  SiNumpy,
+  SiAmazonwebservices,
+  SiDocker,
+  SiGithub,
+  SiJupyter,
+  SiXcode,
+  SiAndroidstudio
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+import { VscCode } from 'react-icons/vsc';
 
 interface TechnicalSkills {
   languages: string[];
@@ -14,6 +45,50 @@ interface SkillsProps {
 }
 
 const Skills = ({ technicalSkills }: SkillsProps) => {
+  // Icon mapping for each technology with brand color
+  const skillIcons: { [key: string]: { icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>, color: string } } = {
+    // Languages
+    'Python': { icon: SiPython, color: '#3776AB' },
+    'C++': { icon: SiCplusplus, color: '#00599C' },
+    'C': { icon: SiC, color: '#A8B9CC' },
+    'C#': { icon: SiSharp, color: '#239120' },
+    'Java': { icon: FaJava, color: '#007396' },
+    'TypeScript': { icon: SiTypescript, color: '#3178C6' },
+    'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
+    'MySQL': { icon: SiMysql, color: '#4479A1' },
+    
+    // Frameworks & Libraries
+    'React.js': { icon: SiReact, color: '#61DAFB' },
+    'Next.js': { icon: SiNextdotjs, color: '#000000' },
+    'Node.js': { icon: SiNodedotjs, color: '#339933' },
+    'Express': { icon: SiExpress, color: '#000000' },
+    '.NET': { icon: SiDotnet, color: '#512BD4' },
+    'Flask': { icon: SiFlask, color: '#000000' },
+    'Supabase': { icon: SiSupabase, color: '#3ECF8E' },
+    'Gemini API': { icon: SiGooglegemini, color: '#4285F4' },
+    'REST APIs': { icon: SiNodedotjs, color: '#339933' },
+    'OpenAI API': { icon: SiReact, color: '#61DAFB' },
+    
+    // Machine Learning
+    'NumPy': { icon: SiNumpy, color: '#013243' },
+    'Pandas': { icon: SiPandas, color: '#150458' },
+    'Scikit-learn': { icon: SiScikitlearn, color: '#F7931E' },
+    'TensorFlow': { icon: SiTensorflow, color: '#FF6F00' },
+    'PyTorch': { icon: SiPytorch, color: '#EE4C2C' },
+    'OpenCV': { icon: SiOpencv, color: '#5C3EE8' },
+    'Matplotlib': { icon: SiPython, color: '#3776AB' },
+    'DeepFace': { icon: SiPython, color: '#3776AB' },
+    
+    // Tools & Technologies
+    'AWS Cloud': { icon: SiAmazonwebservices, color: '#FF9900' },
+    'Docker': { icon: SiDocker, color: '#2496ED' },
+    'GitHub': { icon: SiGithub, color: '#181717' },
+    'VS Code': { icon: VscCode, color: '#007ACC' },
+    'Jupyter': { icon: SiJupyter, color: '#F37626' },
+    'Android Studio': { icon: SiAndroidstudio, color: '#3DDC84' },
+    'Xcode': { icon: SiXcode, color: '#147EFB' }
+  };
+
   const skillCategories = [
     {
       title: 'Languages',
@@ -70,19 +145,25 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
               </div>
               
               <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
-                    viewport={{ once: true }}
-                    className="px-3 py-1 bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded-full text-sm font-mono text-slate-700 dark:text-slate-300 hover:border-blue-600/50 dark:hover:border-blue-400/50 transition-colors"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-            </div>
+                {category.skills.map((skill, skillIndex) => {
+                  const iconData = skillIcons[skill];
+                  return (
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-2 px-3 py-1 bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded-full text-sm font-mono hover:border-blue-600/50 dark:hover:border-blue-400/50 transition-colors"
+                    >
+                      {iconData && (
+                        <iconData.icon className="w-4 h-4 flex-shrink-0" style={{ color: iconData.color }} />
+                      )}
+                      <span className="text-slate-700 dark:text-slate-300">{skill}</span>
+                    </motion.span>
+                  );
+                })}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -102,7 +183,7 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
           </p>
         </motion.div>
       </motion.div>
-      </div>
+    </div>
   );
 };
 

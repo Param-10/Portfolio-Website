@@ -43,6 +43,19 @@ function Experience() {
       link: 'https://therarelab.com/people/paramveer-singh-bhele/'
     },
     {
+      id: 'tedx-usf',
+      title: 'Head of Logistics',
+      company: 'TEDx at USF',
+      location: 'University of South Florida',
+      duration: 'Jun 2024 - Jan 2025',
+      type: 'Leadership',
+      description: [
+        'Leading logistics coordination for university-wide TEDx events, managing venue arrangements and speaker accommodations',
+        'Organizing cross-functional team collaboration between event planning, marketing, and technical production teams',
+        'Streamlining event operations workflow to enhance attendee experience and ensure seamless event execution'
+      ]
+    },
+    {
       id: 'usf-library',
       title: 'Student Assistant - Collections and Discovery',
       company: 'USF Libraries',
@@ -52,6 +65,32 @@ function Experience() {
       description: [
         'Indexed 10,000+ images in Excel, enriching metadata to cut classification errors by 25% and boost catalog recall',
         'Improved cataloging accuracy by standardizing metadata, resulting in efficient retrieval for 1,000+ items'
+      ]
+    },
+    {
+      id: 'shpe-usf',
+      title: 'Database Director',
+      company: 'Society of Hispanic Professional Engineers at USF',
+      location: 'University of South Florida',
+      duration: 'Jan 2024 - May 2024',
+      type: 'Leadership',
+      description: [
+        'Managing comprehensive member database and communication systems for 1000+ active student engineers',
+        'Implementing data-driven strategies to track member engagement and improve retention rates',
+        'Collaborating with executive board to optimize organizational operations and member experience'
+      ]
+    },
+    {
+      id: 'sia-usf',
+      title: 'Vice President',
+      company: 'Students of India Association',
+      location: 'University of South Florida',
+      duration: 'Jan 2024 - May 2024',
+      type: 'Leadership',
+      description: [
+        'Leading strategic initiatives and organizational development for 500+ international student members',
+        'Coordinating cultural events, networking opportunities, and academic support programs',
+        'Collaborating with university administration and other student organizations to enhance campus diversity initiatives'
       ]
     },
     {

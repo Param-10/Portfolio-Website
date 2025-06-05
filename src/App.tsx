@@ -32,12 +32,12 @@ function App() {
 
   // Memoize the sections array to prevent unnecessary re-renders
   const sections = useMemo(() => [
-    { id: 'home', label: 'Home', number: '01' },
-    { id: 'about', label: 'About', number: '02' },
-    { id: 'experience', label: 'Experience', number: '03' },
-    { id: 'projects', label: 'Projects', number: '04' },
-    { id: 'skills', label: 'Skills', number: '05' },
-    { id: 'contact', label: 'Contact', number: '06' }
+    { id: 'home', label: 'Home', number: '' },
+    { id: 'about', label: 'About', number: '01' },
+    { id: 'experience', label: 'Experience', number: '02' },
+    { id: 'projects', label: 'Projects', number: '03' },
+    { id: 'skills', label: 'Skills', number: '04' },
+    { id: 'contact', label: 'Contact', number: '05' }
   ], []);
 
   useEffect(() => {
@@ -258,6 +258,15 @@ function App() {
           <Contact />
         </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Copyright (c) 2025 Paramveer Singh Bhele
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
