@@ -116,26 +116,25 @@ export const portfolioData = {
     },
 
     {
-      title: "Portfolio-Website",
-      timeline: "Feb 2025",
+      title: "Portfolio Website",
+      timeline: "Feb 2025 - Present",
       description: "Personal Portfolio Website by Me",
       link: "https://github.com/Param-10/Portfolio-Website",
       demoLink: "https://paramveerbhele.com/",
       featured: true,
       details: [
-        "Engineered a responsive portfolio website using React, TypeScript, and Tailwind CSS to showcase personal projects and skills.",
-        "Designed and built a dynamic user interface, emphasizing clean code and maintainability."
+        "Developed a modern, responsive portfolio website using React, TypeScript, and Tailwind CSS",
+        "Implemented smooth animations and transitions using Framer Motion",
+        "Created a dark/light theme toggle with system preference detection",
+        "Built a contact form with email integration using EmailJS",
+        "Optimized performance and SEO for better user experience"
       ],
       skills: [
         "React",
         "TypeScript",
         "Tailwind CSS",
-        "Vite",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Responsive Design",
-        "UI Development"
+        "Framer Motion",
+        "EmailJS"
       ]
     },
 

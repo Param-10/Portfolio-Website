@@ -42,7 +42,7 @@ function About() {
               I've gained hands-on experience through internships, research positions, and competitive programming. 
               I've had the privilege of working at companies like AI4ALL, Coefficient Software, and the RARE Lab, 
               where I've contributed to cutting-edge projects in AI/ML, mobile app development, and human-robot interaction.
-            </p>
+              </p>
             
             <p className="text-slate-600 dark:text-slate-400">
               I'm particularly excited about hackathons and collaborative development — recently winning 1st place 
@@ -55,7 +55,7 @@ function About() {
               My goal is to become a full-stack software developer, specializing in creating scalable, 
               user-centric applications that leverage modern technologies like React, Python, and cloud computing 
               to drive innovation and positive change.
-            </p>
+              </p>
             
             <p className="text-slate-600 dark:text-slate-400">
               Here are some technologies I've been working with recently:
@@ -68,8 +68,8 @@ function About() {
                   {tech}
                 </li>
               ))}
-            </ul>
-          </div>
+              </ul>
+            </div>
           
           <div className="flex justify-center md:justify-end">
             <motion.div
@@ -89,7 +89,7 @@ function About() {
           </div>
         </div>
       </motion.div>
-    </div>
+      </div>
   );
 }
 

@@ -38,7 +38,7 @@
   *::before,
   *::after {
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
-  }
+}
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
@@ -62,7 +62,7 @@
   /* Dark theme scrollbar */
   .dark ::-webkit-scrollbar-track {
     background: rgb(15 23 42);
-  }
+}
 
   .dark ::-webkit-scrollbar-thumb {
     background: rgb(71 85 105);
@@ -101,7 +101,7 @@
 
   .dark :focus-visible {
     outline-color: rgb(59 130 246);
-  }
+}
 
   /* Theme-specific root styles */
   .light {
@@ -152,7 +152,7 @@
   .hover-lift:hover {
     transform: translateY(-2px);
   }
-
+  
   /* Writing mode utilities */
   .writing-mode-vertical-rl {
     writing-mode: vertical-rl;

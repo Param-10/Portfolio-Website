@@ -82,7 +82,7 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
                     {skill}
                   </motion.span>
                 ))}
-              </div>
+            </div>
             </motion.div>
           ))}
         </div>
@@ -102,7 +102,7 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
           </p>
         </motion.div>
       </motion.div>
-    </div>
+      </div>
   );
 };
 

@@ -171,7 +171,7 @@ function Contact() {
           </form>
         </div>
       </motion.div>
-    </div>
+      </div>
   );
 }
 

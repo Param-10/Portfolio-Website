@@ -72,8 +72,8 @@ const Home = () => {
         >
           <a
             href="/Paramveer_Singh_Bhele_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-4 border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-600/10 dark:hover:bg-blue-400/10 font-mono text-sm rounded transition-all duration-300 hover:scale-105"
           >
             Check out my resume!
@@ -87,12 +87,12 @@ const Home = () => {
               }
             }}
             className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 font-mono text-sm rounded transition-all duration-300 hover:scale-105"
-          >
+        >
             Get In Touch
           </button>
         </motion.div>
       </motion.div>
-    </div>
+      </div>
   );
 };
 

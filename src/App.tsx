@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Sun, Moon, Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Home from './components/Home';
@@ -30,14 +30,15 @@ function App() {
     return 'dark';
   });
 
-  const sections = [
+  // Memoize the sections array to prevent unnecessary re-renders
+  const sections = useMemo(() => [
     { id: 'home', label: 'Home', number: '01' },
-    { id: 'about', label: 'About', number: '01' },
-    { id: 'experience', label: 'Experience', number: '02' },
-    { id: 'projects', label: 'Projects', number: '03' },
-    { id: 'skills', label: 'Skills', number: '04' },
-    { id: 'contact', label: 'Contact', number: '05' },
-  ];
+    { id: 'about', label: 'About', number: '02' },
+    { id: 'experience', label: 'Experience', number: '03' },
+    { id: 'projects', label: 'Projects', number: '04' },
+    { id: 'skills', label: 'Skills', number: '05' },
+    { id: 'contact', label: 'Contact', number: '06' }
+  ], []);
 
   useEffect(() => {
     // Apply theme to document root
