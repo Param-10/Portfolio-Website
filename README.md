@@ -15,10 +15,14 @@ A modern, responsive portfolio website showcasing my software development projec
 ## Features
 - Responsive design that works on all devices
 - Dark and light theme support with system preference detection
-- Smooth animations and transitions
+- Smooth, modern animations and transitions (Framer Motion)
+- Animated project sorting and "See More" functionality
+- Hero-style + dashboard contact section with glass-morphism and contact stats
+- Unified skills view with category badges and icons
 - Contact form with email integration
 - SEO optimized with proper meta tags
 - Fast loading with optimized assets
+- Scroll offset fix for anchor links (navbar and buttons scroll to the same position)
 
 ## Local Development
 
@@ -62,6 +66,10 @@ src/
 ├── App.tsx             # Main application component
 └── main.tsx            # Application entry point
 ```
+
+## Mobile View Testing
+- Use browser DevTools (toggle device toolbar) to preview mobile layouts
+- Or open your local dev server on your phone using your computer's IP address
 
 ## Contact
 Paramveer Singh Bhele
