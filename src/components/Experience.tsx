@@ -168,28 +168,44 @@ function Experience() {
         
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Tab Navigation */}
-          <div className="relative flex lg:flex-col overflow-x-auto lg:overflow-x-visible scrollbar-hide pb-2 lg:pb-0">
-            {/* Left fade for scroll hint */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-4 bg-gradient-to-r from-slate-100 dark:from-slate-900 to-transparent z-10 block lg:hidden" />
-            <div className="flex lg:flex-col border-b-2 lg:border-b-0 lg:border-l-2 border-slate-200 dark:border-slate-700 min-w-max lg:min-w-0 px-2 lg:px-0">
-              {sortedExperiences.map((exp) => (
+          <div className="relative flex lg:flex-col overflow-x-auto lg:overflow-x-visible scrollbar-hide pb-2 lg:pb-0 snap-x snap-mandatory lg:snap-none">
+            {/* Enhanced left fade for scroll hint */}
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-slate-100 dark:from-slate-900 via-slate-100/60 dark:via-slate-900/60 to-transparent z-10 block lg:hidden" />
+            
+            {/* Navigation container with improved mobile styling */}
+            <div className="flex lg:flex-col border-b-2 lg:border-b-0 lg:border-l-2 border-slate-200 dark:border-slate-700 min-w-max lg:min-w-0 pl-4 pr-4 lg:pl-0 lg:pr-0">
+              {sortedExperiences.map((exp, index) => (
                 <button
                   key={exp.id}
                   onClick={() => setActiveExperience(exp.id)}
-                  className={`text-left px-3 py-2 lg:px-6 lg:py-3 text-sm lg:text-base font-mono whitespace-nowrap lg:whitespace-normal transition-all duration-300 border-b-2 lg:border-b-0 lg:border-l-2 mx-1 first:ml-2 last:mr-2 lg:mx-0 lg:first:ml-0 lg:last:mr-0 rounded-lg lg:rounded-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 shadow-sm ${
+                  className={`text-left px-4 py-3 lg:px-6 lg:py-3 text-sm lg:text-base font-mono whitespace-nowrap lg:whitespace-normal transition-all duration-300 border-b-2 lg:border-b-0 lg:border-l-2 rounded-lg lg:rounded-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 shadow-sm snap-center lg:snap-align-none ${
+                    index === 0 ? 'ml-2 lg:ml-0' : 'ml-1 lg:ml-0'
+                  } ${
+                    index === sortedExperiences.length - 1 ? 'mr-2 lg:mr-0' : 'mr-1 lg:mr-0'
+                  } ${
                     activeExperience === exp.id
-                      ? 'text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400 bg-blue-600/10 dark:bg-blue-400/10'
+                      ? 'text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400 bg-blue-600/10 dark:bg-blue-400/10 shadow-md'
                       : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50'
                   }`}
-                  style={{ minWidth: '100px' }}
+                  style={{ minWidth: '110px' }}
                 >
-                  <span className="block lg:hidden text-xs">{exp.company.split(' ')[0]}</span>
+                  <span className="block lg:hidden text-xs font-medium">
+                    {exp.company === 'Society of Hispanic Professional Engineers at USF' ? 'SHPE USF' :
+                     exp.company === 'Students of India Association' ? 'SIA USF' :
+                     exp.company === 'USF College of Engineering' ? 'USF Eng' :
+                     exp.company === 'USF Libraries' ? 'USF Lib' :
+                     exp.company === 'TEDx at USF' ? 'TEDx USF' :
+                     exp.company === 'Coefficient Software Systems' ? 'Coefficient' :
+                     exp.company === 'RARE Lab' ? 'RARE Lab' :
+                     exp.company}
+                  </span>
                   <span className="hidden lg:block">{exp.company}</span>
                 </button>
               ))}
             </div>
-            {/* Right fade for scroll hint */}
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-4 bg-gradient-to-l from-slate-100 dark:from-slate-900 to-transparent z-10 block lg:hidden" />
+            
+            {/* Enhanced right fade for scroll hint */}
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-gradient-to-l from-slate-100 dark:from-slate-900 via-slate-100/60 dark:via-slate-900/60 to-transparent z-10 block lg:hidden" />
           </div>
 
           {/* Content */}

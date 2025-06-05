@@ -72,7 +72,7 @@ const Home = () => {
           className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start px-2 md:px-0"
         >
           <a
-            href="/Paramveer_Singh_Bhele_Resume.pdf"
+            href={`${import.meta.env.BASE_URL}Paramveer_Singh_Bhele_Resume.pdf`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline w-full sm:w-auto"
