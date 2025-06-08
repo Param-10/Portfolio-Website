@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ExperienceItem {
   id: string;
@@ -132,28 +132,28 @@ function Experience() {
     }
   ];
 
-  // Helper to parse the start date from the duration string
-  function parseStartDate(duration: string): Date {
-    // Example: 'May 2025 - Present' or 'Jan 2024 - May 2024'
-    const match = duration.match(/([A-Za-z]+) (\d{4})/);
-    if (!match) return new Date(0);
-    const [, month, year] = match;
-    const monthMap: { [key: string]: number } = {
-      'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
-      'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
-    };
-    return new Date(parseInt(year), monthMap[month] || 0, 1);
-  }
+  const [activeExperience, setActiveExperience] = useState(experiences[0]?.id || '');
+  const [currentMobileIndex, setCurrentMobileIndex] = useState(0);
 
-  // Sort experiences from latest to oldest by start date
-  const sortedExperiences = [...experiences].sort((a, b) => {
-    const dateA = parseStartDate(a.duration);
-    const dateB = parseStartDate(b.duration);
-    return dateB.getTime() - dateA.getTime();
+  const sortedExperiences = experiences.sort((a, b) => {
+    const aDate = new Date(a.duration.split(' - ')[0]);
+    const bDate = new Date(b.duration.split(' - ')[0]);
+    return bDate.getTime() - aDate.getTime();
   });
 
-  const [activeExperience, setActiveExperience] = useState(sortedExperiences[0].id);
   const currentExperience = sortedExperiences.find(exp => exp.id === activeExperience) || sortedExperiences[0];
+
+  const nextMobileCard = () => {
+    const nextIndex = (currentMobileIndex + 1) % sortedExperiences.length;
+    setCurrentMobileIndex(nextIndex);
+    setActiveExperience(sortedExperiences[nextIndex].id);
+  };
+
+  const prevMobileCard = () => {
+    const prevIndex = currentMobileIndex === 0 ? sortedExperiences.length - 1 : currentMobileIndex - 1;
+    setCurrentMobileIndex(prevIndex);
+    setActiveExperience(sortedExperiences[prevIndex].id);
+  };
 
   return (
     <div className="container mx-auto px-4 md:px-6">
@@ -166,46 +166,103 @@ function Experience() {
       >
         <h2 className="section-heading">Where I've Worked</h2>
         
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          {/* Tab Navigation */}
-          <div className="relative flex lg:flex-col overflow-x-auto lg:overflow-x-visible scrollbar-hide pb-2 lg:pb-0 snap-x snap-mandatory lg:snap-none">
-            {/* Enhanced left fade for scroll hint */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-slate-100 dark:from-slate-900 via-slate-100/60 dark:via-slate-900/60 to-transparent z-10 block lg:hidden" />
+        {/* Mobile Card Swiper */}
+        <div className="block lg:hidden">
+          <div className="relative">
+            {/* Navigation Arrows */}
+            {currentMobileIndex > 0 && (
+              <button
+                onClick={prevMobileCard}
+                className="absolute -left-3 top-1/2 -translate-y-1/2 z-10 p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            )}
             
-            {/* Navigation container with improved mobile styling */}
-            <div className="flex lg:flex-col border-b-2 lg:border-b-0 lg:border-l-2 border-slate-200 dark:border-slate-700 min-w-max lg:min-w-0 pl-4 pr-4 lg:pl-0 lg:pr-0">
-              {sortedExperiences.map((exp, index) => (
+            {currentMobileIndex < sortedExperiences.length - 1 && (
+              <button
+                onClick={nextMobileCard}
+                className="absolute -right-3 top-1/2 -translate-y-1/2 z-10 p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            )}
+
+            {/* Card Container */}
+            <div className="mx-10 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentExperience.id}
+                  initial={{ opacity: 0, x: 300 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -300 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg"
+                >
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 leading-tight">
+                        <span className="block">{currentExperience.title}</span>
+                        <span className="text-blue-600 dark:text-blue-400 block mt-1">
+                          @ {currentExperience.company}
+                        </span>
+                      </h3>
+                      <p className="text-sm font-mono text-slate-600 dark:text-slate-400 mt-2">
+                        {currentExperience.duration}
+                      </p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">
+                        {currentExperience.location} · {currentExperience.type}
+                      </p>
+                    </div>
+
+                    <ul className="space-y-3">
+                      {currentExperience.description.map((item, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-blue-600 dark:text-blue-400 mr-3 mt-1 flex-shrink-0">▹</span>
+                          <span className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {currentExperience.link && (
+                      <a
+                        href={currentExperience.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-mono text-sm transition-colors"
+                      >
+                        View Project
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Tab Layout */}
+        <div className="hidden lg:flex flex-col lg:flex-row gap-6 lg:gap-8">
+          {/* Tab Navigation */}
+          <div className="relative">
+            <div className="flex flex-col border-l-2 border-slate-200 dark:border-slate-700">
+              {sortedExperiences.map((exp) => (
                 <button
                   key={exp.id}
                   onClick={() => setActiveExperience(exp.id)}
-                  className={`text-left px-4 py-3 lg:px-6 lg:py-3 text-sm lg:text-base font-mono whitespace-nowrap lg:whitespace-normal transition-all duration-300 border-b-2 lg:border-b-0 lg:border-l-2 rounded-lg lg:rounded-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 shadow-sm snap-center lg:snap-align-none ${
-                    index === 0 ? 'ml-2 lg:ml-0' : 'ml-1 lg:ml-0'
-                  } ${
-                    index === sortedExperiences.length - 1 ? 'mr-2 lg:mr-0' : 'mr-1 lg:mr-0'
-                  } ${
+                  className={`text-left px-6 py-3 text-base font-mono transition-all duration-300 border-l-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
                     activeExperience === exp.id
-                      ? 'text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400 bg-blue-600/10 dark:bg-blue-400/10 shadow-md'
+                      ? 'text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400 bg-blue-600/10 dark:bg-blue-400/10'
                       : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800/50'
                   }`}
-                  style={{ minWidth: '110px' }}
                 >
-                  <span className="block lg:hidden text-xs font-medium">
-                    {exp.company === 'Society of Hispanic Professional Engineers at USF' ? 'SHPE USF' :
-                     exp.company === 'Students of India Association' ? 'SIA USF' :
-                     exp.company === 'USF College of Engineering' ? 'USF Eng' :
-                     exp.company === 'USF Libraries' ? 'USF Lib' :
-                     exp.company === 'TEDx at USF' ? 'TEDx USF' :
-                     exp.company === 'Coefficient Software Systems' ? 'Coefficient' :
-                     exp.company === 'RARE Lab' ? 'RARE Lab' :
-                     exp.company}
-                  </span>
-                  <span className="hidden lg:block">{exp.company}</span>
+                  {exp.company}
                 </button>
               ))}
             </div>
-            
-            {/* Enhanced right fade for scroll hint */}
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-gradient-to-l from-slate-100 dark:from-slate-900 via-slate-100/60 dark:via-slate-900/60 to-transparent z-10 block lg:hidden" />
           </div>
 
           {/* Content */}
@@ -258,7 +315,7 @@ function Experience() {
           </div>
         </div>
       </motion.div>
-      </div>
+    </div>
   );
 }
 
