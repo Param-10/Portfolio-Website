@@ -187,7 +187,7 @@ export const portfolioData = {
       timeline: "Jun 2024",
       description: "Machine learning-powered dashboard for detecting fraudulent transactions.",
       link: "https://github.com/Param-10/Fraud-Detection-Dashboard",
-      demoLink: "#",
+      demoLink: "https://fraud-detector-dashboard.netlify.app/",
       featured: true,
       details: [
         "Achieved 89% accuracy on card-fraud data with Logistic Regression, lifting performance 15% via scaling",
