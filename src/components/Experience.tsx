@@ -14,19 +14,7 @@ interface ExperienceItem {
 }
 
 function Experience() {
-  const experiences: ExperienceItem[] = [
-    {
-      id: 'mano',
-      title: 'Software Developer',
-      company: 'Mano',
-      location: 'Remote',
-      duration: 'May 2025 - Present',
-      type: 'Startup',
-      description: [
-        '🚧 Work in progress'
-      ],
-      link: 'https://mano.network'
-    },
+    const experiences: ExperienceItem[] = [
     {
       id: 'ai4all',
       title: 'AI4ALL Ignite Fellow',
