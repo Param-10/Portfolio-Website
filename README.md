@@ -27,58 +27,8 @@ A modern, responsive portfolio website showcasing my software development projec
 - Mobile-optimized touch targets and interactions
 - Performance optimizations for mobile devices
 
-## Local Development
-
-Clone the repository:
-```bash
-git clone https://github.com/Param-10/Portfolio-Website.git
-cd Portfolio-Website
-```
-
-Install dependencies:
-```bash
-npm install
-```
-
-Start development server:
-```bash
-npm run dev
-```
-
-The site will be available at `http://localhost:5173`
-
-## Build and Deploy
-
-Create production build:
-```bash
-npm run build
-```
-
-Preview production build:
-```bash
-npm run preview
-```
-
-The built files will be in the `dist` directory, ready for deployment to any static hosting service.
-
-## Project Structure
-```
-src/
-├── components/          # React components
-├── data.ts             # Portfolio data and content
-├── App.tsx             # Main application component
-└── main.tsx            # Application entry point
-```
-
 ## Mobile Optimization Features
-This portfolio is fully optimized for mobile devices with:
 
-### Responsive Layout
-- Mobile-first design approach with breakpoints at 768px and 375px
-- Adaptive grid layouts that stack properly on smaller screens
-- Optimized spacing and padding for different screen sizes
-
-### Mobile-Specific Optimizations
 - **Experience Section**: Horizontal scrolling tabs with abbreviated company names on mobile
 - **Projects Section**: Single-column layout with smaller cards and optimized text sizes
 - **Skills Section**: Reduced padding and smaller icons/text for mobile viewing
@@ -87,7 +37,6 @@ This portfolio is fully optimized for mobile devices with:
 - **Home Section**: Breaking long headlines into multiple lines for readability
 
 ### Performance & UX
-- Touch-optimized buttons with 44px minimum touch targets
 - Reduced animation complexity on smaller screens
 - Optimized text sizes for mobile readability
 - Enhanced scrolling performance with mobile-specific CSS
