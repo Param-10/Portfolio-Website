@@ -3,7 +3,7 @@
 A modern, responsive portfolio website showcasing my software development projects and skills. Built with React, TypeScript, and Tailwind CSS.
 
 ## Live Demo
-[View Live Site](https://param-10.github.io/Portfolio-Website/)
+[View Live Site](https://paramveerbhele.com/)
 
 ## Technology Stack
 - React 18 with TypeScript
