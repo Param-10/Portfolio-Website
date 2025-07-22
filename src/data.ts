@@ -76,10 +76,10 @@ export const portfolioData = {
       ],
       skills: [
         "React",
-        "Next.js",
         "Node.js",
+        "Express.js",
         "TypeScript",
-        "Supabase",
+        "MongoDB",
         "Gemini AI",
         "TensorFlow",
         "Tailwind CSS",
@@ -126,15 +126,14 @@ export const portfolioData = {
         "Developed a modern, responsive portfolio website using React, TypeScript, and Tailwind CSS",
         "Implemented smooth animations and transitions using Framer Motion",
         "Created a dark/light theme toggle with system preference detection",
-        "Built a contact form with email integration using EmailJS",
+        "Built a responsive contact form with modern UI design",
         "Optimized performance and SEO for better user experience"
       ],
       skills: [
         "React",
         "TypeScript",
         "Tailwind CSS",
-        "Framer Motion",
-        "EmailJS"
+        "Framer Motion"
       ]
     },
 
