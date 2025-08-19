@@ -37,6 +37,28 @@ export const portfolioData = {
   skills: ["React", "TypeScript", "Node.js", "AWS", "Python", "Docker"],
   projects: [
     {
+      title: "Adversarial Spam Detection",
+      timeline: "May 2025 - Aug 2025",
+      description: "Adversarial training pipeline for robust SMS spam detection using BERT and a Qwen3-4B generator.",
+      link: "https://github.com/Param-10/adversarial-spam-detection",
+      demoLink: "#",
+      featured: true,
+      details: [
+        "Developed through the selective AI4ALL Ignite program under mentorship of Paul Yang, focusing on adversarial robustness in spam detection",
+        "Built an adversarial training pipeline alternating between spam classifier fine-tuning and adversarial sample generation, improving resilience against evolving attacks",
+        "Fine-tuned bert-base-uncased achieving 98.9% accuracy, and leveraged Qwen3-4B with LoRA for realistic adversarial spam generation on a T4 GPU",
+        "Enhanced classifier robustness: detection rate improved from 91.7% → 95.7% over 3 adversarial iterations while maintaining 96.5% accuracy"
+      ],
+      skills: [
+        "BERT",
+        "Qwen3-4B",
+        "Transformers",
+        "LoRA",
+        "PyTorch",
+        "Scikit-learn"
+      ]
+    },
+    {
       title: "Stock Analysis Tool",
       timeline: "Jan 2025 - May 2025",
       description: "Dynamic stock analysis application with real-time price wave detection and Fibonacci level visualization.",
@@ -264,9 +286,11 @@ export const portfolioData = {
       'Express',
       'Flask',
       'Gemini API',
+      'Hugging Face',
       'Next.js',
       'Node.js',
       'OpenAI API',
+      'Transformers',
       'React.js',
       'REST APIs',
       'Supabase'
@@ -274,6 +298,8 @@ export const portfolioData = {
     tools: [
       'Android Studio',
       'AWS Cloud',
+      'Google Cloud',
+      'Google Cloud SDK',
       'Docker',
       'Excel',
       'Git',
@@ -286,11 +312,14 @@ export const portfolioData = {
       'Xcode'
     ],
     machineLearning: [
+      'BERT',
       'DeepFace',
       'Matplotlib',
       'NumPy',
       'OpenCV',
       'Pandas',
+      'LoRA',
+      'Qwen3-4B',
       'PyTorch',
       'Scikit-learn',
       'TensorFlow'

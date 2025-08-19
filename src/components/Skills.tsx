@@ -32,6 +32,7 @@ import {
   SiJira,
   SiGit
 } from 'react-icons/si';
+import { SiGooglecloud, SiHuggingface } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 import { VscCode } from 'react-icons/vsc';
 
@@ -68,6 +69,8 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
     'Flask': { icon: SiFlask, color: '#000000' },
     'Supabase': { icon: SiSupabase, color: '#3ECF8E' },
     'Gemini API': { icon: SiGooglegemini, color: '#4285F4' },
+    'Hugging Face': { icon: SiHuggingface, color: '#FFCA00' },
+    'Transformers': { icon: SiHuggingface, color: '#FFCA00' },
     'REST APIs': { icon: SiNodedotjs, color: '#339933' },
     'OpenAI API': { icon: SiReact, color: '#61DAFB' },
     
@@ -83,6 +86,8 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
     
     // Tools & Technologies
     'AWS Cloud': { icon: SiAmazonwebservices, color: '#FF9900' },
+    'Google Cloud': { icon: SiGooglecloud, color: '#4285F4' },
+    'Google Cloud SDK': { icon: SiGooglecloud, color: '#4285F4' },
     'Docker': { icon: SiDocker, color: '#2496ED' },
     'GitHub': { icon: SiGithub, color: '#181717' },
     'VS Code': { icon: VscCode, color: '#007ACC' },

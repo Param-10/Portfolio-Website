@@ -53,9 +53,9 @@ function Projects({ projects }: ProjectsProps) {
   
   // Define the best 3 projects to show initially
   const bestProjectTitles = [
+    "Adversarial Spam Detection",
     "CarbonCTRL (Hackathon Winner)",
-    "Focus Timer Extension", 
-    "Fraud Detection Dashboard"
+    "Stock Analysis Tool"
   ];
   
   // Get the initial best projects in the specified order

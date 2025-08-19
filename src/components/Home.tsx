@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const Home = () => {
@@ -28,7 +27,7 @@ const Home = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 md:px-6 flex items-center justify-center min-h-screen">
+    <div className="container mx-auto px-4 md:px-6 flex items-center justify-center min-h-[75vh]">
       <motion.div
         className="max-w-4xl w-full text-center lg:text-left"
         variants={containerVariants}
@@ -49,13 +48,7 @@ const Home = () => {
           Paramveer Singh Bhele.
         </motion.h1>
         
-        <motion.h2
-          variants={itemVariants}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-600 dark:text-slate-400 mb-4 md:mb-6 leading-tight"
-        >
-          <span className="block sm:inline">I build real world</span>{' '}
-          <span className="block sm:inline">full stack projects.</span>
-        </motion.h2>
+        
         
         <motion.p
           variants={itemVariants}

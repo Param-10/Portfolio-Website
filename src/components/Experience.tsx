@@ -20,7 +20,7 @@ function Experience() {
       title: 'AI4ALL Ignite Fellow',
       company: 'AI4ALL',
       location: 'Remote',
-      duration: 'May 2025 - Present',
+      duration: 'May 2025 - Aug 2025',
       type: 'Internship',
       description: [
         'Selected for the highly competitive AI4ALL Ignite, a comprehensive 13-week, national accelerator designed to equip undergraduate students with the skills and connections for successful careers in AI and machine learning',
@@ -33,12 +33,11 @@ function Experience() {
       title: 'Undergraduate Research Assistant',
       company: 'RARE Lab',
       location: 'University of South Florida',
-      duration: 'Feb 2025 - Present',
+      duration: 'Feb 2025 - Aug 2025',
       type: 'Part-time',
       description: [
-        'Designed and deployed survey tools to analyze human-robot interaction studies, capturing key behavioral insights',
-        'Utilized Pandas and NumPy to assess the datasets generated, and improve interaction models by 20%',
-        'Collaborated on AI/ML projects for multiple robots, training models and implementing intelligent control'
+        'Contributed to a protective indicators study on mitigating robot abuse with the Pepper robot by running participant experiments, analyzing behavioral data, and contributing to a research paper accepted for publication at HRI 2026',
+        'Developed an Android mobile application for a grant study on a recipe recommender robot (Misty), creating integrations between the app and robot using Gemini API and Google Cloud SDK to enable seamless communication'
       ],
       link: 'https://therarelab.com/people/paramveer-singh-bhele/'
     },
@@ -57,13 +56,13 @@ function Experience() {
     },
     {
       id: 'usf-library',
-      title: 'Student Assistant - Collections and Discovery',
+      title: 'Student Assistant - Digital Initiatives',
       company: 'USF Libraries',
       location: 'University of South Florida',
       duration: 'Aug 2024 - Present',
       type: 'Part-time',
       description: [
-        'Indexed 10,000+ images in Excel, enriching metadata to cut classification errors by 25% and boost catalog recall',
+        'Built web-scraping and validation tools to cross-check Excel records with USF Digital Commons images, reducing manual review time by 70% and streamlining error detection',
         'Improved cataloging accuracy by standardizing metadata, resulting in efficient retrieval for 1,000+ items'
       ]
     },
@@ -120,14 +119,32 @@ function Experience() {
     }
   ];
 
-  const [activeExperience, setActiveExperience] = useState(experiences[0]?.id || '');
-  const [currentMobileIndex, setCurrentMobileIndex] = useState(0);
+  const toDate = (part: string): Date => {
+    const trimmed = part.trim();
+    if (/present/i.test(trimmed)) {
+      return new Date(8640000000000000); // far future to prioritize ongoing roles
+    }
+    // Ensure day is present for Date parsing consistency
+    return new Date(`${trimmed} 1`);
+  };
 
-  const sortedExperiences = experiences.sort((a, b) => {
-    const aDate = new Date(a.duration.split(' - ')[0]);
-    const bDate = new Date(b.duration.split(' - ')[0]);
-    return bDate.getTime() - aDate.getTime();
+  const sortedExperiences = experiences.slice().sort((a, b) => {
+    const [aStartStr, aEndStr = ''] = a.duration.split(' - ');
+    const [bStartStr, bEndStr = ''] = b.duration.split(' - ');
+
+    const aEnd = toDate(aEndStr);
+    const bEnd = toDate(bEndStr);
+    if (bEnd.getTime() !== aEnd.getTime()) {
+      return bEnd.getTime() - aEnd.getTime();
+    }
+
+    const aStart = toDate(aStartStr);
+    const bStart = toDate(bStartStr);
+    return bStart.getTime() - aStart.getTime();
   });
+
+  const [activeExperience, setActiveExperience] = useState(sortedExperiences[0]?.id || '');
+  const [currentMobileIndex, setCurrentMobileIndex] = useState(0);
 
   const currentExperience = sortedExperiences.find(exp => exp.id === activeExperience) || sortedExperiences[0];
 
