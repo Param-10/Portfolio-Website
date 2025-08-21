@@ -33,7 +33,7 @@ function Experience() {
       title: 'Undergraduate Research Assistant',
       company: 'RARE Lab',
       location: 'University of South Florida',
-      duration: 'Feb 2025 - Aug 2025',
+      duration: 'Feb 2025 - July 2025',
       type: 'Part-time',
       description: [
         'Contributed to a protective indicators study on mitigating robot abuse with the Pepper robot by running participant experiments, analyzing behavioral data, and contributing to a research paper accepted for publication at HRI 2026',
