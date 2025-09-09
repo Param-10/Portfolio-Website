@@ -275,6 +275,7 @@ export const portfolioData = {
       'C',
       'C#',
       'C++',
+      'COBOL',
       'Java',
       'JavaScript',
       'Python',
