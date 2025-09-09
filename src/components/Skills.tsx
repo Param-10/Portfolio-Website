@@ -33,7 +33,7 @@ import {
   SiGit
 } from 'react-icons/si';
 import { SiGooglecloud, SiHuggingface } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
+import { FaJava, FaCode } from 'react-icons/fa';
 import { VscCode } from 'react-icons/vsc';
 
 interface TechnicalSkills {
@@ -55,6 +55,7 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
     'C++': { icon: SiCplusplus, color: '#00599C' },
     'C': { icon: SiC, color: '#A8B9CC' },
     'C#': { icon: SiSharp, color: '#239120' },
+    'COBOL': { icon: FaCode, color: '#004B87' },
     'Java': { icon: FaJava, color: '#007396' },
     'TypeScript': { icon: SiTypescript, color: '#3178C6' },
     'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
