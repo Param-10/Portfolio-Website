@@ -74,6 +74,11 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
+      const atPageBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+      if (atPageBottom) {
+        setActiveSection('contact');
+        return;
+      }
       
       for (const section of sections) {
         const element = document.getElementById(section.id);

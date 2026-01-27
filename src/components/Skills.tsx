@@ -213,45 +213,6 @@ const Skills = ({ technicalSkills }: SkillsProps) => {
           </div>
         </motion.div>
 
-        {/* Additional Skills Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-12"
-        >
-          <div className="bg-white dark:bg-slate-800 p-8 rounded-xl border border-gray-200 dark:border-slate-700 shadow-lg">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <Brain className="w-6 h-6 text-white" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-3">
-                  Continuous Learning & Growth
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
-                  I'm always eager to learn new technologies and stay up-to-date with the latest developments 
-                  in software engineering, machine learning, and web development. Currently exploring 
-                  advanced AI/ML techniques and modern web frameworks to build innovative solutions.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
-                    Always Learning
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
-                    Innovation Focused
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full">
-                    Future-Ready
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </motion.div>
     </div>
   );

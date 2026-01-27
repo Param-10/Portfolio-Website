@@ -67,6 +67,17 @@ function Experience() {
       ]
     },
     {
+      id: 'finds-ai',
+      title: 'Machine Learning Engineer',
+      company: 'Finds.ai',
+      location: 'Remote',
+      duration: 'Oct 2025 - Jan 2026',
+      type: 'Internship',
+      description: [
+        'Built scrapers and curated datasets, and helped train and integrate gender and clothing recognition models with embeddings for visual search'
+      ]
+    },
+    {
       id: 'shpe-usf',
       title: 'Database Director',
       company: 'Society of Hispanic Professional Engineers at USF',
