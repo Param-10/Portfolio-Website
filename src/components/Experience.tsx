@@ -130,45 +130,100 @@ function Experience() {
     }
   ];
 
-  const toDate = (part: string): Date => {
-    const trimmed = part.trim();
+  const parseMonthYear = (value: string): Date => {
+    const trimmed = value.trim();
     if (/present/i.test(trimmed)) {
       return new Date(8640000000000000); // far future to prioritize ongoing roles
     }
-    // Ensure day is present for Date parsing consistency
-    return new Date(`${trimmed} 1`);
+
+    const monthMap: Record<string, number> = {
+      jan: 0,
+      january: 0,
+      feb: 1,
+      february: 1,
+      mar: 2,
+      march: 2,
+      apr: 3,
+      april: 3,
+      may: 4,
+      jun: 5,
+      june: 5,
+      jul: 6,
+      july: 6,
+      aug: 7,
+      august: 7,
+      sep: 8,
+      sept: 8,
+      september: 8,
+      oct: 9,
+      october: 9,
+      nov: 10,
+      november: 10,
+      dec: 11,
+      december: 11,
+    };
+
+    const match = trimmed.match(/^([A-Za-z]+)\s+(\d{4})$/);
+    if (match) {
+      const [, monthStr, yearStr] = match;
+      const monthIndex = monthMap[monthStr.toLowerCase()];
+      const year = Number(yearStr);
+      if (!Number.isNaN(year) && monthIndex !== undefined) {
+        return new Date(year, monthIndex, 1);
+      }
+    }
+
+    return new Date(0);
   };
 
   const sortedExperiences = experiences.slice().sort((a, b) => {
     const [aStartStr, aEndStr = ''] = a.duration.split(' - ');
     const [bStartStr, bEndStr = ''] = b.duration.split(' - ');
 
-    const aEnd = toDate(aEndStr);
-    const bEnd = toDate(bEndStr);
+    const aEnd = parseMonthYear(aEndStr);
+    const bEnd = parseMonthYear(bEndStr);
     if (bEnd.getTime() !== aEnd.getTime()) {
       return bEnd.getTime() - aEnd.getTime();
     }
 
-    const aStart = toDate(aStartStr);
-    const bStart = toDate(bStartStr);
+    const aStart = parseMonthYear(aStartStr);
+    const bStart = parseMonthYear(bStartStr);
     return bStart.getTime() - aStart.getTime();
   });
 
   const [activeExperience, setActiveExperience] = useState(sortedExperiences[0]?.id || '');
   const [currentMobileIndex, setCurrentMobileIndex] = useState(0);
+  const [mobileDirection, setMobileDirection] = useState<1 | -1>(1);
 
   const currentExperience = sortedExperiences.find(exp => exp.id === activeExperience) || sortedExperiences[0];
 
   const nextMobileCard = () => {
+    setMobileDirection(1);
     const nextIndex = (currentMobileIndex + 1) % sortedExperiences.length;
     setCurrentMobileIndex(nextIndex);
     setActiveExperience(sortedExperiences[nextIndex].id);
   };
 
   const prevMobileCard = () => {
+    setMobileDirection(-1);
     const prevIndex = currentMobileIndex === 0 ? sortedExperiences.length - 1 : currentMobileIndex - 1;
     setCurrentMobileIndex(prevIndex);
     setActiveExperience(sortedExperiences[prevIndex].id);
+  };
+
+  const mobileCardVariants = {
+    enter: (direction: 1 | -1) => ({
+      opacity: 0,
+      x: direction === 1 ? 300 : -300
+    }),
+    center: {
+      opacity: 1,
+      x: 0
+    },
+    exit: (direction: 1 | -1) => ({
+      opacity: 0,
+      x: direction === 1 ? -300 : 300
+    })
   };
 
   return (
@@ -209,9 +264,11 @@ function Experience() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentExperience.id}
-                  initial={{ opacity: 0, x: 300 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -300 }}
+                  custom={mobileDirection}
+                  variants={mobileCardVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg"
                 >
