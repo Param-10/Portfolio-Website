@@ -277,7 +277,6 @@ function Experience() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      animate={{ scale: index === currentMobileIndex ? 1.03 : 1 }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
                       viewport={{ once: true }}
                       className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg h-[420px] flex flex-col"
@@ -335,7 +334,7 @@ function Experience() {
                   key={`dot-${exp.id}`}
                   onClick={() => scrollToIndex(index)}
                   aria-label={`Go to ${exp.company}`}
-                  className={`h-1 w-1 rounded-full transition-all duration-200 ${
+                  className={`h-[9px] w-[9px] min-h-[9px] min-w-[9px] p-0 rounded-full transition-all duration-200 ${
                     index === currentMobileIndex
                       ? 'bg-blue-600 dark:bg-blue-400'
                       : 'bg-slate-400/50 dark:bg-slate-500/50'
