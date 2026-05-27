@@ -1,268 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+@import '@fontsource/geist-sans/400.css';
+@import '@fontsource/geist-sans/500.css';
+@import '@fontsource/geist-sans/600.css';
+@import '@fontsource/geist-sans/700.css';
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/500.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  /* Reset and base styles */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 6rem; /* Account for fixed navbar */
-    font-size: 16px;
-    /* Smooth theme transition */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    /* Mobile viewport optimization */
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-  }
-
-  body {
-    font-family: 'Inter', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    /* Enhanced smooth scrolling */
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    /* Smooth theme transition */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    /* Mobile touch optimization */
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-  }
-
-  /* Ensure all elements have smooth theme transitions */
-  *,
-  *::before,
-  *::after {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
-}
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgb(243 244 246); /* Slightly darker for the tinted theme */
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgb(156 163 175); /* Better contrast */
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(107 114 128);
-  }
-
-  /* Dark theme scrollbar */
-  .dark ::-webkit-scrollbar-track {
-    background: rgb(15 23 42);
-}
-
-  .dark ::-webkit-scrollbar-thumb {
-    background: rgb(71 85 105);
-  }
-
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background: rgb(100 116 139);
-  }
-
-  /* Typography */
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    line-height: 1.25;
-  }
-
-  .font-mono {
-    font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
-  }
-
-  /* Selection */
-  ::selection {
-    background-color: rgb(37 99 235 / 0.2);
-    color: rgb(37 99 235);
-  }
-
-  .dark ::selection {
-    background-color: rgb(59 130 246 / 0.3);
-    color: rgb(147 197 253);
-  }
-
-  /* Focus styles */
-  :focus-visible {
-    outline: 2px solid rgb(37 99 235);
-    outline-offset: 2px;
-  }
-
-  .dark :focus-visible {
-    outline-color: rgb(59 130 246);
-}
-
-  /* Theme-specific root styles */
-  .light {
-    background-color: rgb(249 250 251); /* Very subtle gray tint instead of pure white */
-    color: rgb(15 23 42);
+  :root {
+    --background: #ffffff;
+    --text: #0b0b0b;
+    --secondary-text: #6f6f6f;
+    --border: #dedede;
+    --surface: #fbfbfa;
+    --surface-strong: #f1f1f0;
+    --muted: #f7f7f6;
   }
 
   .dark {
-    background-color: rgb(15 23 42);
-    color: rgb(248 250 252);
-  }
-}
-
-@layer components {
-  /* Button styles */
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 bg-blue-600 text-white font-mono text-sm rounded transition-all duration-300 hover:bg-blue-700 hover:scale-105 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-h-[44px];
-  }
-
-  .btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 border border-blue-600 text-blue-600 hover:bg-blue-600/10 font-mono text-sm rounded transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-h-[44px];
+    --background: #050505;
+    --text: #f7f7f7;
+    --secondary-text: #a3a3a3;
+    --border: #2a2a2a;
+    --surface: #0d0d0d;
+    --surface-strong: #171717;
+    --muted: #111111;
+    color-scheme: dark;
   }
 
-  .dark .btn-primary {
-    @apply bg-blue-500 hover:bg-blue-600 focus:ring-blue-400;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
   }
 
-  .dark .btn-outline {
-    @apply border-blue-400 text-blue-400 hover:bg-blue-400/10 focus:ring-blue-400;
+  body {
+    @apply bg-background text-text font-sans antialiased selection:bg-text selection:text-background;
+    font-variant-ligatures: contextual;
+    overflow-x: hidden;
   }
 
-  /* Section styles */
-  .section-heading {
-    @apply text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6 md:mb-8;
-  }
-
-  .section-heading::before {
-    content: counter(section) ".";
-    counter-increment: section;
-    @apply text-blue-600 dark:text-blue-400 font-mono text-lg mr-2;
-  }
-
-  /* Animations */
-  .hover-lift {
-    transition: transform 0.2s ease-out;
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-2px);
-  }
-  
-  /* Writing mode utilities */
-  .writing-mode-vertical-rl {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-
-  /* Theme toggle button */
-  .theme-toggle {
-    @apply p-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 transition-all duration-300 border border-gray-200 dark:border-slate-700 hover:border-blue-600/50 dark:hover:border-blue-400/50 shadow-sm;
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
 @layer utilities {
-  /* Performance optimizations */
-  .will-change-transform {
-    will-change: transform;
-  }
-  
-  .transform-gpu {
-    transform: translateZ(0);
-  }
-  
-  .smooth-scroll {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
+  .text-balance {
+    text-wrap: balance;
   }
 
-  /* Enhanced scrolling performance */
-  .scroll-smooth {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .scroll-section {
-    scroll-margin-top: 6rem; /* Account for fixed navbar */
-    scroll-snap-align: start;
+  .text-pretty {
+    text-wrap: pretty;
   }
 
-  /* Optimize scroll performance */
-  * {
-    scroll-margin-top: 6rem;
+  .dot-grid {
+    background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.85' fill='%23dedede'/%3E%3C/svg%3E");
+    background-size: 22px 22px;
   }
 
-  /* Custom backdrop blur */
-  .backdrop-blur-sm {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  .line-grid {
+    background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M72 0H0V72' fill='none' stroke='%23dedede' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 72px 72px;
   }
 
-  /* Theme-aware transitions */
-  .transition-theme {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  .vertical-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 
-  /* Mobile-specific optimizations */
-  @media (max-width: 768px) {
-    .container {
-      @apply px-4;
-    }
-    
-    /* Improve touch targets */
-    button, a, [role="button"] {
-      min-height: 44px;
-      min-width: 44px;
-    }
-    
-    /* Optimize text sizes for mobile */
-    .text-xs { font-size: 0.75rem; }
-    .text-sm { font-size: 0.875rem; }
-    .text-base { font-size: 0.9rem; }
-    .text-lg { font-size: 1rem; }
-    .text-xl { font-size: 1.125rem; }
-    
-    /* Reduce animation complexity on mobile */
-    .motion-reduce {
-      animation: none !important;
-      transition: none !important;
-    }
-  }
-
-  /* Very small screens (iPhone SE, etc.) */
-  @media (max-width: 375px) {
-    .container {
-      @apply px-3;
-    }
-    
-    /* Smaller text on very small screens */
-    .text-base { font-size: 0.875rem; }
-    .text-lg { font-size: 0.9rem; }
-    .text-xl { font-size: 1rem; }
-  }
-
-  /* Hide scrollbar but maintain functionality */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
+  .no-scrollbar {
     scrollbar-width: none;
   }
-  
-  .scrollbar-hide::-webkit-scrollbar {
+
+  .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
 }
 
-/* Counter for section numbering */
-body {
-  counter-reset: section;
+.dark .dot-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.85' fill='%232a2a2a'/%3E%3C/svg%3E");
+}
+
+.dark .line-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M72 0H0V72' fill='none' stroke='%232a2a2a' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 2rem;
+    scroll-padding-bottom: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
