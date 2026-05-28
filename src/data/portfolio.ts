@@ -109,13 +109,15 @@ export type SkillGroup = {
   }[];
 };
 
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
 export const portfolio = {
   name: "Paramveer Singh Bhele",
   title: "Software Engineer & AI/ML Engineer building practical intelligent systems.",
   subheadline:
     "CS graduate from the University of South Florida and incoming Columbia MS AI student with an AI Infrastructure concentration, building across software engineering, applied ML, backend/API systems, and full-stack products.",
-  portrait: "/paramveer-portrait.jpg",
-  resume: "/resume.pdf",
+  portrait: withBase("/paramveer-portrait.jpg"),
+  resume: withBase("/resume.pdf"),
   email: "bheleparamveer@gmail.com",
   links: {
     github: "https://github.com/Param-10",
@@ -219,7 +221,7 @@ export const portfolio = {
       role: "Machine Learning Engineer Intern",
       company: "Finds, Inc.",
       period: "Oct 2025 to Jan 2026",
-      logo: { src: "/logos/finds-ai.svg", fallback: "F" },
+      logo: { src: withBase("/logos/finds-ai.svg"), fallback: "F" },
       bullets: [
         "Integrated in-house ML models into backend services for reliable internal inference workflows.",
         "Designed PostgreSQL schemas, metadata pipelines, and validation checks for image data.",
@@ -229,7 +231,7 @@ export const portfolio = {
       role: "Undergraduate Research Assistant",
       company: "RARE Lab, University of South Florida",
       period: "Feb 2025 to Jul 2025",
-      logo: { src: "/logos/rare-lab.png", fallback: "R" },
+      logo: { src: withBase("/logos/rare-lab.png"), fallback: "R" },
       bullets: [
         "Collected, validated, and analyzed experiment data for an ongoing human-robot interaction research study.",
         "Built an Android research app integrating Gemini AI, Google Cloud SDK, and structured study workflows.",
@@ -239,7 +241,7 @@ export const portfolio = {
       role: "Student Assistant - Collections and Discovery",
       company: "USF Libraries",
       period: "Aug 2024 to Present",
-      logo: { src: "/logos/usf-libraries.jpg", fallback: "U" },
+      logo: { src: withBase("/logos/usf-libraries.jpg"), fallback: "U" },
       bullets: [
         "Built web-scraping and validation tools to cross-check Excel records with USF Digital Commons images, reducing manual review time by 70%.",
         "Improved cataloging accuracy by standardizing metadata for 1,000+ digital collection items.",
@@ -249,7 +251,7 @@ export const portfolio = {
       role: "App Developer Intern",
       company: "Coefficient Software Systems",
       period: "May 2022 to Jul 2022",
-      logo: { src: "/logos/coefficient.png", fallback: "C" },
+      logo: { src: withBase("/logos/coefficient.png"), fallback: "C" },
       bullets: [
         "Built product benchmarking datasets by profiling 500+ universities across US, UK, and Australian markets.",
         "Improved app usability for 100,000+ downloads by refining UI flows and supporting production updates.",
@@ -262,14 +264,14 @@ export const portfolio = {
       degree: "MS in Artificial Intelligence",
       detail: "Concentration: AI Infrastructure",
       period: "Start: Aug 2026",
-      logo: { src: "/logos/columbia.svg", fallback: "C" },
+      logo: { src: withBase("/logos/columbia.svg"), fallback: "C" },
     },
     {
       school: "University of South Florida",
       degree: "B.S. in Computer Science",
       detail: "Minor: Entrepreneurship",
       period: "Aug 2022 - May 2026",
-      logo: { src: "/logos/usf.svg", fallback: "U" },
+      logo: { src: withBase("/logos/usf.svg"), fallback: "U" },
     },
   ] satisfies Education[],
   skills: [
@@ -339,10 +341,10 @@ export const portfolio = {
       href: "https://www.linkedin.com/in/paramveer-singh-bhele/",
       icon: Linkedin,
     },
-    { label: "Resume", href: "/resume.pdf", icon: FileText },
+    { label: "Resume", href: withBase("/resume.pdf"), icon: FileText },
   ] satisfies ContactLink[],
   dockExternalLinks: [
-    { label: "Resume", href: "/resume.pdf", icon: FileText },
+    { label: "Resume", href: withBase("/resume.pdf"), icon: FileText },
     { label: "GitHub", href: "https://github.com/Param-10", icon: Github },
     {
       label: "LinkedIn",
