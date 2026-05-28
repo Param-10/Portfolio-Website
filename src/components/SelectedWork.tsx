@@ -5,12 +5,12 @@ export default function SelectedWork() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="work" className="py-28 md:py-36">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+    <section className="py-28 md:py-36">
+      <div id="projects" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <div className="mb-12 max-w-3xl">
-          <p className="mb-4 font-mono text-xs text-secondary-text">Selected Work</p>
+          <p className="mb-4 font-mono text-xs text-secondary-text">Projects</p>
           <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-6xl">
-            Practical intelligent systems, from pull-request security to robot workflows.
+            Practical intelligent systems, from pull-request security to applied ML products.
           </h2>
         </div>
 

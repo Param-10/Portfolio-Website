@@ -3,8 +3,8 @@ import Reveal from "./Reveal";
 
 export default function ContactCTA() {
   return (
-    <section id="contact" className="bg-surface py-28 pb-40 md:py-36 md:pb-36">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+    <section className="bg-surface py-28 pb-40 md:py-36 md:pb-36">
+      <div id="contact" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <Reveal className="grid gap-10 border border-border bg-background p-6 sm:p-10 md:grid-cols-[1.1fr_0.9fr] md:p-12">
           <div>
             <p className="mb-5 font-mono text-xs text-secondary-text">Contact</p>

@@ -1,4 +1,34 @@
 import type { ComponentType } from "react";
+import { FaJava } from "react-icons/fa";
+import {
+  SiAmazonwebservices,
+  SiC,
+  SiCplusplus,
+  SiDocker,
+  SiDotnet,
+  SiExpress,
+  SiFastapi,
+  SiFlask,
+  SiGit,
+  SiGithub,
+  SiHuggingface,
+  SiJavascript,
+  SiJira,
+  SiJupyter,
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiPytorch,
+  SiReact,
+  SiRender,
+  SiScikitlearn,
+  SiTensorflow,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
 import {
   BookOpen,
   Bot,
@@ -17,6 +47,7 @@ import {
 } from "lucide-react";
 
 export type IconComponent = ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+export type SkillIconComponent = ComponentType<{ size?: number; className?: string }>;
 
 export type NavItem = {
   label: string;
@@ -71,15 +102,18 @@ export type Education = {
 export type SkillGroup = {
   title: string;
   icon: IconComponent;
-  skills: string[];
+  skills: {
+    name: string;
+    icon: SkillIconComponent;
+    color: string;
+  }[];
 };
 
 export const portfolio = {
   name: "Paramveer Singh Bhele",
   title: "Software Engineer & AI/ML Engineer building practical intelligent systems.",
   subheadline:
-    "CS graduate from the University of South Florida and incoming Columbia MS AI student with an AI Infrastructure concentration, building across software engineering, applied ML, robotics interfaces, and full-stack products.",
-  currentFocus: "software engineer · AI/ML engineer · product builder",
+    "CS graduate from the University of South Florida and incoming Columbia MS AI student with an AI Infrastructure concentration, building across software engineering, applied ML, backend/API systems, and full-stack products.",
   portrait: "/paramveer-portrait.jpg",
   resume: "/resume.pdf",
   email: "bheleparamveer@gmail.com",
@@ -90,9 +124,10 @@ export const portfolio = {
   },
   navItems: [
     { icon: Home, label: "Home", href: "#home", section: "home", mobile: true },
-    { icon: Briefcase, label: "Work", href: "#work", section: "work", mobile: true },
-    { icon: Layers, label: "Experience", href: "#experience", section: "experience", mobile: true },
-    { icon: Code2, label: "Skills", href: "#skills", section: "skills", mobile: false },
+    { icon: Briefcase, label: "Experience", href: "#experience", section: "experience", mobile: true },
+    { icon: GraduationCap, label: "Education", href: "#education", section: "education", mobile: true },
+    { icon: Layers, label: "Projects", href: "#projects", section: "projects", mobile: true },
+    { icon: Code2, label: "Skills", href: "#skills", section: "skills", mobile: true },
     { icon: Mail, label: "Contact", href: "#contact", section: "contact", mobile: true },
   ] satisfies NavItem[],
   metadataChips: [
@@ -101,7 +136,7 @@ export const portfolio = {
     "Columbia MS AI",
     "USF Computer Science",
     "ML Engineer Intern",
-    "HRI Research",
+    "AI Infrastructure",
     "Hackathon Winner",
   ],
   projects: [
@@ -165,12 +200,12 @@ export const portfolio = {
     },
     {
       number: "04",
-      title: "Robotics Research",
+      title: "RARE Lab Research",
       description:
-        "Human-robot interaction research and robot app development using Misty, Pepper, Gemini AI, Android, and Google Cloud SDK.",
-      tech: ["Android", "Gemini AI", "Google Cloud SDK", "Python", "HRI"],
+        "Research systems and Android app development for a USF human-robot interaction study using Gemini AI, Google Cloud SDK, Python, and structured experiment workflows.",
+      tech: ["Android", "Gemini AI", "Google Cloud SDK", "Python", "Research Systems"],
       outcome:
-        "Contributed to HRI 2026 research and built AI-assisted robot workflows.",
+        "Supported data validation, analysis, and AI-assisted study workflows for an active research project.",
       links: [
         {
           label: "Research",
@@ -184,7 +219,7 @@ export const portfolio = {
       role: "Machine Learning Engineer Intern",
       company: "Finds, Inc.",
       period: "Oct 2025 to Jan 2026",
-      logo: { src: "/logos/finds.svg", fallback: "F" },
+      logo: { src: "/logos/finds-ai.svg", fallback: "F" },
       bullets: [
         "Integrated in-house ML models into backend services for reliable internal inference workflows.",
         "Designed PostgreSQL schemas, metadata pipelines, and validation checks for image data.",
@@ -194,17 +229,17 @@ export const portfolio = {
       role: "Undergraduate Research Assistant",
       company: "RARE Lab, University of South Florida",
       period: "Feb 2025 to Jul 2025",
-      logo: { src: "/logos/rare-lab.svg", fallback: "R" },
+      logo: { src: "/logos/rare-lab.png", fallback: "R" },
       bullets: [
-        "Supported HRI 2026 research by collecting, validating, and analyzing human-robot interaction experiment data.",
-        "Built an Android robot app integrating Gemini AI, Google Cloud SDK, and structured robot workflows.",
+        "Collected, validated, and analyzed experiment data for an ongoing human-robot interaction research study.",
+        "Built an Android research app integrating Gemini AI, Google Cloud SDK, and structured study workflows.",
       ],
     },
     {
       role: "Student Assistant - Collections and Discovery",
       company: "USF Libraries",
       period: "Aug 2024 to Present",
-      logo: { src: "/logos/usf-libraries.svg", fallback: "U" },
+      logo: { src: "/logos/usf-libraries.jpg", fallback: "U" },
       bullets: [
         "Built web-scraping and validation tools to cross-check Excel records with USF Digital Commons images, reducing manual review time by 70%.",
         "Improved cataloging accuracy by standardizing metadata for 1,000+ digital collection items.",
@@ -214,7 +249,7 @@ export const portfolio = {
       role: "App Developer Intern",
       company: "Coefficient Software Systems",
       period: "May 2022 to Jul 2022",
-      logo: { src: "/logos/coefficient.svg", fallback: "C" },
+      logo: { src: "/logos/coefficient.png", fallback: "C" },
       bullets: [
         "Built product benchmarking datasets by profiling 500+ universities across US, UK, and Australian markets.",
         "Improved app usability for 100,000+ downloads by refining UI flows and supporting production updates.",
@@ -241,27 +276,59 @@ export const portfolio = {
     {
       title: "Software Engineering",
       icon: Code2,
-      skills: ["React", "Next.js", "TypeScript", "JavaScript", "C++", "Java", "C#", "OOP", "API Design"],
+      skills: [
+        { name: "React", icon: SiReact, color: "#61DAFB" },
+        { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+        { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+        { name: "C", icon: SiC, color: "#A8B9CC" },
+        { name: "C++", icon: SiCplusplus, color: "#00599C" },
+        { name: "Java", icon: FaJava, color: "#E76F00" },
+        { name: "C#", icon: TbBrandCSharp, color: "#68217A" },
+        { name: ".NET", icon: SiDotnet, color: "#512BD4" },
+      ],
     },
     {
       title: "AI / ML",
       icon: Bot,
-      skills: ["PyTorch", "TensorFlow", "Scikit-learn", "Transformers", "BERT", "Qwen", "LoRA", "Gemini API"],
+      skills: [
+        { name: "Python", icon: SiPython, color: "#3776AB" },
+        { name: "PyTorch", icon: SiPytorch, color: "#EE4C2C" },
+        { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+        { name: "Scikit-learn", icon: SiScikitlearn, color: "#F7931E" },
+        { name: "Transformers", icon: SiHuggingface, color: "#FFD21E" },
+        { name: "BERT", icon: SiHuggingface, color: "#FFD21E" },
+        { name: "Qwen", icon: SiHuggingface, color: "#624AFF" },
+        { name: "LoRA", icon: SiHuggingface, color: "#FF9D00" },
+      ],
     },
     {
       title: "Backend & Data",
       icon: Database,
-      skills: ["FastAPI", "Flask", "Node.js", "Express", "PostgreSQL", "MongoDB", "SQL", "REST APIs"],
+      skills: [
+        { name: "FastAPI", icon: SiFastapi, color: "#009688" },
+        { name: "Flask", icon: SiFlask, color: "#000000" },
+        { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
+        { name: "Express", icon: SiExpress, color: "#000000" },
+        { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+        { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+        { name: "SQL", icon: Database, color: "#336791" },
+        { name: "REST APIs", icon: Code2, color: "#0EA5E9" },
+      ],
     },
     {
       title: "Cloud & Dev Tools",
       icon: Cloud,
-      skills: ["Docker", "AWS", "Git", "GitHub", "Vercel", "Render", "Jupyter", "Jira"],
-    },
-    {
-      title: "Research & Interfaces",
-      icon: GraduationCap,
-      skills: ["Android Studio", "Google Cloud SDK", "HRI", "Misty", "Pepper", "WebSocket", "OpenCV"],
+      skills: [
+        { name: "Docker", icon: SiDocker, color: "#2496ED" },
+        { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
+        { name: "Git", icon: SiGit, color: "#F05032" },
+        { name: "GitHub", icon: SiGithub, color: "#181717" },
+        { name: "Vercel", icon: SiVercel, color: "#000000" },
+        { name: "Render", icon: SiRender, color: "#46E3B7" },
+        { name: "Jupyter", icon: SiJupyter, color: "#F37626" },
+        { name: "Jira", icon: SiJira, color: "#0052CC" },
+      ],
     },
   ] satisfies SkillGroup[],
   contactLinks: [
@@ -286,5 +353,4 @@ export const portfolio = {
   ] satisfies ContactLink[],
   contactBody:
     "Open to software engineering, AI/ML engineering, research collaborations, and product-focused roles where practical systems matter.",
-  footerLine: "Software Engineering · AI/ML · Research Systems",
 };

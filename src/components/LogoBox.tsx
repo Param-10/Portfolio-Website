@@ -12,14 +12,14 @@ export default function LogoBox({ logo, label, className = "" }: LogoBoxProps) {
 
   return (
     <div
-      className={`grid size-14 shrink-0 place-items-center border border-border bg-background text-lg font-semibold text-text shadow-[inset_0_0_0_6px_var(--surface)] ${className}`}
+      className={`grid size-16 shrink-0 place-items-center overflow-hidden border border-border bg-white p-2 text-lg font-semibold text-black shadow-[inset_0_0_0_6px_var(--surface)] ${className}`}
       aria-label={`${label} logo`}
     >
       {!logoFailed ? (
         <img
           src={logo.src}
           alt=""
-          className="max-h-9 max-w-9 grayscale"
+          className="max-h-11 max-w-12 object-contain grayscale contrast-[1.08] transition duration-300 ease-out group-hover:grayscale-0"
           onError={() => setLogoFailed(true)}
         />
       ) : (

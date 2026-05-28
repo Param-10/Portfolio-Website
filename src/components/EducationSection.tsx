@@ -1,11 +1,10 @@
 import { portfolio } from "../data/portfolio";
 import LogoBox from "./LogoBox";
-import Reveal from "./Reveal";
 
 export default function EducationSection() {
   return (
-    <section id="education" className="border-y border-border bg-surface py-24 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+    <section className="border-y border-border bg-surface py-24 md:py-28">
+      <div id="education" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="mb-4 font-mono text-xs text-secondary-text">Education</p>
@@ -16,11 +15,10 @@ export default function EducationSection() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {portfolio.education.map((item, index) => (
-            <Reveal
+          {portfolio.education.map((item) => (
+            <article
               key={item.school}
-              delay={index * 0.08}
-              className="grid gap-5 border border-border bg-background p-5 transition-colors duration-300 hover:border-text sm:p-7 md:grid-cols-[auto_1fr]"
+              className="group grid gap-5 border border-border bg-background p-5 transition-colors duration-300 hover:border-text sm:p-7 md:grid-cols-[auto_1fr]"
             >
               <LogoBox logo={item.logo} label={item.school} />
               <div>
@@ -39,7 +37,7 @@ export default function EducationSection() {
                   {item.detail}
                 </p>
               </div>
-            </Reveal>
+            </article>
           ))}
         </div>
       </div>

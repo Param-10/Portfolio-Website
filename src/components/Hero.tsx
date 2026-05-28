@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-80" />
       <div className="line-grid pointer-events-none absolute inset-x-0 top-0 -z-10 h-48 opacity-70" />
       <div className="vertical-label pointer-events-none absolute left-5 top-1/2 hidden -translate-y-1/2 font-mono text-[11px] tracking-[0.22em] text-secondary-text xl:block">
-        AI / ML / Software / Robotics
+        Software / AI / ML / AI Infra
       </div>
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.02fr_0.78fr] lg:gap-16 xl:pl-16">
@@ -40,13 +40,6 @@ export default function Hero() {
           animate="visible"
           className="max-w-4xl"
         >
-          <motion.p
-            variants={itemVariants}
-            className="mb-5 max-w-max border border-border bg-surface px-3 py-2 font-mono text-[10px] tracking-[0.06em] text-secondary-text sm:text-[11px] sm:tracking-[0.16em]"
-          >
-            {portfolio.currentFocus}
-          </motion.p>
-
           <motion.h1
             variants={itemVariants}
             className="text-balance text-[clamp(3.2rem,8vw,7.2rem)] font-semibold leading-[0.9] tracking-[-0.075em] text-text"
@@ -73,10 +66,10 @@ export default function Hero() {
             className="mt-7 flex flex-wrap items-center gap-3"
           >
             <a
-              href="#work"
+              href="#experience"
               className="group inline-flex min-h-11 items-center gap-2 rounded-md bg-text px-5 py-3 text-sm font-medium text-background transition-transform duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              View Work
+              View Experience
               <ArrowRight size={16} strokeWidth={1.8} className="transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
             <a
@@ -121,7 +114,7 @@ export default function Hero() {
               <img
                 src={portfolio.portrait}
                 alt="Paramveer Singh Bhele portrait"
-                className="aspect-[4/5] w-full object-cover grayscale contrast-[1.08] transition-transform duration-500 ease-out group-hover:scale-[1.035]"
+                className="aspect-[4/5] w-full object-cover grayscale contrast-[1.08] transition duration-500 ease-out group-hover:scale-[1.035] group-hover:grayscale-0"
               />
             </div>
           </motion.div>

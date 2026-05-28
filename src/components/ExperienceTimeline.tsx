@@ -4,8 +4,8 @@ import Reveal from "./Reveal";
 
 export default function ExperienceTimeline() {
   return (
-    <section id="experience" className="py-28 md:py-36">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+    <section className="py-28 md:py-36">
+      <div id="experience" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <div className="mb-14 grid gap-6 lg:grid-cols-[0.82fr_1fr]">
           <div>
             <p className="mb-4 font-mono text-xs text-secondary-text">Experience</p>
@@ -15,7 +15,7 @@ export default function ExperienceTimeline() {
           </div>
           <p className="max-w-[68ch] text-pretty text-base leading-7 text-secondary-text lg:pt-12">
             Across internships, research, and campus roles, I&apos;ve worked on
-            backend workflows, ML/data pipelines, robot interfaces, and tools
+            backend workflows, ML/data pipelines, research interfaces, and tools
             that make real systems easier to use, evaluate, and maintain.
           </p>
         </div>
@@ -25,7 +25,7 @@ export default function ExperienceTimeline() {
             <Reveal
               key={`${job.role}-${job.company}`}
               delay={index * 0.07}
-              className="grid gap-6 border border-border bg-surface p-5 transition-colors duration-300 hover:border-text sm:p-7 lg:grid-cols-[auto_1fr_auto]"
+              className="group grid gap-6 border border-border bg-surface p-5 transition-colors duration-300 hover:border-text sm:p-7 lg:grid-cols-[auto_1fr_auto]"
             >
               <LogoBox logo={job.logo} label={job.company} />
 
