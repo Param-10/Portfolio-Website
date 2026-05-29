@@ -44,6 +44,8 @@ import {
   Layers,
   Linkedin,
   Mail,
+  MessageSquare,
+  User,
 } from "lucide-react";
 
 export type IconComponent = ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
@@ -126,20 +128,20 @@ export const portfolio = {
   },
   navItems: [
     { icon: Home, label: "Home", href: "#home", section: "home", mobile: true },
+    { icon: User, label: "About", href: "#about", section: "about", mobile: true },
     { icon: Briefcase, label: "Experience", href: "#experience", section: "experience", mobile: true },
     { icon: GraduationCap, label: "Education", href: "#education", section: "education", mobile: true },
     { icon: Layers, label: "Projects", href: "#projects", section: "projects", mobile: true },
     { icon: Code2, label: "Skills", href: "#skills", section: "skills", mobile: true },
-    { icon: Mail, label: "Contact", href: "#contact", section: "contact", mobile: true },
+    { icon: MessageSquare, label: "Contact", href: "#contact", section: "contact", mobile: true },
   ] satisfies NavItem[],
   metadataChips: [
     "Software Engineer",
     "AI/ML Engineer",
+    "Backend/API Systems",
     "Columbia MS AI",
     "USF Computer Science",
-    "ML Engineer Intern",
-    "AI Infrastructure",
-    "Hackathon Winner",
+    "HackaBull Winner",
   ],
   projects: [
     {
@@ -218,6 +220,16 @@ export const portfolio = {
   ] satisfies Project[],
   experience: [
     {
+      role: "Student Assistant - Digital Initiatives",
+      company: "USF Libraries",
+      period: "Aug 2024 to May 2026",
+      logo: { src: withBase("/logos/usf-libraries.jpg"), fallback: "U" },
+      bullets: [
+        "Built web-scraping and validation tools to cross-check Excel records with USF Digital Commons images, reducing manual review time by 70%.",
+        "Improved cataloging accuracy by standardizing metadata for 1,000+ digital collection items.",
+      ],
+    },
+    {
       role: "Machine Learning Engineer Intern",
       company: "Finds, Inc.",
       period: "Oct 2025 to Jan 2026",
@@ -235,16 +247,6 @@ export const portfolio = {
       bullets: [
         "Collected, validated, and analyzed experiment data for an ongoing human-robot interaction research study.",
         "Built an Android research app integrating Gemini AI, Google Cloud SDK, and structured study workflows.",
-      ],
-    },
-    {
-      role: "Student Assistant - Collections and Discovery",
-      company: "USF Libraries",
-      period: "Aug 2024 to Present",
-      logo: { src: withBase("/logos/usf-libraries.jpg"), fallback: "U" },
-      bullets: [
-        "Built web-scraping and validation tools to cross-check Excel records with USF Digital Commons images, reducing manual review time by 70%.",
-        "Improved cataloging accuracy by standardizing metadata for 1,000+ digital collection items.",
       ],
     },
     {

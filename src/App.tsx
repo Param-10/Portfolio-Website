@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import AboutSection from "./components/AboutSection";
 import ContactCTA from "./components/ContactCTA";
 import DockNav from "./components/DockNav";
 import EducationSection from "./components/EducationSection";
@@ -33,6 +34,7 @@ function App() {
       <DockNav />
       <main className="pb-20 md:pb-0">
         <Hero />
+        <AboutSection />
         <ExperienceTimeline />
         <EducationSection />
         <SelectedWork />

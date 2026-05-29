@@ -5,7 +5,7 @@ export default function SelectedWork() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="py-28 md:py-36">
+    <section className="py-10 md:py-16">
       <div id="projects" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <div className="mb-12 max-w-3xl">
           <p className="mb-4 font-mono text-xs text-secondary-text">Projects</p>

@@ -25,11 +25,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[100dvh] overflow-hidden px-5 pb-16 pt-24 sm:px-6 md:pt-28 lg:flex lg:items-center"
+      className="relative isolate min-h-[100dvh] overflow-hidden px-5 pb-16 pt-16 sm:px-6 md:pt-20 lg:flex lg:items-center"
     >
       <div className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-80" />
       <div className="line-grid pointer-events-none absolute inset-x-0 top-0 -z-10 h-48 opacity-70" />
-      <div className="vertical-label pointer-events-none absolute left-5 top-1/2 hidden -translate-y-1/2 font-mono text-[11px] tracking-[0.22em] text-secondary-text xl:block">
+      <div className="vertical-label pointer-events-none absolute left-8 top-1/2 hidden -translate-y-1/2 font-mono text-[11px] tracking-[0.22em] text-text/30 xl:block">
         Software / AI / ML / AI Infra
       </div>
 
@@ -44,15 +44,8 @@ export default function Hero() {
             variants={itemVariants}
             className="text-balance text-[clamp(3.2rem,8vw,7.2rem)] font-semibold leading-[0.9] tracking-[-0.075em] text-text"
           >
-            {portfolio.name}
+            Hey, I&apos;m Paramveer
           </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="mt-6 max-w-[760px] text-balance text-2xl font-medium leading-[1.08] tracking-[-0.045em] text-text sm:text-3xl md:text-4xl lg:text-[3.15rem]"
-          >
-            {portfolio.title}
-          </motion.p>
 
           <motion.p
             variants={itemVariants}
@@ -69,7 +62,7 @@ export default function Hero() {
               href="#experience"
               className="group inline-flex min-h-11 items-center gap-2 rounded-md bg-text px-5 py-3 text-sm font-medium text-background transition-transform duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              View Experience
+              View Work
               <ArrowRight size={16} strokeWidth={1.8} className="transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
             <a
@@ -110,11 +103,11 @@ export default function Hero() {
             className="group relative"
           >
             <div className="absolute -inset-4 -z-10 translate-x-4 translate-y-4 border border-border bg-surface" />
-            <div className="relative overflow-hidden border border-text bg-background p-3 transition-colors duration-300 group-hover:border-text dark:border-border">
+            <div className="relative overflow-hidden border border-border bg-background p-3 transition-[border-color,box-shadow] duration-300 ease-out group-hover:border-text group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
               <img
                 src={portfolio.portrait}
-                alt="Paramveer Singh Bhele portrait"
-                className="aspect-[4/5] w-full object-cover grayscale contrast-[1.08] transition duration-500 ease-out group-hover:scale-[1.035] group-hover:grayscale-0"
+                alt="Paramveer portrait"
+                className="aspect-[4/5] w-full object-cover grayscale contrast-[1.08] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.035] group-hover:grayscale-0"
               />
             </div>
           </motion.div>

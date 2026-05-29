@@ -4,20 +4,12 @@ import Reveal from "./Reveal";
 
 export default function ExperienceTimeline() {
   return (
-    <section className="py-28 md:py-36">
+    <section className="py-10 md:py-16">
       <div id="experience" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
-        <div className="mb-14 grid gap-6 lg:grid-cols-[0.82fr_1fr]">
-          <div>
-            <p className="mb-4 font-mono text-xs text-secondary-text">Experience</p>
-            <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-6xl">
-              Engineering experience across software products, applied ML, research systems, and digital infrastructure.
-            </h2>
-          </div>
-          <p className="max-w-[68ch] text-pretty text-base leading-7 text-secondary-text lg:pt-12">
-            Across internships, research, and campus roles, I&apos;ve worked on
-            backend workflows, ML/data pipelines, research interfaces, and tools
-            that make real systems easier to use, evaluate, and maintain.
-          </p>
+        <div className="mb-10">
+          <h2 className="text-4xl font-semibold tracking-[-0.055em] text-text md:text-5xl">
+            Work experience.
+          </h2>
         </div>
 
         <div className="grid gap-4">

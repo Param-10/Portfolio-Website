@@ -3,7 +3,7 @@ import LogoBox from "./LogoBox";
 
 export default function EducationSection() {
   return (
-    <section className="border-y border-border bg-surface py-24 md:py-28">
+    <section className="border-y border-border bg-surface py-10 md:py-16">
       <div id="education" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
