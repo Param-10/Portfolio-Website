@@ -134,7 +134,6 @@ export const portfolio = {
     { icon: GraduationCap, label: "Education", href: "#education", section: "education", mobile: true },
     { icon: Layers, label: "Projects", href: "#projects", section: "projects", mobile: true },
     { icon: Code2, label: "Skills", href: "#skills", section: "skills", mobile: true },
-    { icon: MessageSquare, label: "Contact", href: "#contact", section: "contact", mobile: true },
   ] satisfies NavItem[],
   metadataChips: [
     "Software Engineer",

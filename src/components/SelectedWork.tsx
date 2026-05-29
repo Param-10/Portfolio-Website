@@ -8,7 +8,6 @@ export default function SelectedWork() {
     <section className="py-10 md:py-16">
       <div id="projects" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <div className="mb-12 max-w-3xl">
-          <p className="mb-4 font-mono text-xs text-secondary-text">Projects</p>
           <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-6xl">
             A few of my best projects.
           </h2>

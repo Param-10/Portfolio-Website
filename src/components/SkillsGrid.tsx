@@ -7,9 +7,8 @@ export default function SkillsGrid() {
     <section className="py-10 md:py-16">
       <div id="skills" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
         <div className="mb-14 max-w-4xl">
-          <p className="mb-4 font-mono text-xs text-secondary-text">Skills & Tools</p>
           <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-6xl">
-            A balanced toolkit across software engineering, applied AI, backend systems, and cloud tools.
+            Skills & Tools
           </h2>
         </div>
 
