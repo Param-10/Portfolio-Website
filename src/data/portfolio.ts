@@ -98,6 +98,7 @@ export type Education = {
   degree: string;
   detail: string;
   period: string;
+  location: string;
   logo: LogoMeta;
 };
 
@@ -117,7 +118,7 @@ export const portfolio = {
   name: "Paramveer Singh Bhele",
   title: "Software Engineer & AI/ML Engineer building practical intelligent systems.",
   subheadline:
-    "CS graduate from the University of South Florida and incoming Columbia MS AI student with an AI Infrastructure concentration, building across software engineering, applied ML, backend/API systems, and full-stack products.",
+    "CS graduate from the University of South Florida and incoming Columbia M.S. AI student with an AI Infrastructure concentration, building across software engineering, applied ML, backend/API systems, and full-stack products.",
   portrait: withBase("/paramveer-portrait.jpg"),
   resume: withBase("/resume.pdf"),
   email: "bheleparamveer@gmail.com",
@@ -139,7 +140,7 @@ export const portfolio = {
     "Software Engineer",
     "AI/ML Engineer",
     "Backend/API Systems",
-    "Columbia MS AI",
+    "Columbia M.S. AI",
     "USF Computer Science",
     "HackaBull Winner",
   ],
@@ -263,9 +264,10 @@ export const portfolio = {
   education: [
     {
       school: "Columbia University",
-      degree: "MS in Artificial Intelligence",
+      degree: "M.S. in Artificial Intelligence",
       detail: "Concentration: AI Infrastructure",
       period: "Start: Aug 2026",
+      location: "New York City, NY",
       logo: { src: withBase("/logos/columbia.svg"), fallback: "C" },
     },
     {
@@ -273,6 +275,7 @@ export const portfolio = {
       degree: "B.S. in Computer Science",
       detail: "Minor: Entrepreneurship",
       period: "Aug 2022 - May 2026",
+      location: "Tampa, FL",
       logo: { src: withBase("/logos/usf.svg"), fallback: "U" },
     },
   ] satisfies Education[],

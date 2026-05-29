@@ -5,13 +5,10 @@ export default function EducationSection() {
   return (
     <section className="border-y border-border bg-surface py-10 md:py-16">
       <div id="education" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
-        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <div>
-            <p className="mb-4 font-mono text-xs text-secondary-text">Education</p>
-            <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-5xl">
-              Formal CS foundation with a focused AI graduate path.
-            </h2>
-          </div>
+        <div className="mb-10">
+          <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-5xl">
+            Education
+          </h2>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
@@ -27,6 +24,7 @@ export default function EducationSection() {
                     <h3 className="text-2xl font-semibold tracking-[-0.04em] text-text">
                       {item.school}
                     </h3>
+                    <p className="mt-1 font-mono text-[11px] text-secondary-text">{item.location}</p>
                     <p className="mt-2 text-base text-secondary-text">{item.degree}</p>
                   </div>
                   <p className="shrink-0 font-mono text-xs leading-6 text-secondary-text sm:text-right">

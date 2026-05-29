@@ -22,7 +22,7 @@ export default function AboutSection() {
 
                 <p>
                   I&apos;m a <strong className="font-semibold text-text">Computer Science graduate from the University of South Florida</strong> with
-                  a minor in Entrepreneurship, and an incoming <strong className="font-semibold text-text">Columbia MS AI student</strong> with an
+                  a minor in Entrepreneurship, and an incoming <strong className="font-semibold text-text">Columbia M.S. AI student</strong> with an
                   AI Infrastructure concentration. Along the way, I&apos;ve received academic recognition through the
                   <strong className="font-semibold text-text"> USF Green and Gold Directors Award</strong>,
                   <strong className="font-semibold text-text"> Annette L. Raymund Endowed Scholarship Fund</strong>,
