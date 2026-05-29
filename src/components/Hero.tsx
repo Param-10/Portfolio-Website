@@ -106,7 +106,7 @@ export default function Hero() {
             <div className="relative overflow-hidden border border-border bg-background p-3 transition-[border-color,box-shadow] duration-300 ease-out group-hover:border-text group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
               <img
                 src={portfolio.portrait}
-                alt="Paramveer portrait"
+                alt="Paramveer Singh Bhele - Software Engineer & AI/ML Engineer portrait"
                 className="aspect-[4/5] w-full object-cover grayscale contrast-[1.08] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.035] group-hover:grayscale-0"
               />
             </div>

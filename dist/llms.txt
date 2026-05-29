@@ -1,0 +1,38 @@
+# Paramveer Singh Bhele
+
+> Software Engineer and AI/ML Engineer building practical intelligent systems.
+
+Portfolio of Paramveer Singh Bhele — a Computer Science graduate from the University of South Florida (minor in Entrepreneurship) and incoming Columbia University M.S. AI student (AI Infrastructure concentration).
+
+## Docs
+
+- [Home](https://paramveerbhele.com/): Official personal website and portfolio showcasing background, projects, work experience, education, and technical skills.
+- [Resume](https://paramveerbhele.com/resume.pdf): Professional PDF resume outlining engineering experience, academic scholarships, and core competencies.
+
+## Key Projects
+
+- [Polaris](https://github.com/Param-10/hackthebay): Gemini-powered GitHub App scanning infrastructure-as-code pull requests for security risks. (Demo: https://polaris-livid-one.vercel.app/)
+- [Adversarial Spam Detection](https://github.com/Param-10/adversarial-spam-detection): Adversarial machine learning pipeline alternating BERT tuning with Qwen3-4B spam generation.
+- [CarbonCTRL](https://github.com/Param-10/CarbonCTRL): AI-powered emissions platform estimating company carbon footprint and reduction plans. (Demo: https://carbonctrl.us)
+- [RARE Lab Research](https://paramveerbhele.com/): Human-robot interaction research and data systems using Android, Gemini AI, and Google Cloud SDK.
+
+## Experience
+
+- **Student Assistant - Digital Initiatives** (USF Libraries, Aug 2024 - May 2026): Built data validation and web scraping scripts to automate cataloging records.
+- **Machine Learning Engineer Intern** (Finds, Inc., Oct 2025 - Jan 2026): Integrated internal ML model inference pipelines and designed database schemas.
+- **Undergraduate Research Assistant** (RARE Lab, Feb 2025 - Jul 2025): Developed human-robot research software on Android integrating Gemini AI.
+- **App Developer Intern** (Coefficient Software Systems, May 2022 - Jul 2022): Constructed product benchmarking datasets and supported mobile app updates.
+
+## Key Facts
+
+- Deployed URL: https://paramveerbhele.com/
+- Background: B.S. in Computer Science (University of South Florida), M.S. in Artificial Intelligence (Columbia University, incoming)
+- Scholarships: USF Green & Gold Director's Award, Annette L. Raymund Endowed Scholarship, CS Foundation Scholarship, Engineering Annual Fund Scholarship
+- Technical Focus: Software Engineering, Applied AI/ML, Backend/API Systems, Full-stack Products, AI Infrastructure
+
+## Contact
+
+- Website: https://paramveerbhele.com/
+- Email: bheleparamveer@gmail.com
+- LinkedIn: https://www.linkedin.com/in/paramveer-singh-bhele/
+- GitHub: https://github.com/Param-10
