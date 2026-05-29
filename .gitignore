@@ -3,6 +3,9 @@ node_modules
 /.pnp
 .pnp.js
 
+# Agent skills (local only)
+.agents
+
 # Testing
 /coverage
 
