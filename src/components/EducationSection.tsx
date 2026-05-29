@@ -24,12 +24,12 @@ export default function EducationSection() {
                     <h3 className="text-2xl font-semibold tracking-[-0.04em] text-text">
                       {item.school}
                     </h3>
-                    <p className="mt-1 font-mono text-[11px] text-secondary-text">{item.location}</p>
                     <p className="mt-2 text-base text-secondary-text">{item.degree}</p>
                   </div>
-                  <p className="shrink-0 font-mono text-xs leading-6 text-secondary-text sm:text-right">
-                    {item.period}
-                  </p>
+                  <div className="shrink-0 font-mono text-xs leading-6 text-secondary-text sm:text-right">
+                    <p>{item.period}</p>
+                    <p className="text-[11px] opacity-80">{item.location}</p>
+                  </div>
                 </div>
                 <p className="mt-6 border-l border-border pl-4 font-mono text-xs leading-6 text-text">
                   {item.detail}

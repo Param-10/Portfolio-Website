@@ -10,7 +10,7 @@ export default function SelectedWork() {
         <div className="mb-12 max-w-3xl">
           <p className="mb-4 font-mono text-xs text-secondary-text">Projects</p>
           <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-6xl">
-            Practical intelligent systems, from pull-request security to applied ML products.
+            A few of my best projects.
           </h2>
         </div>
 

@@ -266,7 +266,7 @@ export const portfolio = {
       school: "Columbia University",
       degree: "M.S. in Artificial Intelligence",
       detail: "Concentration: AI Infrastructure",
-      period: "Start: Aug 2026",
+      period: "Sep 2026 - Dec 2027",
       location: "New York City, NY",
       logo: { src: withBase("/logos/columbia.svg"), fallback: "C" },
     },
