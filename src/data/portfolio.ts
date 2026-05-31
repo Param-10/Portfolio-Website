@@ -76,7 +76,7 @@ export type Project = {
   title: string;
   description: string;
   tech: string[];
-  outcome: string;
+  image?: string;
   links: ProjectLink[];
 };
 
@@ -149,11 +149,10 @@ export const portfolio = {
     {
       number: "01",
       title: "Polaris",
+      image: withBase("/projects/polaris.png"),
       description:
-        "Gemini-powered GitHub App that scans infrastructure-as-code pull requests and posts security findings fast.",
+        "An AI-powered GitHub App that reviews infrastructure-as-code pull requests, maps findings to CIS/SOC 2 controls, and proposes verified fixes before merge.",
       tech: ["FastAPI", "Next.js", "PostgreSQL", "GitHub App", "Gemini API"],
-      outcome:
-        "Maps risks to CIS/SOC 2 controls and verifies generated fixes before developer approval.",
       links: [
         {
           label: "GitHub",
@@ -169,12 +168,65 @@ export const portfolio = {
     },
     {
       number: "02",
+      title: "CarbonCTRL",
+      image: withBase("/projects/carbonctrl.png"),
+      description:
+        "An award-winning emissions platform that estimates carbon impact, visualizes sustainability data, and generates AI-assisted reduction strategies for better operational decisions.",
+      tech: ["React", "Node.js", "MongoDB", "Gemini API"],
+      links: [
+        {
+          label: "GitHub",
+          href: "https://github.com/Param-10/CarbonCTRL",
+          icon: Github,
+        },
+        {
+          label: "Demo",
+          href: "https://carbonctrl.us/",
+          icon: ExternalLink,
+        },
+      ],
+    },
+    {
+      number: "03",
+      title: "MatchUp",
+      image: withBase("/projects/matchup.png"),
+      description:
+        "A product design prototype that helps university students discover, host, and coordinate casual pickup sports games on campus.",
+      tech: ["Figma", "UX Research", "Prototyping", "User Flows", "Product Design"],
+      links: [
+        {
+          label: "Demo",
+          href: "https://www.figma.com/proto/Emt4q3haUbMuuTtaN8NkY7/MatchUp---Final?node-id=17-228&t=bCCFSTP2wl0lS168-1",
+          icon: ExternalLink,
+        },
+      ],
+    },
+    {
+      number: "04",
+      title: "BullRunner",
+      image: withBase("/projects/bullrunner.png"),
+      description:
+        "A map-first USF transit tracker showing live bus positions, route overlays, searchable stops, service alerts, and estimated arrivals using Passio API data.",
+      tech: ["JavaScript", "Mapbox GL JS", "Passio API", "HTML", "CSS"],
+      links: [
+        {
+          label: "GitHub",
+          href: "https://github.com/Param-10/bullrunner-2",
+          icon: Github,
+        },
+        {
+          label: "Demo",
+          href: "https://param-10.github.io/bullrunner-2/",
+          icon: ExternalLink,
+        },
+      ],
+    },
+    {
+      number: "05",
       title: "Adversarial Spam Detection",
       description:
-        "Adversarial ML pipeline alternating BERT classifier tuning with Qwen3-4B spam generation.",
-      tech: ["Python", "PyTorch", "BERT", "Qwen3-4B", "LoRA", "Transformers"],
-      outcome:
-        "Improved spam detection from 91.7% to 95.7% while maintaining 96.5% accuracy.",
+        "An adversarial ML pipeline that improves SMS spam detection by training a BERT classifier against LLM-generated attack examples from Qwen3-4B.",
+      tech: ["Python", "BERT", "Qwen3-4B", "LoRA", "PyTorch", "Transformers"],
       links: [
         {
           label: "GitHub",
@@ -184,38 +236,57 @@ export const portfolio = {
       ],
     },
     {
-      number: "03",
-      title: "CarbonCTRL",
+      number: "06",
+      title: "LawyerUP",
+      image: withBase("/projects/lawyerup.png"),
       description:
-        "AI-powered emissions platform that estimates company CO2 impact and generates reduction plans.",
-      tech: ["React", "Node.js", "MongoDB", "Gemini API"],
-      outcome:
-        "Ranked 1st of 70+ projects at HackaBull 2025 for Best Use of Gemini API.",
+        "A multi-agent legal intake workspace that turns client stories into structured summaries, triage signals, evidence checklists, and attorney-matching recommendations.",
+      tech: ["Python", "Flask", "Gemini", "SQLite", "Multi-Agent"],
       links: [
         {
           label: "GitHub",
-          href: "https://github.com/Param-10/CarbonCTRL",
+          href: "https://github.com/Param-10/knight-hacks",
+          icon: Github,
+        },
+      ],
+    },
+    {
+      number: "07",
+      title: "Portfolio Website",
+      image: withBase("/projects/portfolio.png"),
+      description:
+        "A responsive developer portfolio with dock navigation, dark mode, motion interactions, project showcases, and SEO/GEO/AEO hardening.",
+      tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite"],
+      links: [
+        {
+          label: "GitHub",
+          href: "https://github.com/Param-10/Portfolio-Website",
           icon: Github,
         },
         {
           label: "Demo",
-          href: "https://carbonctrl.us",
+          href: "https://paramveerbhele.com/portfolio/",
           icon: ExternalLink,
         },
       ],
     },
     {
-      number: "04",
-      title: "RARE Lab Research",
+      number: "08",
+      title: "Focus Timer PRO",
+      image: withBase("/projects/focus_timer.png"),
       description:
-        "Research systems and Android app development for a USF human-robot interaction study using Gemini AI, Google Cloud SDK, Python, and structured experiment workflows.",
-      tech: ["Android", "Gemini AI", "Google Cloud SDK", "Python", "Research Systems"],
-      outcome:
-        "Supported data validation, analysis, and AI-assisted study workflows for an active research project.",
+        "A privacy-first Chrome extension for focus and recovery cycles with customizable Pomodoro timers, mindful prompts, and local-only settings.",
+      tech: ["JavaScript", "Chrome Extension", "MV3", "chrome.storage", "chrome.alarms"],
       links: [
         {
-          label: "Research",
-          icon: BookOpen,
+          label: "GitHub",
+          href: "https://github.com/Param-10/Focus-Timer-Extension",
+          icon: Github,
+        },
+        {
+          label: "Demo",
+          href: "https://chromewebstore.google.com/detail/focus-timer-pro/bbmnnmmfgdefdhipfjiefioodbfhohde",
+          icon: ExternalLink,
         },
       ],
     },
@@ -263,7 +334,8 @@ export const portfolio = {
       period: "May 2024 to Jun 2024",
       logo: { src: withBase("/logos/goldman-sachs.svg"), fallback: "GS" },
       bullets: [
-        "Selected for the highly selective Goldman Sachs Virtual Insight Series, completed intensive workshops on markets, technology, and digital strategy.",
+        "Selected for the Goldman Sachs Virtual Insight Series and completed workshops on markets, technology, digital strategy, and professional development.",
+        "Built exposure to financial services through speaker sessions, case discussions, and analyst-led learning modules.",
       ],
       websiteUrl: "https://www.goldmansachs.com/",
       linkedinUrl: "https://www.linkedin.com/company/goldman-sachs/posts/?feedView=all",
@@ -274,7 +346,8 @@ export const portfolio = {
       period: "Apr 2023 to Aug 2024",
       logo: { src: withBase("/logos/usf.svg"), fallback: "U" },
       bullets: [
-        "Mentored 25+ students in Calculus and led weekly EGN 4930 sessions, achieving 100% participation and measurable gains in problem-solving.",
+        "Mentored 25+ engineering students in Calculus through weekly EGN 4930 sessions, improving problem-solving confidence and participation.",
+        "Designed practice drills, explained technical concepts, and facilitated peer discussions to sustain 100% session engagement.",
       ],
       websiteUrl: "https://www.usf.edu/engineering/",
       linkedinUrl: "https://www.linkedin.com/company/usf-college-of-engineering/posts/?feedView=all",
@@ -323,7 +396,6 @@ export const portfolio = {
         { name: "C++", icon: SiCplusplus, color: "#00599C" },
         { name: "Java", icon: FaJava, color: "#E76F00" },
         { name: "C#", icon: TbBrandCSharp, color: "#68217A" },
-        { name: ".NET", icon: SiDotnet, color: "#512BD4" },
       ],
     },
     {

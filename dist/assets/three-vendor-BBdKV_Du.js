@@ -1,0 +1,1 @@
+import"./framer-motion-ChXluEjL.js";import{r}from"./react-vendor-CXBq7yNp.js";var o,t={};var e=function(){if(o)return t;o=1;var e=r();return t.createRoot=e.createRoot,t.hydrateRoot=e.hydrateRoot,t}();export{e as c};

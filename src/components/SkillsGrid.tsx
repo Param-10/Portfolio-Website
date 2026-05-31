@@ -35,18 +35,18 @@ export default function SkillsGrid() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2.5">
+              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 w-full">
                 {group.skills.map((skill) => (
                   <span
                     key={skill.name}
                     style={{ "--skill-color": skill.color } as CSSProperties}
-                    className="group/skill inline-flex min-h-11 items-center gap-2.5 rounded-full border border-border bg-background px-3.5 py-2 text-sm font-medium text-text shadow-[0_1px_0_rgba(0,0,0,0.03)] transition duration-300 hover:-translate-y-0.5 hover:border-text hover:shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
+                    className="group/skill inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-border bg-background px-3 py-2 text-sm font-medium text-text shadow-[0_1px_0_rgba(0,0,0,0.03)] transition duration-300 hover:-translate-y-0.5 hover:border-text hover:shadow-[0_10px_24px_rgba(0,0,0,0.06)] w-full"
                   >
                     <skill.icon
-                      size={20}
+                      size={18}
                       className="shrink-0 text-secondary-text transition duration-300 group-hover/skill:text-[var(--skill-color)]"
                     />
-                    <span>{skill.name}</span>
+                    <span className="truncate text-xs sm:text-sm">{skill.name}</span>
                   </span>
                 ))}
               </div>

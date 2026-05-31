@@ -5,6 +5,7 @@ node_modules
 
 # Agent skills (local only)
 .agents
+.agent
 
 # Testing
 /coverage
