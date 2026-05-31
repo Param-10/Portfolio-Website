@@ -91,6 +91,8 @@ export type Experience = {
   period: string;
   logo: LogoMeta;
   bullets: string[];
+  websiteUrl?: string;
+  linkedinUrl?: string;
 };
 
 export type Education = {
@@ -228,6 +230,8 @@ export const portfolio = {
         "Built web-scraping and validation tools to cross-check Excel records with USF Digital Commons images, reducing manual review time by 70%.",
         "Improved cataloging accuracy by standardizing metadata for 1,000+ digital collection items.",
       ],
+      websiteUrl: "https://lib.usf.edu/",
+      linkedinUrl: "https://www.linkedin.com/company/university-of-south-florida-libraries/posts/?feedView=all",
     },
     {
       role: "Machine Learning Engineer Intern",
@@ -238,6 +242,8 @@ export const portfolio = {
         "Integrated in-house ML models into backend services for reliable internal inference workflows.",
         "Designed PostgreSQL schemas, metadata pipelines, and validation checks for image data.",
       ],
+      websiteUrl: "https://thefinds.ai/",
+      linkedinUrl: "https://www.linkedin.com/company/finds-ai/posts/?feedView=all",
     },
     {
       role: "Undergraduate Research Assistant",
@@ -248,6 +254,30 @@ export const portfolio = {
         "Collected, validated, and analyzed experiment data for an ongoing human-robot interaction research study.",
         "Built an Android research app integrating Gemini AI, Google Cloud SDK, and structured study workflows.",
       ],
+      websiteUrl: "https://therarelab.com/people/paramveer-singh-bhele/",
+      linkedinUrl: "https://www.linkedin.com/company/therarelab/posts/?feedView=all",
+    },
+    {
+      role: "Virtual Insight Series",
+      company: "Goldman Sachs",
+      period: "May 2024 to Jun 2024",
+      logo: { src: withBase("/logos/goldman-sachs.svg"), fallback: "GS" },
+      bullets: [
+        "Selected for the highly selective Goldman Sachs Virtual Insight Series, completed intensive workshops on markets, technology, and digital strategy.",
+      ],
+      websiteUrl: "https://www.goldmansachs.com/",
+      linkedinUrl: "https://www.linkedin.com/company/goldman-sachs/posts/?feedView=all",
+    },
+    {
+      role: "Peer Mentor for Learning Team",
+      company: "USF College of Engineering",
+      period: "Apr 2023 to Aug 2024",
+      logo: { src: withBase("/logos/usf.svg"), fallback: "U" },
+      bullets: [
+        "Mentored 25+ students in Calculus and led weekly EGN 4930 sessions, achieving 100% participation and measurable gains in problem-solving.",
+      ],
+      websiteUrl: "https://www.usf.edu/engineering/",
+      linkedinUrl: "https://www.linkedin.com/company/usf-college-of-engineering/posts/?feedView=all",
     },
     {
       role: "App Developer Intern",
@@ -258,6 +288,8 @@ export const portfolio = {
         "Built product benchmarking datasets by profiling 500+ universities across US, UK, and Australian markets.",
         "Improved app usability for 100,000+ downloads by refining UI flows and supporting production updates.",
       ],
+      websiteUrl: "https://coefficientindia.com/",
+      linkedinUrl: "https://www.linkedin.com/company/coefficient-software-systems-private-limited/about/",
     },
   ] satisfies Experience[],
   education: [

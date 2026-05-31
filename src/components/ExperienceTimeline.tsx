@@ -1,3 +1,4 @@
+import { ExternalLink, Linkedin } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import LogoBox from "./LogoBox";
 import Reveal from "./Reveal";
@@ -41,9 +42,44 @@ export default function ExperienceTimeline() {
                 </ul>
               </div>
 
-              <p className="font-mono text-xs leading-6 text-secondary-text lg:text-right">
-                {job.period}
-              </p>
+              <div className="flex flex-col items-end justify-between gap-4">
+                <p className="font-mono text-xs leading-6 text-secondary-text lg:text-right">
+                  {job.period}
+                </p>
+
+                {(job.websiteUrl || job.linkedinUrl) && (
+                  <div className="flex gap-2">
+                    {job.websiteUrl && (
+                      <a
+                        href={job.websiteUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group/link relative grid size-8 place-items-center rounded-full border border-border text-secondary-text transition-colors duration-200 hover:border-text hover:text-text"
+                        aria-label={`${job.company} website`}
+                      >
+                        <ExternalLink size={14} strokeWidth={1.9} />
+                        <span className="pointer-events-none absolute -bottom-8 whitespace-nowrap rounded-md border border-border bg-text px-2 py-0.5 font-mono text-[10px] text-background opacity-0 transition-opacity duration-200 group-hover/link:opacity-100">
+                          Website
+                        </span>
+                      </a>
+                    )}
+                    {job.linkedinUrl && (
+                      <a
+                        href={job.linkedinUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group/link relative grid size-8 place-items-center rounded-full border border-border text-secondary-text transition-colors duration-200 hover:border-text hover:text-text"
+                        aria-label={`${job.company} LinkedIn`}
+                      >
+                        <Linkedin size={14} strokeWidth={1.9} />
+                        <span className="pointer-events-none absolute -bottom-8 whitespace-nowrap rounded-md border border-border bg-text px-2 py-0.5 font-mono text-[10px] text-background opacity-0 transition-opacity duration-200 group-hover/link:opacity-100">
+                          LinkedIn
+                        </span>
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
             </Reveal>
           ))}
         </div>
