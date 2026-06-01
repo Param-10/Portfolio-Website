@@ -163,7 +163,7 @@ function ProjectImage({ src, alt, title }: { src?: string; alt: string; title: s
         src={src}
         alt={alt}
         onError={() => setHasError(true)}
-        className={`size-full ${isMobileMockup ? "object-contain p-2" : "object-cover"} transition-transform duration-500 group-hover:scale-[1.03]`}
+        className={`size-full ${isMobileMockup ? "object-contain p-2" : "object-cover object-top"} grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.03]`}
         loading="lazy"
       />
     </div>

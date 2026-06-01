@@ -265,7 +265,7 @@ export const portfolio = {
         },
         {
           label: "Demo",
-          href: "https://paramveerbhele.com/portfolio/",
+          href: "https://paramveerbhele.com/",
           icon: ExternalLink,
         },
       ],
