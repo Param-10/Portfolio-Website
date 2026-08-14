@@ -1,7 +1,8 @@
 RewriteEngine On
 RewriteBase /portfolio/
-RewriteRule ^index\.html$ - [L]
+RewriteCond %{THE_REQUEST} \s/+portfolio/index\.html(?:[?\s]) [NC]
+RewriteRule ^index\.html$ /portfolio/ [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
-RewriteRule . /portfolio/index.html [L] 
+RewriteRule . /portfolio/index.html [L]

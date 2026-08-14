@@ -1,52 +1,57 @@
 import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
+
+const focusAreas = [
+  ["01", "AI product systems", "Model workflows, evaluation, and reliable application boundaries."],
+  ["02", "Backend infrastructure", "APIs, persistence, data pipelines, and deployment paths."],
+  ["03", "Product engineering", "Interfaces and tools that make technical systems useful."],
+];
 
 export default function AboutSection() {
   return (
-    <section className="py-10 md:py-16">
-      <div id="about" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
+    <section id="about" aria-labelledby="about-heading" className="scroll-mt-24 py-20 sm:py-24 md:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <Reveal>
-          <div className="border-t border-border pt-10">
+          <div className="grid gap-10 border-b border-border pb-10 lg:grid-cols-[0.78fr_1.1fr] lg:items-end lg:gap-20 lg:pb-12">
+            <SectionHeader id="about-heading" eyebrow="About" title="Systems behind the model." />
+            <p className="max-w-[62ch] text-pretty text-xl font-medium leading-8 tracking-[-0.025em] text-text sm:text-2xl sm:leading-9">
+              I build software at the intersection of backend engineering and applied AI — from developer tools and ML pipelines to full-stack products and research systems.
+            </p>
+          </div>
 
-            <div className="grid gap-8 lg:grid-cols-[0.82fr_1fr]">
-              <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-5xl">
-                A bit about me.
-              </h2>
-
-              <div className="max-w-[68ch] space-y-5 text-pretty text-base leading-7 text-secondary-text">
-                <p>
-                  I enjoy building software that turns technical ideas into reliable, real-world systems.
-                  My work sits between <strong className="font-semibold text-text">software engineering</strong> and <strong className="font-semibold text-text">applied AI</strong>,
-                  from full-stack products and backend workflows to ML pipelines, data tools, and user-facing
-                  applications.
-                </p>
-
-                <p>
-                  I&apos;m a <strong className="font-semibold text-text">Computer Science graduate from the University of South Florida</strong> with
-                  a minor in Entrepreneurship, and an incoming <strong className="font-semibold text-text">Columbia M.S. AI student</strong> with an
-                  AI Infrastructure concentration. Along the way, I&apos;ve received academic recognition through the
-                  <strong className="font-semibold text-text"> USF Green and Gold Directors Award</strong>,
-                  <strong className="font-semibold text-text"> Annette L. Raymund Endowed Scholarship Fund</strong>,
-                  <strong className="font-semibold text-text"> Computer Science Foundation Scholarship</strong>, and
-                  <strong className="font-semibold text-text"> Engineering Annual Fund Scholarship</strong>.
-                </p>
-
-                <p>
-                  I&apos;ve worked as a <strong className="font-semibold text-text">Machine Learning Engineer Intern</strong>,
-                  <strong className="font-semibold text-text"> Undergraduate Research Assistant at RARE Lab</strong>,
-                  <strong className="font-semibold text-text"> Student Assistant at USF Libraries</strong>, Peer Mentor for engineering students,
-                  and App Developer Intern. Across these roles, I&apos;ve worked on backend model workflows, metadata
-                  validation tools, research systems, mobile applications, and software used by real users.
-                </p>
-
-                <p>
-                  Outside of technical work, I&apos;ve led and supported student organizations at USF as
-                  <strong className="font-semibold text-text"> Head of Logistics for TEDx at USF</strong>,
-                  <strong className="font-semibold text-text"> Vice President of the Students of India Association</strong>, and
-                  <strong className="font-semibold text-text"> Database Director for SHPE</strong>. I also won the
-                  <strong className="font-semibold text-text"> Best Use of Gemini API</strong> track at HackaBull 2025 with CarbonCTRL,
-                  ranking 1st among 70+ projects.
-                </p>
+          <div className="grid border-b border-border sm:grid-cols-3">
+            {focusAreas.map(([number, title, description], index) => (
+              <div
+                key={title}
+                className={`grid grid-cols-[auto_1fr] gap-4 py-6 sm:px-6 ${
+                  index === 0 ? "sm:pl-0" : "border-t border-border sm:border-l sm:border-t-0"
+                }`}
+              >
+                <span className="font-mono text-[10px] text-secondary-text">{number}</span>
+                <div>
+                  <h3 className="text-sm font-medium text-text">{title}</h3>
+                  <p className="mt-2 text-xs leading-5 text-secondary-text">{description}</p>
+                </div>
               </div>
+            ))}
+          </div>
+
+          <div className="grid gap-10 pt-10 lg:grid-cols-2 lg:gap-20 lg:pt-12">
+            <div className="grid gap-4 sm:grid-cols-[7rem_1fr]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary-text">
+                Background
+              </p>
+              <p className="text-pretty text-base leading-8 text-secondary-text">
+                I graduated from the University of South Florida with a B.S. in Computer Science and minor in Entrepreneurship, and I am pursuing an M.S. in Artificial Intelligence at Columbia University with a focus on AI Infrastructure.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-[7rem_1fr]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary-text">
+                Current focus
+              </p>
+              <p className="text-pretty text-base leading-8 text-secondary-text">
+                I&apos;m particularly interested in APIs, model workflows, infrastructure, data pipelines, evaluation, and the software needed to turn models into reliable products.
+              </p>
             </div>
           </div>
         </Reveal>

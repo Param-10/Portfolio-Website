@@ -2,33 +2,63 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8f8f6" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#090909" media="(prefers-color-scheme: dark)" />
+
     <title>Paramveer Singh Bhele | Software Engineer &amp; AI/ML Engineer</title>
-    <meta name="description" content="Portfolio of Paramveer Singh Bhele, a Software Engineer and AI/ML Engineer building practical intelligent systems across full-stack products, backend/API systems, applied ML, AI infrastructure, and research-driven software." />
+    <meta
+      name="description"
+      content="Paramveer Singh Bhele is a software engineer and Columbia M.S. Artificial Intelligence student building AI systems, backend infrastructure, ML applications, and full-stack products."
+    />
     <meta name="author" content="Paramveer Singh Bhele" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href="https://paramveerbhele.com/portfolio/" />
+    <link rel="alternate" type="application/pdf" href="https://paramveerbhele.com/portfolio/resume.pdf" title="Paramveer Singh Bhele résumé" />
 
-    <!-- Open Graph Metadata -->
-    <meta property="og:site_name" content="Paramveer Singh Bhele Portfolio" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href="/paramveer-portrait.webp" type="image/webp" fetchpriority="high" />
+
+    <meta property="og:site_name" content="Paramveer Singh Bhele" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://paramveerbhele.com/portfolio/" />
     <meta property="og:title" content="Paramveer Singh Bhele | Software Engineer &amp; AI/ML Engineer" />
-    <meta property="og:description" content="Portfolio of Paramveer Singh Bhele, a Software Engineer and AI/ML Engineer building practical intelligent systems across full-stack products, backend/API systems, applied ML, AI infrastructure, and research-driven software." />
-    <meta property="og:image" content="https://paramveerbhele.com/portfolio/paramveer-portrait.jpg" />
+    <meta
+      property="og:description"
+      content="Software engineer building AI systems, backend infrastructure, ML applications, and production products."
+    />
+    <meta property="og:image" content="https://paramveerbhele.com/portfolio/og-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Paramveer Singh Bhele — Software Engineering, AI Systems, and Infrastructure" />
+    <meta property="profile:first_name" content="Paramveer" />
+    <meta property="profile:last_name" content="Bhele" />
 
-    <!-- Twitter Card Metadata -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Paramveer Singh Bhele | Software Engineer &amp; AI/ML Engineer" />
-    <meta name="twitter:description" content="Portfolio of Paramveer Singh Bhele, a Software Engineer and AI/ML Engineer building practical intelligent systems across full-stack products, backend/API systems, applied ML, AI infrastructure, and research-driven software." />
-    <meta name="twitter:image" content="https://paramveerbhele.com/portfolio/paramveer-portrait.jpg" />
+    <meta
+      name="twitter:description"
+      content="Software engineer building AI systems, backend infrastructure, ML applications, and production products."
+    />
+    <meta name="twitter:image" content="https://paramveerbhele.com/portfolio/og-card.png" />
+    <meta name="twitter:image:alt" content="Paramveer Singh Bhele — Software Engineering, AI Systems, and Infrastructure" />
 
-    <!-- JSON-LD Structured Data -->
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        try {
+          const savedTheme = localStorage.getItem("theme");
+          document.documentElement.classList.toggle("dark", savedTheme ? savedTheme === "dark" : prefersDark);
+        } catch {
+          document.documentElement.classList.toggle("dark", prefersDark);
+        }
+      })();
+    </script>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -37,20 +67,16 @@
             "@type": "WebSite",
             "@id": "https://paramveerbhele.com/portfolio/#website",
             "url": "https://paramveerbhele.com/portfolio/",
-            "name": "Paramveer Singh Bhele Portfolio",
-            "description": "Portfolio of Paramveer Singh Bhele, a Software Engineer and AI/ML Engineer building practical intelligent systems.",
-            "publisher": {
-              "@id": "https://paramveerbhele.com/portfolio/#person"
-            }
+            "name": "Paramveer Singh Bhele",
+            "description": "Software engineering and AI systems portfolio of Paramveer Singh Bhele.",
+            "publisher": { "@id": "https://paramveerbhele.com/portfolio/#person" }
           },
           {
             "@type": "ProfilePage",
             "@id": "https://paramveerbhele.com/portfolio/#profile",
             "url": "https://paramveerbhele.com/portfolio/",
-            "name": "Paramveer Singh Bhele Portfolio Profile Page",
-            "mainEntity": {
-              "@id": "https://paramveerbhele.com/portfolio/#person"
-            }
+            "name": "Paramveer Singh Bhele | Software Engineer & AI/ML Engineer",
+            "mainEntity": { "@id": "https://paramveerbhele.com/portfolio/#person" }
           },
           {
             "@type": "Person",
@@ -60,44 +86,25 @@
             "url": "https://paramveerbhele.com/portfolio/",
             "email": "mailto:bheleparamveer@gmail.com",
             "image": "https://paramveerbhele.com/portfolio/paramveer-portrait.jpg",
-            "jobTitle": "Software Engineer & AI/ML Engineer",
+            "jobTitle": "Software Engineer",
+            "description": "Software engineer building AI systems, backend infrastructure, and production products.",
             "alumniOf": {
-              "@type": "EducationalOrganization",
-              "name": "University of South Florida",
-              "location": {
-                "@type": "Place",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "Tampa",
-                  "addressRegion": "FL",
-                  "addressCountry": "US"
-                }
-              }
+              "@type": "CollegeOrUniversity",
+              "name": "University of South Florida"
             },
             "affiliation": {
-              "@type": "EducationalOrganization",
-              "name": "Columbia University",
-              "location": {
-                "@type": "Place",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "New York City",
-                  "addressRegion": "NY",
-                  "addressCountry": "US"
-                }
-              }
+              "@type": "CollegeOrUniversity",
+              "name": "Columbia University"
             },
             "knowsAbout": [
               "Software Engineering",
               "Artificial Intelligence",
-              "Machine Learning",
-              "Applied ML",
+              "Machine Learning Engineering",
               "AI Infrastructure",
               "Backend Systems",
-              "API Systems",
-              "Full-Stack Web Development",
-              "Robotics Research",
-              "Computer Science"
+              "Data Pipelines",
+              "Model Evaluation",
+              "Full-Stack Product Engineering"
             ],
             "sameAs": [
               "https://github.com/Param-10",
@@ -110,6 +117,9 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p>This portfolio needs JavaScript for navigation enhancements. Its full content is included in the page HTML.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

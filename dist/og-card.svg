@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Paramveer Singh Bhele</title>
+  <desc id="description">Software Engineering, AI Systems, and Infrastructure</desc>
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M 44 0 L 0 0 0 44" fill="none" stroke="#292927" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#090909"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.55"/>
+  <rect x="68" y="68" width="1064" height="494" fill="#10100f" stroke="#343431"/>
+  <text x="112" y="140" fill="#aaa9a4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="2.4">
+    SOFTWARE ENGINEERING · AI SYSTEMS · INFRASTRUCTURE
+  </text>
+  <text x="108" y="302" fill="#f2f2ef" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700" letter-spacing="-4">
+    Paramveer Singh Bhele
+  </text>
+  <text x="112" y="372" fill="#aaa9a4" font-family="Arial, Helvetica, sans-serif" font-size="30">
+    Building AI systems, backend infrastructure,
+  </text>
+  <text x="112" y="412" fill="#aaa9a4" font-family="Arial, Helvetica, sans-serif" font-size="30">
+    and production products.
+  </text>
+  <line x1="112" y1="480" x2="1088" y2="480" stroke="#343431"/>
+  <text x="112" y="522" fill="#f2f2ef" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="1">
+    COLUMBIA M.S. AI ’27  /  USF COMPUTER SCIENCE ’26
+  </text>
+</svg>

@@ -1,55 +1,55 @@
-import type { CSSProperties } from "react";
 import { portfolio } from "../data/portfolio";
 import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
 
 export default function SkillsGrid() {
   return (
-    <section className="py-10 md:py-16">
-      <div id="skills" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
-        <div className="mb-14 max-w-4xl">
-          <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-6xl">
-            Skills & Tools
-          </h2>
-        </div>
+    <section
+      id="skills"
+      aria-labelledby="skills-heading"
+      className="scroll-mt-24 border-y border-border bg-surface py-20 sm:py-24 md:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <SectionHeader
+          id="skills-heading"
+          eyebrow="Technical toolkit"
+          title="Skills I use to ship."
+          description="Grouped for quick scanning, with project-specific models and tools kept where they have context."
+          className="mb-12 md:mb-16"
+        />
 
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
           {portfolio.skills.map((group, index) => (
             <Reveal
+              as="article"
               key={group.title}
-              delay={index * 0.06}
-              className="group border border-border bg-surface p-5 transition-colors duration-300 hover:border-text sm:p-6 lg:grid lg:grid-cols-[260px_1fr] lg:items-start lg:gap-8"
+              delay={index * 0.05}
+              className="group border border-border bg-background p-5 transition-colors duration-300 hover:border-text sm:p-6"
             >
-              <div className="mb-6 flex items-start justify-between gap-4 lg:mb-0">
-                <div className="flex items-center gap-4">
-                  <div className="grid size-12 place-items-center border border-border bg-background text-secondary-text transition-colors duration-300 group-hover:text-text">
-                    <group.icon size={20} strokeWidth={1.85} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold tracking-[-0.04em] text-text">
-                      {group.title}
-                    </h3>
-                    <p className="mt-1 font-mono text-xs text-secondary-text">
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-                  </div>
+              <div className="flex items-center justify-between gap-4 border-b border-border pb-5">
+                <div className="flex items-center gap-3">
+                  <span className="grid size-10 place-items-center border border-border bg-surface text-secondary-text transition-colors group-hover:text-text">
+                    <group.icon size={18} strokeWidth={1.8} aria-hidden="true" />
+                  </span>
+                  <h3 className="text-xl font-semibold tracking-[-0.035em] text-text">
+                    {group.title}
+                  </h3>
                 </div>
+                <span className="font-mono text-[10px] text-secondary-text">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 w-full">
+              <ul className="mt-5 flex flex-wrap gap-2.5" aria-label={`${group.title} skills`}>
                 {group.skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    style={{ "--skill-color": skill.color } as CSSProperties}
-                    className="group/skill inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-border bg-background px-3 py-2 text-sm font-medium text-text shadow-[0_1px_0_rgba(0,0,0,0.03)] transition duration-300 hover:-translate-y-0.5 hover:border-text hover:shadow-[0_10px_24px_rgba(0,0,0,0.06)] w-full"
+                  <li
+                    key={skill}
+                    className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-text"
                   >
-                    <skill.icon
-                      size={18}
-                      className="shrink-0 text-secondary-text transition duration-300 group-hover/skill:text-[var(--skill-color)]"
-                    />
-                    <span className="truncate text-xs sm:text-sm">{skill.name}</span>
-                  </span>
+                    {skill}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </Reveal>
           ))}
         </div>

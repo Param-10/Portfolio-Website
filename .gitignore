@@ -13,6 +13,7 @@ node_modules
 # Production
 
 /build
+/.prerender
 
 # Environment files
 .env
@@ -56,4 +57,4 @@ logs
 *.tgz
 
 # Yarn Integrity file
-.yarn-integrity 
+.yarn-integrity

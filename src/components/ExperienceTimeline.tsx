@@ -1,88 +1,90 @@
-import { ExternalLink, Linkedin } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 import LogoBox from "./LogoBox";
 import Reveal from "./Reveal";
 
 export default function ExperienceTimeline() {
   return (
-    <section className="py-10 md:py-16">
-      <div id="experience" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
-        <div className="mb-10">
-          <h2 className="text-4xl font-semibold tracking-[-0.055em] text-text md:text-5xl">
-            Work experience.
-          </h2>
-        </div>
+    <section
+      id="experience"
+      aria-labelledby="experience-heading"
+      className="scroll-mt-24 border-y border-border bg-surface py-20 sm:py-24 md:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <h2
+          id="experience-heading"
+          className="mb-10 text-2xl font-semibold tracking-[-0.04em] text-text sm:text-3xl md:mb-12"
+        >
+          Experience
+        </h2>
 
-        <div className="grid gap-4">
+        <ol className="grid gap-4">
           {portfolio.experience.map((job, index) => (
-            <Reveal
-              key={`${job.role}-${job.company}`}
-              delay={index * 0.07}
-              className="group grid gap-6 border border-border bg-surface p-5 transition-colors duration-300 hover:border-text sm:p-7 lg:grid-cols-[auto_1fr_auto]"
-            >
-              <LogoBox logo={job.logo} label={job.company} />
+            <li key={`${job.role}-${job.company}`}>
+              <Reveal
+                as="article"
+                delay={index * 0.05}
+                className="group grid gap-5 border border-border bg-background p-5 transition-colors duration-300 hover:border-text sm:p-7 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-7"
+              >
+                <LogoBox logo={job.logo} label={job.company} />
 
-              <div>
-                <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-3">
-                  <h3 className="text-2xl font-semibold tracking-[-0.04em] text-text">
-                    {job.role}
-                  </h3>
-                  <p className="text-base text-secondary-text">{job.company}</p>
-                </div>
-
-                <ul className="mt-6 grid gap-3 md:grid-cols-2">
-                  {job.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="relative pl-4 text-pretty text-sm leading-6 text-text before:absolute before:left-0 before:top-2.5 before:size-1 before:bg-secondary-text"
-                    >
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-col items-end justify-between gap-4">
-                <p className="font-mono text-xs leading-6 text-secondary-text lg:text-right">
-                  {job.period}
-                </p>
-
-                {(job.websiteUrl || job.linkedinUrl) && (
-                  <div className="flex gap-2">
-                    {job.websiteUrl && (
-                      <a
-                        href={job.websiteUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group/link relative grid size-8 place-items-center rounded-full border border-border text-secondary-text transition-colors duration-200 hover:border-text hover:text-text"
-                        aria-label={`${job.company} website`}
-                      >
-                        <ExternalLink size={14} strokeWidth={1.9} />
-                        <span className="pointer-events-none absolute -bottom-8 whitespace-nowrap rounded-md border border-border bg-text px-2 py-0.5 font-mono text-[10px] text-background opacity-0 transition-opacity duration-200 group-hover/link:opacity-100">
-                          Website
-                        </span>
-                      </a>
-                    )}
-                    {job.linkedinUrl && (
-                      <a
-                        href={job.linkedinUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group/link relative grid size-8 place-items-center rounded-full border border-border text-secondary-text transition-colors duration-200 hover:border-text hover:text-text"
-                        aria-label={`${job.company} LinkedIn`}
-                      >
-                        <Linkedin size={14} strokeWidth={1.9} />
-                        <span className="pointer-events-none absolute -bottom-8 whitespace-nowrap rounded-md border border-border bg-text px-2 py-0.5 font-mono text-[10px] text-background opacity-0 transition-opacity duration-200 group-hover/link:opacity-100">
-                          LinkedIn
-                        </span>
-                      </a>
-                    )}
+                <div>
+                  <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-8">
+                    <div>
+                      <h3 className="text-balance text-2xl font-semibold tracking-[-0.045em] text-text">
+                        {job.role}
+                      </h3>
+                      <p className="mt-1 text-base text-secondary-text">{job.company}</p>
+                    </div>
+                    <p className="shrink-0 font-mono text-xs leading-6 text-secondary-text tabular-nums md:text-right">
+                      {job.period}
+                    </p>
                   </div>
-                )}
-              </div>
-            </Reveal>
+
+                  <ul className={`mt-6 grid gap-3 ${job.bullets.length > 1 ? "md:grid-cols-2" : ""}`}>
+                    {job.bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="relative pl-4 text-pretty text-sm leading-6 text-text before:absolute before:left-0 before:top-2.5 before:size-1 before:bg-secondary-text"
+                      >
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {(job.websiteUrl || job.linkedinUrl) && (
+                    <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+                      {job.websiteUrl ? (
+                        <a
+                          href={job.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-link"
+                          aria-label={`${job.company} website (opens in a new tab)`}
+                        >
+                          <ArrowUpRight size={15} strokeWidth={1.8} aria-hidden="true" />
+                          Company site
+                        </a>
+                      ) : null}
+                      {job.linkedinUrl ? (
+                        <a
+                          href={job.linkedinUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-link"
+                          aria-label={`${job.company} on LinkedIn (opens in a new tab)`}
+                        >
+                          <Linkedin size={14} strokeWidth={1.8} aria-hidden="true" />
+                          LinkedIn
+                        </a>
+                      ) : null}
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

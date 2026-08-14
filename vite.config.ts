@@ -1,37 +1,21 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
 
-// https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/portfolio/',
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
+  base: "/portfolio/",
   build: {
-    // Production optimizations
-    target: 'esnext',
-    minify: 'terser',
+    target: "es2020",
+    minify: "terser",
     cssMinify: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Group dependencies into chunks for better caching
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'framer-motion': ['framer-motion'],
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-          'particles': ['react-tsparticles', 'tsparticles-slim'],
-        },
-      },
-    },
-    // Improve build performance
-    chunkSizeWarningLimit: 1000,
-    reportCompressedSize: false,
+    copyPublicDir: !isSsrBuild,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 500,
   },
-});
+}));

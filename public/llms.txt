@@ -1,38 +1,42 @@
 # Paramveer Singh Bhele
 
-> Software Engineer and AI/ML Engineer building practical intelligent systems.
+> Software engineer building AI systems, backend infrastructure, and production products.
 
-Portfolio of Paramveer Singh Bhele — a Computer Science graduate from the University of South Florida (minor in Entrepreneurship) and incoming Columbia University M.S. AI student (AI Infrastructure concentration).
+Paramveer Singh Bhele is a University of South Florida Computer Science graduate and Columbia University M.S. Artificial Intelligence student focused on AI Infrastructure.
 
-## Docs
+## Primary pages
 
-- [Home](https://paramveerbhele.com/portfolio/): Official personal website and portfolio showcasing background, projects, work experience, education, and technical skills.
-- [Resume](https://paramveerbhele.com/portfolio/resume.pdf): Professional PDF resume outlining engineering experience, academic scholarships, and core competencies.
+- [Portfolio](https://paramveerbhele.com/portfolio/): Selected work, experience, education, leadership, recognition, skills, and contact information.
+- [Resume](https://paramveerbhele.com/portfolio/resume.pdf): Downloadable professional resume.
 
-## Key Projects
+## Selected work
 
-- [Polaris](https://github.com/Param-10/hackthebay): Gemini-powered GitHub App scanning infrastructure-as-code pull requests for security risks. (Demo: https://polaris-livid-one.vercel.app/)
-- [Adversarial Spam Detection](https://github.com/Param-10/adversarial-spam-detection): Adversarial machine learning pipeline alternating BERT tuning with Qwen3-4B spam generation.
-- [CarbonCTRL](https://github.com/Param-10/CarbonCTRL): AI-powered emissions platform estimating company carbon footprint and reduction plans. (Demo: https://carbonctrl.us)
-- [RARE Lab Research](https://paramveerbhele.com/portfolio/): Human-robot interaction research and data systems using Android, Gemini AI, and Google Cloud SDK.
+- [Polaris](https://github.com/Param-10/hackthebay): GitHub App that reviews Infrastructure-as-Code pull requests, maps findings to security controls, and verifies generated fixes. [Live demo](https://polaris-livid-one.vercel.app/) · [Devpost](https://devpost.com/software/polaris-szhivy)
+- [PR Nutrition](https://github.com/Param-10/pr-nutrition): Local-first TypeScript CLI and GitHub Action that prioritizes pull-request review risk and points reviewers to the changes that deserve attention first. [npm](https://www.npmjs.com/package/pr-nutrition)
+- [Adversarial Spam Detection](https://github.com/Param-10/adversarial-spam-detection): BERT and Qwen adversarial training pipeline that improved adversarial detection from 91.7% to 95.7% while maintaining 96.5% accuracy.
+- [CarbonCTRL](https://github.com/Param-10/CarbonCTRL): Carbon management platform and winner of the MLH Best Use of Gemini API award at HackaBull 2025. [Devpost](https://devpost.com/software/carbonctrl)
+- [Coefficient Software Systems](https://coefficientindia.com/): Production corporate website rebuilt with Astro, TypeScript, Tailwind CSS, GSAP, and Lenis. [Source](https://github.com/Param-10/bluewave-revamp)
+
+## Other work
+
+- [BullRunner](https://param-10.github.io/bullrunner-2/): Map-first USF transit application using live Passio data. [Source](https://github.com/Param-10/bullrunner-2)
+- [Fraud Detection Dashboard](https://fraud-detector-dashboard.netlify.app/): Interactive fraud-analysis dashboard for transaction CSV uploads, risk visualizations, and model predictions. [Source](https://github.com/Param-10/Fraud-Detection-Dashboard)
 
 ## Experience
 
-- **Student Assistant - Digital Initiatives** (USF Libraries, Aug 2024 - May 2026): Built data validation and web scraping scripts to automate cataloging records.
-- **Machine Learning Engineer Intern** (Finds, Inc., Oct 2025 - Jan 2026): Integrated internal ML model inference pipelines and designed database schemas.
-- **Undergraduate Research Assistant** (RARE Lab, Feb 2025 - Jul 2025): Developed human-robot research software on Android integrating Gemini AI.
-- **App Developer Intern** (Coefficient Software Systems, May 2022 - Jul 2022): Constructed product benchmarking datasets and supported mobile app updates.
+- Student Assistant — Digital Initiatives, University of South Florida Libraries (Aug 2024–May 2026)
+- Machine Learning Engineer Intern, Finds, Inc. (Oct 2025–Jan 2026)
+- Undergraduate Research Assistant, RARE Lab at USF (Feb–Jul 2025)
+- Peer Mentor, USF College of Engineering (Apr 2023–Aug 2024)
+- App Developer Intern, Coefficient Software Systems (May–Jul 2022)
 
-## Key Facts
+## Education
 
-- Deployed URL: https://paramveerbhele.com/portfolio/
-- Background: B.S. in Computer Science (University of South Florida), M.S. in Artificial Intelligence (Columbia University, incoming)
-- Scholarships: USF Green & Gold Director's Award, Annette L. Raymund Endowed Scholarship, CS Foundation Scholarship, Engineering Annual Fund Scholarship
-- Technical Focus: Software Engineering, Applied AI/ML, Backend/API Systems, Full-stack Products, AI Infrastructure
+- Columbia University — M.S. in Artificial Intelligence, focus in AI Infrastructure (2026–2027)
+- University of South Florida — B.S. in Computer Science, minor in Entrepreneurship (2022–2026)
 
 ## Contact
 
-- Website: https://paramveerbhele.com/portfolio/
 - Email: bheleparamveer@gmail.com
 - LinkedIn: https://www.linkedin.com/in/paramveer-singh-bhele/
 - GitHub: https://github.com/Param-10

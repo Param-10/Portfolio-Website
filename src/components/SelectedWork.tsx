@@ -1,171 +1,308 @@
 import { useState } from "react";
-import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { portfolio, type Project } from "../data/portfolio";
+import { ArrowUpRight, ChevronDown, ChevronUp, Github } from "lucide-react";
+import { portfolio, type Project, type ProjectImage } from "../data/portfolio";
+import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
 
 export default function SelectedWork() {
-  const reduceMotion = useReducedMotion();
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const initialProjects = portfolio.projects.slice(0, 4);
-  const extraProjects = portfolio.projects.slice(4);
+  const [showAllOtherWork, setShowAllOtherWork] = useState(false);
+  const [flagship, ...supportingProjects] = portfolio.selectedProjects;
+  const visibleOtherProjects = showAllOtherWork
+    ? portfolio.otherProjects
+    : portfolio.otherProjects.slice(0, 3);
 
   return (
-    <section className="py-10 md:py-16">
-      <div id="projects" className="mx-auto max-w-7xl scroll-mt-4 px-5 sm:px-6 md:scroll-mt-6">
-        <div className="mb-12 max-w-3xl">
-          <h2 className="text-balance text-4xl font-semibold tracking-[-0.055em] text-text md:text-6xl">
-            A few of my best projects.
-          </h2>
+    <section id="work" aria-labelledby="work-heading" className="scroll-mt-24 py-20 sm:py-24 md:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <SectionHeader
+          id="work-heading"
+          eyebrow="Engineering portfolio"
+          title="Selected work."
+          description="Five projects that show how I approach AI systems, backend workflows, product engineering, and software used beyond the classroom."
+          className="mb-12 md:mb-16"
+        />
+
+        <Reveal as="article" className="border border-border bg-surface p-4 sm:p-6 lg:p-8">
+          <div className="grid gap-8 lg:grid-cols-[1.12fr_0.88fr] lg:items-start lg:gap-12">
+            <ProjectMedia image={flagship.image} title={flagship.title} priority />
+
+            <div className="flex h-full flex-col">
+              <ProjectHeading project={flagship} />
+              {flagship.metric ? <Metric>{flagship.metric}</Metric> : null}
+              <p className="mt-5 text-pretty text-base leading-7 text-secondary-text">
+                {flagship.description}
+              </p>
+              <TechList tech={flagship.tech} className="mt-6" />
+              <ProjectLinks project={flagship} className="mt-7" />
+            </div>
+          </div>
+          {flagship.caseStudy ? <CaseStudyDetails project={flagship} /> : null}
+        </Reveal>
+
+        <div className="mt-6 grid gap-6 md:auto-rows-fr md:grid-cols-2">
+          {supportingProjects.map((project, index) => (
+            <Reveal
+              as="article"
+              key={project.title}
+              delay={index * 0.05}
+              className="group flex h-full flex-col border border-border bg-surface p-4 transition-colors duration-300 hover:border-text sm:p-5"
+            >
+              <ProjectMedia image={project.image} title={project.title} />
+              <ProjectHeading project={project} />
+
+              {project.recognition ? (
+                <p className="mt-4 border-l-2 border-text pl-3 text-sm font-medium leading-6 text-text">
+                  {project.recognition}
+                </p>
+              ) : null}
+              {project.metric ? <Metric>{project.metric}</Metric> : null}
+
+              <p className="mt-4 text-pretty text-sm leading-6 text-secondary-text">
+                {project.description}
+              </p>
+              <TechList tech={project.tech} className="mt-5" />
+              <ProjectLinks project={project} className="mt-6" />
+              {project.caseStudy ? <CaseStudyDetails project={project} compact /> : null}
+            </Reveal>
+          ))}
         </div>
 
-        {/* Projects Grid with layout positioning for smooth shifts */}
-        <motion.div layout="position" className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {initialProjects.map((project, index) => (
-            <motion.div layout="position" key={project.title}>
-              <ProjectCard project={project} index={index} />
-            </motion.div>
-          ))}
-          <AnimatePresence initial={false}>
-            {isExpanded &&
-              extraProjects.map((project, index) => (
-                <motion.div
-                  layout="position"
-                  key={project.title}
-                  initial={{ opacity: 0, y: reduceMotion ? 0 : 25 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
-                  transition={{
-                    opacity: { duration: 0.35 },
-                    y: { type: "spring", stiffness: 100, damping: 15 },
-                    delay: reduceMotion ? 0 : index * 0.06,
-                  }}
-                >
-                  <ProjectCard project={project} index={index + 4} />
-                </motion.div>
-              ))}
-          </AnimatePresence>
-        </motion.div>
+        <div className="mt-20 border-t border-border pt-10 md:mt-24 md:pt-12">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary-text">
+                Archive
+              </p>
+              <h3 className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-text sm:text-4xl">
+                Other work
+              </h3>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-secondary-text sm:text-right">
+              Smaller product, interaction, and experimental builds.
+            </p>
+          </div>
 
-        {/* Premium Interactive Toggle Button */}
-        <motion.div layout="position" className="mt-12 flex justify-center">
-          <motion.button
-            onClick={() => setIsExpanded(!isExpanded)}
-            whileHover={reduceMotion ? undefined : { scale: 1.02, y: -2 }}
-            whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="group relative flex items-center gap-2.5 border border-border bg-surface px-6 py-3 font-mono text-xs uppercase tracking-widest text-text transition-colors duration-300 hover:border-text hover:bg-muted dark:hover:border-background"
-          >
-            <span>{isExpanded ? "Show fewer projects" : "Show more projects"}</span>
-            <motion.span
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="inline-flex items-center"
-            >
-              <ChevronDown size={14} strokeWidth={2} />
-            </motion.span>
-          </motion.button>
-        </motion.div>
+          <div id="other-work-grid" className="grid gap-4 lg:grid-cols-3">
+            {visibleOtherProjects.map((project) => (
+              <article
+                key={project.title}
+                className="group flex h-full flex-col border border-border bg-background p-4 transition-colors duration-300 hover:border-text"
+              >
+                <ProjectMedia image={project.image} title={project.title} compact />
+                <ProjectHeading project={project} compact />
+                <p className="mt-4 text-sm leading-6 text-secondary-text">{project.description}</p>
+                <TechList tech={project.tech} className="mt-5" />
+                <ProjectLinks project={project} className="mt-6" />
+              </article>
+            ))}
+          </div>
+
+          {portfolio.otherProjects.length > 3 ? (
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllOtherWork((current) => !current)}
+                aria-expanded={showAllOtherWork}
+                aria-controls="other-work-grid"
+                className="inline-flex min-h-11 items-center gap-2 border border-border bg-surface px-5 py-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-text transition-colors hover:border-text focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {showAllOtherWork ? "Show less" : `Show all ${portfolio.otherProjects.length} projects`}
+                {showAllOtherWork ? (
+                  <ChevronUp size={16} strokeWidth={1.8} aria-hidden="true" />
+                ) : (
+                  <ChevronDown size={16} strokeWidth={1.8} aria-hidden="true" />
+                )}
+              </button>
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   );
-
-  function ProjectCard({
-    project,
-    index,
-  }: {
-    project: Project;
-    index: number;
-  }) {
-    return (
-      <motion.article
-        initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-90px" }}
-        transition={{ duration: 0.64, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-        whileHover={reduceMotion ? undefined : { y: -4 }}
-        className="group flex h-full flex-col border border-border bg-surface p-4 transition-colors duration-300 hover:border-text dark:hover:border-background sm:p-5"
-      >
-        <ProjectImage src={project.image} alt={`${project.title} preview`} title={project.title} />
-
-        <div className="mb-4 flex items-start justify-between gap-4">
-          <div>
-            <span className="mb-1 block font-mono text-[10px] text-secondary-text">{project.number}</span>
-            <h3 className="text-xl font-semibold tracking-tight text-text">
-              {project.title}
-            </h3>
-          </div>
-
-          {project.links.length > 0 && (
-            <div className="flex shrink-0 gap-2">
-              {project.links.map((link) =>
-                link.href ? (
-                  <a
-                    key={`${project.title}-${link.label}`}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group/link relative grid size-8 place-items-center rounded-full border border-border text-secondary-text transition-colors duration-200 hover:border-text hover:text-text"
-                    aria-label={`${project.title} ${link.label}`}
-                  >
-                    <link.icon size={15} strokeWidth={1.9} />
-                    <span className="pointer-events-none absolute bottom-10 whitespace-nowrap rounded-md border border-border bg-text px-2 py-1 font-mono text-[10px] text-background opacity-0 transition-opacity duration-200 group-hover/link:opacity-100">
-                      {link.label}
-                    </span>
-                  </a>
-                ) : null
-              )}
-            </div>
-          )}
-        </div>
-
-        <p className="mb-5 text-pretty text-sm leading-6 text-secondary-text">
-          {project.description}
-        </p>
-
-        <div className="mt-auto flex flex-wrap gap-2">
-          {project.tech.map((skill) => (
-            <span
-              key={skill}
-              className="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[10px] text-secondary-text"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </motion.article>
-    );
-  }
 }
 
-function ProjectImage({ src, alt, title }: { src?: string; alt: string; title: string }) {
+function ProjectHeading({ project, compact = false }: { project: Project; compact?: boolean }) {
+  const Heading = compact ? "h4" : "h3";
+
+  return (
+    <header className="flex items-start justify-between gap-5">
+      <div>
+        <p className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-secondary-text">
+          {project.number} — {project.category}
+        </p>
+        <Heading
+          className={`${compact ? "mt-2 text-2xl" : "mt-3 text-3xl sm:text-4xl"} text-balance font-semibold tracking-[-0.05em] text-text`}
+        >
+          {project.title}
+        </Heading>
+      </div>
+    </header>
+  );
+}
+
+function ProjectMedia({
+  image,
+  title,
+  compact = false,
+  priority = false,
+}: {
+  image?: ProjectImage;
+  title: string;
+  compact?: boolean;
+  priority?: boolean;
+}) {
   const [hasError, setHasError] = useState(false);
+  const heightClass = compact ? "h-44" : "h-52 sm:h-64 lg:h-72";
 
-  if (!src || hasError) {
-    let placeholderText = "Backend & API Engine";
-    if (title.toLowerCase().includes("spam")) {
-      placeholderText = "Adversarial ML Pipeline";
-    }
+  if (!image) {
+    return null;
+  }
 
+  if (hasError) {
     return (
-      <div className="mb-4 flex h-40 w-full flex-col items-center justify-center rounded-md border border-border bg-muted text-center p-4 sm:h-44 md:h-48 lg:h-52">
-        <span className="font-mono text-xs font-semibold text-text">{placeholderText}</span>
-        <span className="mt-1.5 font-mono text-[9px] uppercase tracking-wider text-secondary-text">No Frontend UI / Backend Only</span>
+      <div
+        className={`dot-grid relative mb-6 flex ${heightClass} overflow-hidden border border-border bg-muted p-5`}
+        aria-hidden="true"
+      >
+        <div className="mt-auto max-w-sm border-l border-text pl-4">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary-text">
+            {title}
+          </p>
+          <p className="mt-2 text-xl font-semibold tracking-[-0.04em] text-text">
+            Information architecture → interaction → shipped experience
+          </p>
+        </div>
       </div>
     );
   }
 
-  const isMobileMockup = title.toLowerCase().includes("matchup") || title.toLowerCase().includes("focus timer");
+  const objectFit = image.fit === "contain" ? "object-contain p-3" : "object-cover";
 
   return (
-    <div className={`mb-4 h-40 w-full overflow-hidden rounded-md border border-border sm:h-44 md:h-48 lg:h-52 ${isMobileMockup ? "bg-muted" : "bg-background"}`}>
-      <img
-        src={src}
-        alt={alt}
-        onError={() => setHasError(true)}
-        className={`size-full ${isMobileMockup ? "object-contain p-2" : "object-cover object-top"} grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.03]`}
-        loading="lazy"
-      />
+    <div className={`mb-6 overflow-hidden border border-border bg-muted ${heightClass}`}>
+      <picture>
+        {image.optimizedSrc ? <source srcSet={image.optimizedSrc} type="image/webp" /> : null}
+        <img
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          onError={() => setHasError(true)}
+          style={{ objectPosition: image.position ?? "center" }}
+          className={`size-full ${objectFit} grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.02] group-hover:grayscale-0`}
+        />
+      </picture>
+    </div>
+  );
+}
+
+function Metric({ children }: { children: string }) {
+  return (
+    <p className="mt-5 w-fit border border-border bg-background px-3 py-2 font-mono text-xs font-medium text-text tabular-nums">
+      {children}
+    </p>
+  );
+}
+
+function TechList({ tech, className = "" }: { tech: string[]; className?: string }) {
+  return (
+    <ul className={`flex flex-wrap gap-2 ${className}`} aria-label="Technology stack">
+      {tech.map((item) => (
+        <li
+          key={item}
+          className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[10px] text-secondary-text"
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ProjectLinks({ project, className = "" }: { project: Project; className?: string }) {
+  return (
+    <div className={`mt-auto flex flex-wrap gap-x-5 gap-y-3 ${className}`} aria-label={`${project.title} links`}>
+      {project.links.map((link) => {
+        const Icon = link.kind === "github" ? Github : ArrowUpRight;
+
+        return (
+          <a
+            key={`${project.title}-${link.label}`}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/link inline-flex min-h-11 items-center gap-2 py-2 text-sm font-medium text-text underline decoration-border underline-offset-4 transition-colors hover:decoration-text focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            aria-label={`${link.label} for ${project.title} (opens in a new tab)`}
+          >
+            <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+function CaseStudyDetails({ project, compact = false }: { project: Project; compact?: boolean }) {
+  if (!project.caseStudy) {
+    return null;
+  }
+
+  const caseStudy = project.caseStudy;
+
+  return (
+    <details className={`case-study group/details border-t border-border ${compact ? "mt-7 pt-1" : "mt-8 pt-2 lg:mt-10"}`}>
+      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 text-sm font-medium text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-surface [&::-webkit-details-marker]:hidden">
+        <span>Explore case study</span>
+        <ChevronDown
+          size={17}
+          strokeWidth={1.8}
+          aria-hidden="true"
+          className="transition-transform duration-200 group-open/details:rotate-180"
+        />
+      </summary>
+
+      <div className="grid gap-px border border-border bg-border md:grid-cols-2">
+        <CaseStudyBlock label="Problem" body={caseStudy.problem} />
+        <CaseStudyBlock label="What I built" body={caseStudy.contribution} />
+
+        <div className="bg-background p-5 md:col-span-2 sm:p-6">
+          <h4 className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-secondary-text">
+            Architecture / approach
+          </h4>
+          <ol className="mt-5 grid gap-2 lg:grid-cols-5">
+            {caseStudy.architecture.map((step, index) => (
+              <li key={step} className="relative border border-border bg-surface p-3 pr-7 text-xs leading-5 text-text">
+                <span className="mb-2 block font-mono text-[9px] text-secondary-text">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {step}
+                {index < caseStudy.architecture.length - 1 ? (
+                  <span className="absolute right-2 top-1/2 -translate-y-1/2 rotate-90 text-secondary-text lg:rotate-0" aria-hidden="true">
+                    →
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <CaseStudyBlock label="Engineering challenge" body={caseStudy.challenge} />
+        <CaseStudyBlock label="Result" body={caseStudy.result} />
+      </div>
+    </details>
+  );
+}
+
+function CaseStudyBlock({ label, body }: { label: string; body: string }) {
+  return (
+    <div className="bg-background p-5 sm:p-6">
+      <h4 className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-secondary-text">
+        {label}
+      </h4>
+      <p className="mt-3 text-sm leading-6 text-text">{body}</p>
     </div>
   );
 }

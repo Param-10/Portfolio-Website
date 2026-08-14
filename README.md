@@ -1,87 +1,59 @@
 # paramveerbhele.com
 
-Personal portfolio website for Paramveer Singh Bhele — software engineer and incoming Columbia MS AI student.
+Engineering portfolio for Paramveer Singh Bhele, focused on software engineering, AI/ML engineering, AI infrastructure, backend systems, and production product work.
 
-**[→ View Live](https://param-10.github.io/Portfolio-Website/)**
+**[View the portfolio](https://paramveerbhele.com/portfolio/)**
 
-## Sections
+## Information architecture
 
-- **Hero** — Introduction with portrait, CTAs, and metadata chips
-- **About** — Background, scholarships, roles, and leadership
-- **Work Experience** — Timeline of internships and campus positions
-- **Education** — Columbia University (MS AI) and University of South Florida (BS CS)
-- **Projects** — Selected work including Polaris, CarbonCTRL, Adversarial Spam Detection, and RARE Lab research
-- **Skills** — Categorized grid across Software Engineering, AI/ML, Backend & Data, and Cloud & Dev Tools
-- **Contact** — Email CTA card
+1. Hero
+2. Selected Work
+3. Experience
+4. About
+5. Education
+6. Leadership & Recognition
+7. Skills
+8. Contact
 
-## Tech Stack
+The project data, experience, education, skills, links, and recognition content are centralized in `src/data/portfolio.ts`.
+
+## Stack
 
 | Layer | Tools |
-|-------|-------|
-| Framework | React 18, TypeScript |
-| Styling | Tailwind CSS, Geist Sans / Geist Mono |
-| Animations | Framer Motion |
-| Icons | Lucide React, React Icons |
-| Build | Vite |
-| Deploy | GitHub Pages (gh-pages) |
+| --- | --- |
+| Framework | React 18, TypeScript, Vite |
+| Styling | Tailwind CSS, Geist Sans, Geist Mono |
+| Motion | Framer Motion with reduced-motion support |
+| Icons | Lucide React |
+| Rendering | Static prerender + React hydration |
+| Deployment | GitHub Pages artifact workflow / custom domain |
 
-## Local Development
+## Local development
 
 ```bash
-git clone https://github.com/Param-10/Portfolio-Website.git
-cd Portfolio-Website
 npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`
+The configured base path is `/portfolio/`, matching the current production hosting setup.
 
-## Build & Deploy
+## Quality checks
 
 ```bash
-npm run build      # Production build → dist/
-npm run preview    # Preview locally
-npm run deploy     # Deploy to GitHub Pages
+npm run optimize:images  # regenerate WebP and OG assets after source-image changes
+npm run build            # typecheck, client build, SSR bundle, static prerender
+npm run lint
+npm run preview
 ```
 
-## Project Structure
+The production build includes meaningful prerendered page content, canonical and social metadata, Person structured data, a sitemap, robots directives, responsive images, and accessible native case-study disclosures.
 
-```
-src/
-├── components/
-│   ├── Hero.tsx
-│   ├── AboutSection.tsx
-│   ├── ExperienceTimeline.tsx
-│   ├── EducationSection.tsx
-│   ├── SelectedWork.tsx
-│   ├── SkillsGrid.tsx
-│   ├── ContactCTA.tsx
-│   ├── DockNav.tsx
-│   ├── Footer.tsx
-│   ├── LogoBox.tsx
-│   └── Reveal.tsx
-├── data/
-│   └── portfolio.ts        # All content and configuration
-├── App.tsx
-├── index.css
-└── main.tsx
-```
+## Deployment note
 
-## Features
-
-- macOS-style dock navigation with hover magnification
-- Light / dark theme toggle with localStorage persistence
-- Grayscale portrait that turns color on hover
-- Scroll-aware active section highlighting
-- Staggered entrance animations with reduced-motion support
-- Responsive design across all breakpoints
+The live root domain currently redirects to `/portfolio/`. Moving the canonical site to `/` requires a coordinated host-level document-root and redirect change; changing Vite's base path alone would break production assets and deep links.
 
 ## Contact
 
-- **Email**: bheleparamveer@gmail.com
-- **LinkedIn**: [paramveer-singh-bhele](https://www.linkedin.com/in/paramveer-singh-bhele/)
-- **GitHub**: [@Param-10](https://github.com/Param-10)
-
-## License
-
-MIT — see [LICENSE](LICENSE) for details.
+- [Email](mailto:bheleparamveer@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/paramveer-singh-bhele/)
+- [GitHub](https://github.com/Param-10)

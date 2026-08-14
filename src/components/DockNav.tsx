@@ -16,6 +16,7 @@ type DockButtonProps = {
   icon: IconComponent;
   index: number;
   active?: boolean;
+  pressed?: boolean;
   mobile?: boolean;
   external?: boolean;
   onClick?: () => void;
@@ -72,11 +73,7 @@ export default function DockNav() {
   }, [internalItems]);
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem("theme") as "light" | "dark" | null;
-    const initialTheme = storedTheme ?? "light";
-
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
   }, []);
 
   useEffect(() => {
@@ -113,14 +110,18 @@ export default function DockNav() {
     const nextTheme = theme === "light" ? "dark" : "light";
     setTheme(nextTheme);
     document.documentElement.classList.toggle("dark", nextTheme === "dark");
-    window.localStorage.setItem("theme", nextTheme);
+    try {
+      window.localStorage.setItem("theme", nextTheme);
+    } catch {
+      // The visual preference still applies for this session when storage is unavailable.
+    }
   };
 
   return (
     <motion.nav
-      initial={{ opacity: 0, y: reduceMotion ? 0 : -14, x: "-50%" }}
+      initial={false}
       animate={{ opacity: 1, y: 0, x: "-50%" }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: reduceMotion ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="fixed bottom-5 left-1/2 z-50 md:bottom-auto md:top-5"
       aria-label="Primary navigation"
     >
@@ -130,7 +131,7 @@ export default function DockNav() {
           mouseX.set(Number.POSITIVE_INFINITY);
           setHoveredIndex(null);
         }}
-        className="flex h-14 items-center gap-1.5 rounded-full border border-border bg-white/94 px-2.5 py-2 shadow-[0_16px_46px_rgba(0,0,0,0.09)] backdrop-blur-xl dark:bg-[#050505]/90 dark:shadow-[0_18px_46px_rgba(0,0,0,0.42)]"
+        className="flex h-14 max-w-[calc(100vw-1rem)] items-center gap-1 rounded-full border border-border bg-white/94 px-2 py-1.5 shadow-[0_16px_46px_rgba(0,0,0,0.09)] backdrop-blur-xl dark:bg-[#090909]/92 dark:shadow-[0_18px_46px_rgba(0,0,0,0.42)]"
       >
         <div className="flex items-center gap-1">
           {internalItems.map((item, index) => (
@@ -171,10 +172,11 @@ export default function DockNav() {
         <DockDivider />
 
         <DockButton
-          label="Theme"
+          label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
           icon={theme === "light" ? Moon : Sun}
           index={themeIndex}
           onClick={toggleTheme}
+          pressed={theme === "dark"}
           mouseX={mouseX}
           hoveredIndex={hoveredIndex}
           setHoveredIndex={setHoveredIndex}
@@ -191,6 +193,7 @@ function DockButton({
   icon: Icon,
   index,
   active = false,
+  pressed,
   mobile = true,
   external = false,
   onClick,
@@ -211,14 +214,14 @@ function DockButton({
     return value - bounds.left - bounds.width / 2;
   });
 
-  const widthValue = useTransform(distance, [-170, -95, 0, 95, 170], [40, 47, 58, 47, 40]);
+  const widthValue = useTransform(distance, [-170, -95, 0, 95, 170], [44, 49, 58, 49, 44]);
   const yValue = useTransform(distance, [-170, -95, 0, 95, 170], [0, -1.5, -4, -1.5, 0]);
   const iconScaleValue = useTransform(distance, [-130, -60, 0, 60, 130], [1, 1.06, 1.28, 1.06, 1]);
   const springConfig = { mass: 0.16, stiffness: 320, damping: 24 };
   const width = useSpring(widthValue, springConfig);
   const y = useSpring(yValue, springConfig);
   const iconScale = useSpring(iconScaleValue, springConfig);
-  const motionStyle = reduceMotion ? { width: 40, height: 40 } : { width, height: 40, y };
+  const motionStyle = reduceMotion ? { width: 44, height: 44 } : { width, height: 44, y };
   const className = `group relative flex shrink-0 items-center justify-center rounded-full border text-[#686868] transition-colors duration-200 hover:border-border hover:bg-surface hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:text-secondary-text ${
     mobile ? "" : "hidden md:grid"
   } ${active ? "border-border bg-surface text-text shadow-[0_8px_20px_rgba(0,0,0,0.07)] dark:text-text" : "border-transparent"}`;
@@ -229,13 +232,13 @@ function DockButton({
         style={reduceMotion ? undefined : { scale: iconScale }}
         className="grid size-7 place-items-center rounded-full sm:size-8"
       >
-        <Icon size={20} strokeWidth={active ? 2.1 : 1.85} />
+        <Icon size={19} strokeWidth={active ? 2.1 : 1.85} aria-hidden="true" />
       </motion.span>
-      {active ? <span className="absolute -bottom-1.5 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-text" /> : null}
+      {active ? <span aria-hidden="true" className="absolute -bottom-1 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-text" /> : null}
       <motion.span
-        initial={{ opacity: 0, y: 4 }}
-        animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 4 }}
-        transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+        initial={reduceMotion ? false : { opacity: 0, y: 4 }}
+        animate={{ opacity: isHovered ? 1 : 0, y: reduceMotion || isHovered ? 0 : 4 }}
+        transition={{ duration: reduceMotion ? 0 : 0.16, ease: [0.16, 1, 0.3, 1] }}
         className="pointer-events-none absolute top-[calc(100%+0.55rem)] hidden whitespace-nowrap rounded-md border border-border bg-text px-2.5 py-1 font-mono text-xs text-background md:block"
       >
         {label}
@@ -251,7 +254,7 @@ function DockButton({
         ref={ref as Ref<HTMLAnchorElement>}
         href={href}
         target={external && !isMail ? "_blank" : undefined}
-        rel={external && !isMail ? "noreferrer" : undefined}
+        rel={external && !isMail ? "noopener noreferrer" : undefined}
         style={motionStyle}
         onHoverStart={() => setHoveredIndex(index)}
         onHoverEnd={() => setHoveredIndex(null)}
@@ -260,6 +263,7 @@ function DockButton({
         onBlur={() => setHoveredIndex(null)}
         className={className}
         aria-label={label}
+        aria-current={active ? "location" : undefined}
       >
         {content}
       </motion.a>
@@ -278,6 +282,7 @@ function DockButton({
       onBlur={() => setHoveredIndex(null)}
       className={className}
       aria-label={label}
+      aria-pressed={pressed}
     >
       {content}
     </motion.button>
