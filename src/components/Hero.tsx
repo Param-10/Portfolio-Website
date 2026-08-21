@@ -46,6 +46,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="button-secondary"
+              aria-label="Resume PDF (opens in a new tab)"
             >
               <FileText size={16} strokeWidth={1.8} aria-hidden="true" />
               Resume

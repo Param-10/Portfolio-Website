@@ -1,5 +1,12 @@
 RewriteEngine On
 RewriteBase /portfolio/
+
+<IfModule mod_headers.c>
+  <Files "Paramveer_Singh_Bhele_Resume.pdf">
+    Header set Link "<https://paramveerbhele.com/portfolio/resume/>; rel=\"canonical\""
+  </Files>
+</IfModule>
+
 RewriteCond %{THE_REQUEST} \s/+portfolio/index\.html(?:[?\s]) [NC]
 RewriteRule ^index\.html$ /portfolio/ [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f

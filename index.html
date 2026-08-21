@@ -15,7 +15,8 @@
     <meta name="author" content="Paramveer Singh Bhele" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href="https://paramveerbhele.com/portfolio/" />
-    <link rel="alternate" type="application/pdf" href="https://paramveerbhele.com/portfolio/resume.pdf" title="Paramveer Singh Bhele résumé" />
+    <link rel="alternate" type="application/pdf" href="https://paramveerbhele.com/portfolio/Paramveer_Singh_Bhele_Resume.pdf" title="Paramveer Singh Bhele résumé" />
+    <link rel="alternate" type="text/plain" href="https://paramveerbhele.com/portfolio/llms.txt" title="AI-readable portfolio summary" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
@@ -76,7 +77,40 @@
             "@id": "https://paramveerbhele.com/portfolio/#profile",
             "url": "https://paramveerbhele.com/portfolio/",
             "name": "Paramveer Singh Bhele | Software Engineer & AI/ML Engineer",
-            "mainEntity": { "@id": "https://paramveerbhele.com/portfolio/#person" }
+            "dateModified": "2026-08-15",
+            "mainEntity": { "@id": "https://paramveerbhele.com/portfolio/#person" },
+            "hasPart": [
+              {
+                "@type": "CreativeWork",
+                "name": "Polaris",
+                "url": "https://paramveerbhele.com/portfolio/#work",
+                "sameAs": "https://github.com/Param-10/hackthebay",
+                "description": "AI-powered GitHub App that reviews Infrastructure-as-Code pull requests, maps findings to security controls, and verifies generated fixes."
+              },
+              {
+                "@type": "SoftwareSourceCode",
+                "name": "PR Nutrition",
+                "url": "https://paramveerbhele.com/portfolio/#work",
+                "codeRepository": "https://github.com/Param-10/pr-nutrition",
+                "programmingLanguage": "TypeScript",
+                "description": "Local-first CLI and GitHub Action that prioritizes pull-request review risk."
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Adversarial Spam Detection",
+                "url": "https://paramveerbhele.com/portfolio/#work",
+                "sameAs": "https://github.com/Param-10/adversarial-spam-detection",
+                "description": "Adversarial training pipeline pairing a BERT classifier with Qwen-generated attacks."
+              },
+              {
+                "@type": "SoftwareSourceCode",
+                "name": "CarbonCTRL",
+                "url": "https://paramveerbhele.com/portfolio/#work",
+                "codeRepository": "https://github.com/Param-10/CarbonCTRL",
+                "programmingLanguage": ["TypeScript", "Python"],
+                "description": "Award-winning carbon management platform using Gemini to generate reduction strategies."
+              }
+            ]
           },
           {
             "@type": "Person",
@@ -88,6 +122,7 @@
             "image": "https://paramveerbhele.com/portfolio/paramveer-portrait.jpg",
             "jobTitle": "Software Engineer",
             "description": "Software engineer building AI systems, backend infrastructure, and production products.",
+            "mainEntityOfPage": { "@id": "https://paramveerbhele.com/portfolio/#profile" },
             "alumniOf": {
               "@type": "CollegeOrUniversity",
               "name": "University of South Florida"
@@ -96,6 +131,32 @@
               "@type": "CollegeOrUniversity",
               "name": "Columbia University"
             },
+            "hasCredential": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "degree",
+              "name": "Bachelor of Science in Computer Science",
+              "recognizedBy": {
+                "@type": "CollegeOrUniversity",
+                "name": "University of South Florida"
+              }
+            },
+            "award": [
+              "MLH Best Use of Gemini API — HackaBull 2025",
+              "USF Green & Gold Directors Waiver"
+            ],
+            "subjectOf": [
+              {
+                "@type": "ProfilePage",
+                "name": "Paramveer Singh Bhele Resume",
+                "url": "https://paramveerbhele.com/portfolio/resume/"
+              },
+              {
+                "@type": "DigitalDocument",
+                "name": "Paramveer Singh Bhele Resume PDF",
+                "encodingFormat": "application/pdf",
+                "url": "https://paramveerbhele.com/portfolio/Paramveer_Singh_Bhele_Resume.pdf"
+              }
+            ],
             "knowsAbout": [
               "Software Engineering",
               "Artificial Intelligence",
@@ -108,7 +169,8 @@
             ],
             "sameAs": [
               "https://github.com/Param-10",
-              "https://www.linkedin.com/in/paramveer-singh-bhele/"
+              "https://www.linkedin.com/in/paramveer-singh-bhele/",
+              "https://x.com/ParamveerBhele"
             ]
           }
         ]

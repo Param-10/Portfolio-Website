@@ -17,5 +17,15 @@ export default defineConfig(({ isSsrBuild }) => ({
     copyPublicDir: !isSsrBuild,
     reportCompressedSize: true,
     chunkSizeWarningLimit: 500,
+    ...(isSsrBuild
+      ? {}
+      : {
+          rollupOptions: {
+            input: {
+              main: path.resolve(__dirname, "index.html"),
+              resume: path.resolve(__dirname, "resume/index.html"),
+            },
+          },
+        }),
   },
 }));

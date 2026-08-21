@@ -22,13 +22,13 @@ export default function LeadershipRecognition() {
 
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.65fr]">
           <Reveal className="border border-border bg-surface">
-            <ul className="divide-y divide-border">
+            <ul className="grid divide-y divide-border sm:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)_10.75rem]">
               {portfolio.recognition.map((item) => (
                 <li
                   key={`${item.organization}-${item.title}`}
-                  className="grid gap-3 p-5 sm:grid-cols-[minmax(0,1fr)_minmax(210px,0.7fr)_auto] sm:items-center sm:gap-5 sm:p-6"
+                  className="grid grid-cols-1 gap-3 p-5 sm:col-span-3 sm:grid-cols-subgrid sm:items-center sm:gap-5 sm:p-6"
                 >
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-secondary-text">
                       {item.type}
                     </p>
@@ -36,12 +36,14 @@ export default function LeadershipRecognition() {
                       {item.organization}
                     </h3>
                   </div>
-                  <p className="text-sm font-medium leading-6 text-text">{item.title}</p>
+                  <p className="min-w-0 text-sm font-medium leading-6 text-text">{item.title}</p>
                   {item.period ? (
                     <p className="font-mono text-[11px] text-secondary-text tabular-nums sm:text-right">
                       {item.period}
                     </p>
-                  ) : null}
+                  ) : (
+                    <span className="hidden sm:block" aria-hidden="true" />
+                  )}
                 </li>
               ))}
             </ul>

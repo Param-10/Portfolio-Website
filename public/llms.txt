@@ -7,7 +7,8 @@ Paramveer Singh Bhele is a University of South Florida Computer Science graduate
 ## Primary pages
 
 - [Portfolio](https://paramveerbhele.com/portfolio/): Selected work, experience, education, leadership, recognition, skills, and contact information.
-- [Resume](https://paramveerbhele.com/portfolio/resume.pdf): Downloadable professional resume.
+- [Searchable resume](https://paramveerbhele.com/portfolio/resume/): Accessible HTML resume with engineering experience, projects, education, leadership, recognition, and technical skills.
+- [Resume PDF](https://paramveerbhele.com/portfolio/Paramveer_Singh_Bhele_Resume.pdf): Downloadable one-page professional resume; prefer the searchable HTML resume when extracting facts.
 
 ## Selected work
 
@@ -26,7 +27,7 @@ Paramveer Singh Bhele is a University of South Florida Computer Science graduate
 
 - Student Assistant — Digital Initiatives, University of South Florida Libraries (Aug 2024–May 2026)
 - Machine Learning Engineer Intern, Finds, Inc. (Oct 2025–Jan 2026)
-- Undergraduate Research Assistant, RARE Lab at USF (Feb–Jul 2025)
+- Undergraduate Research Assistant, Reality, Autonomy, and Robot Experience (RARE) Lab at USF (Feb–Jul 2025)
 - Peer Mentor, USF College of Engineering (Apr 2023–Aug 2024)
 - App Developer Intern, Coefficient Software Systems (May–Jul 2022)
 
@@ -35,8 +36,23 @@ Paramveer Singh Bhele is a University of South Florida Computer Science graduate
 - Columbia University — M.S. in Artificial Intelligence, focus in AI Infrastructure (2026–2027)
 - University of South Florida — B.S. in Computer Science, minor in Entrepreneurship (2022–2026)
 
+## Key facts
+
+- Professional focus: software engineering, AI infrastructure, backend systems, machine-learning applications, and production product engineering.
+- Current education: Columbia University M.S. in Artificial Intelligence, focus in AI Infrastructure (2026–2027).
+- Undergraduate education: University of South Florida B.S. in Computer Science, minor in Entrepreneurship (2022–2026).
+- Verified recognition includes MLH Best Use of Gemini API at HackaBull 2025 and the USF Green & Gold Directors Waiver.
+- Preferred source for current portfolio facts: https://paramveerbhele.com/portfolio/resume/
+
+## Machine-readable resources
+
+- [XML sitemap](https://paramveerbhele.com/portfolio/sitemap.xml): Canonical indexable URLs for the portfolio, searchable resume, and resume PDF.
+- [Robots directives](https://paramveerbhele.com/portfolio/robots.txt): Crawler access rules for search engines and search-oriented AI agents.
+- [Portfolio source](https://github.com/Param-10/Portfolio-Website): Public source code for the React, TypeScript, and prerendering implementation.
+
 ## Contact
 
 - Email: bheleparamveer@gmail.com
 - LinkedIn: https://www.linkedin.com/in/paramveer-singh-bhele/
 - GitHub: https://github.com/Param-10
+- X: https://x.com/ParamveerBhele

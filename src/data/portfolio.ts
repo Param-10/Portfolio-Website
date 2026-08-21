@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import { createElement, type ComponentType } from "react";
 import {
   Award,
   Bot,
@@ -23,6 +23,23 @@ export type IconComponent = ComponentType<{
   className?: string;
   "aria-hidden"?: boolean | "true";
 }>;
+
+export const XLogo: IconComponent = ({ size = 24, className, "aria-hidden": ariaHidden = true }) =>
+  createElement(
+    "svg",
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: size,
+      height: size,
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": ariaHidden,
+    },
+    createElement("path", {
+      d: "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z",
+    }),
+  );
 
 export type NavItem = {
   label: string;
@@ -123,6 +140,7 @@ const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^
 
 export const portfolio = {
   name: "Paramveer Singh Bhele",
+  lastUpdated: "2026-08-15",
   eyebrow: "Software Engineering · AI Systems · Infrastructure",
   subheadline:
     "Software engineer building AI systems, backend infrastructure, and production products. Columbia M.S. Artificial Intelligence ’27 · USF Computer Science ’26.",
@@ -132,11 +150,15 @@ export const portfolio = {
     width: 900,
     height: 1200,
   },
-  resume: withBase("/resume.pdf"),
+  resume: withBase("/Paramveer_Singh_Bhele_Resume.pdf"),
+  resumeHtml: withBase("/resume/"),
+  resumePdf: withBase("/Paramveer_Singh_Bhele_Resume.pdf"),
+  agentSummary: withBase("/llms.txt"),
   email: "bheleparamveer@gmail.com",
   links: {
     github: "https://github.com/Param-10",
     linkedin: "https://www.linkedin.com/in/paramveer-singh-bhele/",
+    x: "https://x.com/ParamveerBhele",
     source: "https://github.com/Param-10/Portfolio-Website",
     portfolio: "https://paramveerbhele.com/portfolio/",
   },
@@ -484,7 +506,7 @@ export const portfolio = {
     },
     {
       role: "Undergraduate Research Assistant",
-      company: "RARE Lab, University of South Florida",
+      company: "Reality, Autonomy, and Robot Experience (RARE) Lab, University of South Florida",
       period: "Feb 2025 – Jul 2025",
       logo: { src: withBase("/logos/rare-lab.png"), fallback: "R" },
       bullets: [
@@ -546,7 +568,7 @@ export const portfolio = {
     {
       organization: "HackaBull 2025",
       title: "Winner — MLH Best Use of Gemini API",
-      period: "2025",
+      period: "April 2025",
       type: "Recognition",
     },
     { organization: "TEDx at USF", title: "Head of Logistics", period: "Jun 2024 – Jan 2025", type: "Leadership" },
@@ -621,16 +643,18 @@ export const portfolio = {
       href: "https://www.linkedin.com/in/paramveer-singh-bhele/",
       icon: Linkedin,
     },
-    { label: "Resume", href: withBase("/resume.pdf"), icon: FileText },
+    { label: "X", href: "https://x.com/ParamveerBhele", icon: XLogo },
+    { label: "Resume", href: withBase("/Paramveer_Singh_Bhele_Resume.pdf"), icon: FileText },
   ] satisfies ContactLink[],
   dockExternalLinks: [
-    { label: "Resume", href: withBase("/resume.pdf"), icon: FileText },
+    { label: "Resume", href: withBase("/Paramveer_Singh_Bhele_Resume.pdf"), icon: FileText },
     { label: "GitHub", href: "https://github.com/Param-10", icon: Github },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/paramveer-singh-bhele/",
       icon: Linkedin,
     },
+    { label: "X", href: "https://x.com/ParamveerBhele", icon: XLogo },
     { label: "Email", href: "mailto:bheleparamveer@gmail.com", icon: Mail },
   ] satisfies ContactLink[],
   contactBody:

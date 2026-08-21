@@ -17,6 +17,8 @@ Engineering portfolio for Paramveer Singh Bhele, focused on software engineering
 
 The project data, experience, education, skills, links, and recognition content are centralized in `src/data/portfolio.ts`.
 
+The build also produces a dedicated, prerendered HTML resume at `/portfolio/resume/`. It is the canonical searchable version of the resume, while `/portfolio/Paramveer_Singh_Bhele_Resume.pdf` remains the downloadable document.
+
 ## Stack
 
 | Layer | Tools |
@@ -46,14 +48,17 @@ npm run lint
 npm run preview
 ```
 
-The production build includes meaningful prerendered page content, canonical and social metadata, Person structured data, a sitemap, robots directives, responsive images, and accessible native case-study disclosures.
+The production build includes meaningful prerendered page content, canonical and social metadata, Person/ProfilePage structured data, a searchable HTML resume, a sitemap, explicit search-oriented AI crawler access, an `llms.txt` summary, responsive images, and accessible native case-study disclosures.
 
 ## Deployment note
 
 The live root domain currently redirects to `/portfolio/`. Moving the canonical site to `/` requires a coordinated host-level document-root and redirect change; changing Vite's base path alone would break production assets and deep links.
+
+Keep the application at `/portfolio/`, but configure Hostinger's domain root to serve or redirect `/robots.txt` and `/llms.txt` to their `/portfolio/` counterparts. Search crawlers request `robots.txt` at the domain root, and the proposed `llms.txt` convention also uses the root location. Submit `https://paramveerbhele.com/portfolio/sitemap.xml` through Google Search Console and Bing Webmaster Tools after each production release.
 
 ## Contact
 
 - [Email](mailto:bheleparamveer@gmail.com)
 - [LinkedIn](https://www.linkedin.com/in/paramveer-singh-bhele/)
 - [GitHub](https://github.com/Param-10)
+- [X](https://x.com/ParamveerBhele)
