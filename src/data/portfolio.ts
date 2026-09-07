@@ -154,7 +154,7 @@ export const portfolio = {
   resumeHtml: withBase("/resume/"),
   resumePdf: withBase("/Paramveer_Singh_Bhele_Resume.pdf"),
   agentSummary: withBase("/llms.txt"),
-  email: "bheleparamveer@gmail.com",
+  email: "paramveer.bhele@columbia.edu",
   links: {
     github: "https://github.com/Param-10",
     linkedin: "https://www.linkedin.com/in/paramveer-singh-bhele/",
@@ -636,7 +636,7 @@ export const portfolio = {
     },
   ] satisfies SkillGroup[],
   contactLinks: [
-    { label: "Email me", href: "mailto:bheleparamveer@gmail.com", icon: Mail },
+    { label: "Email me", href: "mailto:paramveer.bhele@columbia.edu", icon: Mail },
     { label: "GitHub", href: "https://github.com/Param-10", icon: Github },
     {
       label: "LinkedIn",
@@ -655,7 +655,7 @@ export const portfolio = {
       icon: Linkedin,
     },
     { label: "X", href: "https://x.com/ParamveerBhele", icon: XLogo },
-    { label: "Email", href: "mailto:bheleparamveer@gmail.com", icon: Mail },
+    { label: "Email", href: "mailto:paramveer.bhele@columbia.edu", icon: Mail },
   ] satisfies ContactLink[],
   contactBody:
     "I’m interested in software engineering, AI/ML engineering, AI infrastructure, research, and product-focused opportunities.",

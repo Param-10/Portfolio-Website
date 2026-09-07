@@ -58,7 +58,7 @@ Keep the application at `/portfolio/`, but configure Hostinger's domain root to 
 
 ## Contact
 
-- [Email](mailto:bheleparamveer@gmail.com)
+- [Email](mailto:paramveer.bhele@columbia.edu)
 - [LinkedIn](https://www.linkedin.com/in/paramveer-singh-bhele/)
 - [GitHub](https://github.com/Param-10)
 - [X](https://x.com/ParamveerBhele)
