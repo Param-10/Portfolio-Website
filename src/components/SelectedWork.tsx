@@ -272,9 +272,9 @@ function CaseStudyDetails({ project, compact = false }: { project: Project; comp
           <h4 className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-secondary-text">
             Architecture / approach
           </h4>
-          <ol className="mt-5 grid gap-2 lg:grid-cols-5">
+          <ol className={`mt-5 grid gap-2 ${compact ? "lg:grid-cols-2" : "lg:grid-cols-5"}`}>
             {caseStudy.architecture.map((step, index) => (
-              <li key={step} className="relative border border-border bg-surface p-3 pr-7 text-xs leading-5 text-text">
+              <li key={step} className="relative break-words border border-border bg-surface p-3 pr-7 text-xs leading-5 text-text">
                 <span className="mb-2 block font-mono text-[9px] text-secondary-text">
                   {String(index + 1).padStart(2, "0")}
                 </span>

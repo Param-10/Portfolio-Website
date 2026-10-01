@@ -131,7 +131,7 @@ export default function DockNav() {
           mouseX.set(Number.POSITIVE_INFINITY);
           setHoveredIndex(null);
         }}
-        className="flex h-14 max-w-[calc(100vw-1rem)] items-center gap-1 rounded-full border border-border bg-white/94 px-2 py-1.5 shadow-[0_16px_46px_rgba(0,0,0,0.09)] backdrop-blur-xl dark:bg-[#090909]/92 dark:shadow-[0_18px_46px_rgba(0,0,0,0.42)]"
+        className="flex h-14 max-w-[calc(100vw-1rem)] items-center gap-1 rounded-full border border-border bg-white/[0.94] px-2 py-1.5 shadow-[0_16px_46px_rgba(0,0,0,0.09)] backdrop-blur-xl dark:bg-[#090909]/[0.92] dark:shadow-[0_18px_46px_rgba(0,0,0,0.42)]"
       >
         <div className="flex items-center gap-1">
           {internalItems.map((item, index) => (

@@ -68,7 +68,7 @@ export default function ResumePage() {
             Software engineer and Columbia University M.S. Artificial Intelligence student focused on AI infrastructure, backend systems, machine-learning applications, and production product engineering.
           </p>
           <p className="mt-5 text-sm text-secondary-text">
-            HTML updated <time dateTime={portfolio.lastUpdated}>September 30, 2026</time>. The downloadable PDF is maintained separately.
+            Last updated <time dateTime={portfolio.lastUpdated}>September 30, 2026</time>. This HTML version is the searchable, accessible companion to the downloadable PDF.
           </p>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-secondary-text">
             {portfolio.contactBody}

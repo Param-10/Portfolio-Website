@@ -4,7 +4,7 @@
 
 Paramveer Singh Bhele is a University of South Florida Computer Science graduate and Columbia University M.S. Artificial Intelligence student focused on AI Infrastructure.
 
-Seeking Summer 2027 software engineering and applied AI internships, especially backend systems, AI infrastructure, and model workflows. HTML portfolio information updated September 30, 2026; the resume PDF is maintained separately.
+Seeking Summer 2027 software engineering and applied AI internships, especially backend systems, AI infrastructure, and model workflows. Portfolio information and the resume PDF updated September 30, 2026.
 
 ## Primary pages
 
@@ -30,7 +30,7 @@ Seeking Summer 2027 software engineering and applied AI internships, especially 
 
 - Student Assistant — Digital Initiatives, University of South Florida Libraries (Aug 2024–May 2026)
 - Machine Learning Engineer Intern, Finds, Inc. (Oct 2025–Jan 2026): Integrated in-house ML into Python/PostgreSQL services for app beta testing and clothing visual search; extracted and processed approximately 5,000 clothing-product links, typically with two to three images each.
-- Undergraduate Research Assistant, Reality, Autonomy, and Robot Experience (RARE) Lab at USF (Feb–Jul 2025): Contributed to human-robot interaction studies and built an Android tablet app communicating with a Misty robot through a Raspberry Pi-hosted local API, using Gemini and Google Cloud for a recipe recommendation study.
+- Undergraduate Research Assistant, Reality, Autonomy, and Robot Experience (RARE) Lab at USF (Feb–Jul 2025): Built the complete Android recipe recommendation app and Raspberry Pi backend, including UI screens, APIs, and SQLite storage to coordinate Gemini responses and Misty robot interactions. Ran participant studies, analyzed behavioral data, and contributed to a human-robot interaction research manuscript.
 - Peer Mentor, USF College of Engineering (Apr 2023–Aug 2024)
 - App Developer Intern, Coefficient Software Systems (May–Jul 2022)
 

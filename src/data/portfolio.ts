@@ -512,8 +512,8 @@ export const portfolio = {
       period: "Feb 2025 – Jul 2025",
       logo: { src: withBase("/logos/rare-lab.png"), fallback: "R" },
       bullets: [
-        "Contributed to human-robot interaction research on protective indicators designed to mitigate robot abuse, collecting, validating, and analyzing experimental data.",
-        "Built an Android tablet app connected to a Misty robot through a local API server hosted on a Raspberry Pi, using Gemini and Google Cloud for an AI-assisted recipe recommendation study.",
+        "Built the complete Android recipe recommendation app and Raspberry Pi backend, implementing UI screens, APIs, and SQLite storage to orchestrate Gemini responses and Misty robot interactions.",
+        "Ran participant studies, analyzed behavioral data, and contributed to a human-robot interaction research manuscript.",
       ],
       websiteUrl: "https://therarelab.com/people/paramveer-singh-bhele/",
       linkedinUrl: "https://www.linkedin.com/company/therarelab/",
@@ -625,7 +625,7 @@ export const portfolio = {
     {
       title: "Backend & Data",
       icon: Database,
-      skills: ["FastAPI", "Flask", "Node.js", "REST APIs", "PostgreSQL", "MongoDB", "SQL"],
+      skills: ["FastAPI", "Flask", "Node.js", "REST APIs", "PostgreSQL", "MongoDB", "SQLite", "SQL"],
     },
     {
       title: "AI / ML",
