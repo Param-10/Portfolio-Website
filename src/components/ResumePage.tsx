@@ -68,7 +68,10 @@ export default function ResumePage() {
             Software engineer and Columbia University M.S. Artificial Intelligence student focused on AI infrastructure, backend systems, machine-learning applications, and production product engineering.
           </p>
           <p className="mt-5 text-sm text-secondary-text">
-            Last updated <time dateTime={portfolio.lastUpdated}>August 15, 2026</time>. This HTML version is the searchable, accessible companion to the downloadable PDF.
+            HTML updated <time dateTime={portfolio.lastUpdated}>September 30, 2026</time>. The downloadable PDF is maintained separately.
+          </p>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-secondary-text">
+            {portfolio.contactBody}
           </p>
           <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <a className="text-link" href={`mailto:${portfolio.email}`}>{portfolio.email}</a>
@@ -150,6 +153,7 @@ export default function ResumePage() {
             </div>
             <div>
               <h3 className="text-lg font-semibold tracking-[-0.025em] text-text">Academic recognition</h3>
+              <p className="mt-3 text-sm leading-7 text-secondary-text">{portfolio.academicRecognitionSummary}</p>
               <ul className="mt-4 space-y-4">
                 {portfolio.academicRecognition.map((item) => (
                   <li key={item.name}>

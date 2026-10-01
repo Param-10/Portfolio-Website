@@ -4,6 +4,8 @@
 
 Paramveer Singh Bhele is a University of South Florida Computer Science graduate and Columbia University M.S. Artificial Intelligence student focused on AI Infrastructure.
 
+Seeking Summer 2027 software engineering and applied AI internships, especially backend systems, AI infrastructure, and model workflows. HTML portfolio information updated September 30, 2026; the resume PDF is maintained separately.
+
 ## Primary pages
 
 - [Portfolio](https://paramveerbhele.com/portfolio/): Selected work, experience, education, leadership, recognition, skills, and contact information.
@@ -12,22 +14,23 @@ Paramveer Singh Bhele is a University of South Florida Computer Science graduate
 
 ## Selected work
 
-- [Polaris](https://github.com/Param-10/hackthebay): GitHub App that reviews Infrastructure-as-Code pull requests, maps findings to security controls, and verifies generated fixes. [Live demo](https://polaris-livid-one.vercel.app/) · [Devpost](https://devpost.com/software/polaris-szhivy)
+- [Polaris](https://github.com/Param-10/hackthebay): GitHub App combining deterministic Infrastructure-as-Code scanning, Gemini reasoning and independent verification, mechanical patch checks, and developer approval. Paramveer built the FastAPI backend and dual-agent Gemini system, including persistent scan jobs and a retrying GitHub reporting outbox. [Live demo](https://polaris-livid-one.vercel.app/) · [Devpost](https://devpost.com/software/polaris-szhivy)
 - [PR Nutrition](https://github.com/Param-10/pr-nutrition): Local-first TypeScript CLI and GitHub Action that prioritizes pull-request review risk and points reviewers to the changes that deserve attention first. [npm](https://www.npmjs.com/package/pr-nutrition)
-- [Adversarial Spam Detection](https://github.com/Param-10/adversarial-spam-detection): BERT and Qwen adversarial training pipeline that improved adversarial detection from 91.7% to 95.7% while maintaining 96.5% accuracy.
-- [CarbonCTRL](https://github.com/Param-10/CarbonCTRL): Carbon management platform and winner of the MLH Best Use of Gemini API award at HackaBull 2025. [Devpost](https://devpost.com/software/carbonctrl)
+- [Adversarial Spam Detection](https://github.com/Param-10/adversarial-spam-detection): AI4ALL team project exploring BERT classification and Qwen3-4B/LoRA adversarial examples. Corrected September 26, 2026 clean test results: BERT 98.2% accuracy / 0.92 spam F1 versus SVM 96.6% / 0.83 on the same 762-message test partition, with model selection on validation. Paramveer contributed as part of the AI4ALL team. These clean-test metrics do not establish adversarial robustness.
+- [CarbonCTRL](https://github.com/Param-10/CarbonCTRL): Carbon management platform and winner of the MLH Best Use of Gemini API award at HackaBull 2025. Current stack: React, TypeScript, Node.js/Express, SQLite/Drizzle, emission-factor calculations, and Gemini recommendations. Optional Python forecasting and ML routes remain in the repository; Supabase and MongoDB describe earlier versions. [Devpost](https://devpost.com/software/carbonctrl)
 - [Coefficient Software Systems](https://coefficientindia.com/): Production corporate website rebuilt with Astro, TypeScript, Tailwind CSS, GSAP, and Lenis. [Source](https://github.com/Param-10/bluewave-revamp)
 
 ## Other work
 
 - [BullRunner](https://param-10.github.io/bullrunner-2/): Map-first USF transit application using live Passio data. [Source](https://github.com/Param-10/bullrunner-2)
-- [Fraud Detection Dashboard](https://fraud-detector-dashboard.netlify.app/): Interactive fraud-analysis dashboard for transaction CSV uploads, risk visualizations, and model predictions. [Source](https://github.com/Param-10/Fraud-Detection-Dashboard)
+- [Fraud Detection Dashboard](https://fraud-detector-dashboard.netlify.app/): Transaction CSV dashboard and risk visualizations. The live browser demo uses heuristic scoring with illustrative weights; the separate Python/Dash backend contains the trained Scikit-learn model workflow. [Source](https://github.com/Param-10/Fraud-Detection-Dashboard)
+- [Focus](https://github.com/Param-10/Focus-Timer-Extension): Current Pomodoro extension source with browser-alarm scheduling, notifications, and local-only settings. The earlier store release is named [Focus Timer PRO](https://chromewebstore.google.com/detail/focus-timer-pro/bbmnnmmfgdefdhipfjiefioodbfhohde).
 
 ## Experience
 
 - Student Assistant — Digital Initiatives, University of South Florida Libraries (Aug 2024–May 2026)
-- Machine Learning Engineer Intern, Finds, Inc. (Oct 2025–Jan 2026)
-- Undergraduate Research Assistant, Reality, Autonomy, and Robot Experience (RARE) Lab at USF (Feb–Jul 2025)
+- Machine Learning Engineer Intern, Finds, Inc. (Oct 2025–Jan 2026): Integrated in-house ML into Python/PostgreSQL services for app beta testing and clothing visual search; extracted and processed approximately 5,000 clothing-product links, typically with two to three images each.
+- Undergraduate Research Assistant, Reality, Autonomy, and Robot Experience (RARE) Lab at USF (Feb–Jul 2025): Contributed to human-robot interaction studies and built an Android tablet app communicating with a Misty robot through a Raspberry Pi-hosted local API, using Gemini and Google Cloud for a recipe recommendation study.
 - Peer Mentor, USF College of Engineering (Apr 2023–Aug 2024)
 - App Developer Intern, Coefficient Software Systems (May–Jul 2022)
 
@@ -39,9 +42,11 @@ Paramveer Singh Bhele is a University of South Florida Computer Science graduate
 ## Key facts
 
 - Professional focus: software engineering, AI infrastructure, backend systems, machine-learning applications, and production product engineering.
+- Internship target: Summer 2027 software engineering and applied AI roles.
 - Current education: Columbia University M.S. in Artificial Intelligence, focus in AI Infrastructure (2026–2027).
 - Undergraduate education: University of South Florida B.S. in Computer Science, minor in Entrepreneurship (2022–2026).
 - Verified recognition includes MLH Best Use of Gemini API at HackaBull 2025 and the USF Green & Gold Directors Waiver.
+- USF scholarships and tuition waivers awarded total $43,000, including the Green & Gold Directors Waiver, Annette L. Raymund scholarship, and engineering awards.
 - Preferred source for current portfolio facts: https://paramveerbhele.com/portfolio/resume/
 
 ## Machine-readable resources

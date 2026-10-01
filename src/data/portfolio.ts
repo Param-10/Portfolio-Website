@@ -140,7 +140,7 @@ const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^
 
 export const portfolio = {
   name: "Paramveer Singh Bhele",
-  lastUpdated: "2026-08-15",
+  lastUpdated: "2026-09-30",
   eyebrow: "Software Engineering · AI Systems · Infrastructure",
   subheadline:
     "Software engineer building AI systems, backend infrastructure, and production products. Columbia M.S. Artificial Intelligence ’27 · USF Computer Science ’26.",
@@ -198,18 +198,19 @@ export const portfolio = {
         problem:
           "Infrastructure changes often reach review without fast, actionable security feedback across Terraform, Dockerfiles, Kubernetes YAML, and GitHub Actions.",
         contribution:
-          "Built the GitHub App workflow, FastAPI analysis service, repository-scoped data model, control mapping, and verified patch flow used inside pull requests.",
+          "Built the FastAPI backend and dual-agent Gemini system, including repository-scoped findings, patch verification, persistent scan jobs, and retrying GitHub reporting.",
         architecture: [
-          "GitHub pull request webhook",
-          "FastAPI analysis service",
-          "Dual-agent review and fix verification",
-          "PostgreSQL findings store",
-          "PR comments and developer-approved fixes",
+          "GitHub webhook and persistent scan jobs",
+          "Deterministic Terraform, Docker, Kubernetes, and GitHub Actions rules",
+          "Gemini reasoning and independent verification",
+          "Mechanical patch checks and developer approval",
+          "PostgreSQL findings and audit records",
+          "GitHub reporting outbox with retries",
         ],
         challenge:
-          "Keeping repositories isolated while turning model output into precise, reviewable findings and patches across several configuration formats.",
+          "Keeping repositories isolated, checking generated patches against syntax and security rules, and recovering scan and reporting work after failures.",
         result:
-          "The working app posts mapped security findings in pull requests and verifies generated patches before presenting them to developers.",
+          "The app posts mapped findings, checks proposed fixes before developer approval, and preserves deterministic scan results when the AI provider is unavailable. Persistent jobs and a reporting outbox support recovery and delivery retries.",
       },
     },
     {
@@ -265,7 +266,7 @@ export const portfolio = {
         position: "center",
       },
       description:
-        "Built an adversarial training pipeline pairing a BERT spam classifier with Qwen-generated attacks, improving adversarial detection from 91.7% to 95.7% across three training iterations while maintaining 96.5% accuracy.",
+        "AI4ALL team project exploring BERT spam classification and Qwen-generated adversarial examples. The corrected held-out evaluation recorded 98.2% BERT accuracy and 0.92 spam F1, compared with 96.6% accuracy and 0.83 spam F1 for SVM.",
       tech: ["Python", "PyTorch", "BERT", "Qwen3-4B", "LoRA", "Transformers"],
       links: [
         {
@@ -274,23 +275,23 @@ export const portfolio = {
           kind: "github",
         },
       ],
-      metric: "91.7% → 95.7% adversarial detection",
+      metric: "98.2% accuracy · 0.92 spam F1",
       caseStudy: {
         problem:
           "A classifier that performs well on familiar messages can still fail when an attacker deliberately rewrites spam to evade its learned patterns.",
         contribution:
-          "Built the iterative training and evaluation pipeline: fine-tuned BERT, generated hard examples with Qwen3-4B and LoRA, retrained, and compared errors after each round.",
+          "Contributed to a team project combining BERT classification, Qwen3-4B and LoRA attack generation, and iterative training experiments. The repository now includes a shared evaluation loader and checks for partition overlap and conflicting labels.",
         architecture: [
-          "SMS dataset and BERT baseline",
-          "Qwen3-4B + LoRA attack generation",
-          "Adversarial example filtering",
-          "Classifier retraining",
-          "Clean and adversarial evaluation across three iterations",
+          "Deduplicated SMS train, validation, and test partitions",
+          "Validation-selected BERT and SVM models",
+          "Shared loader and evaluation regression checks",
+          "Single evaluation on the 762-message test partition",
+          "Separate Qwen3-4B + LoRA adversarial experiments",
         ],
         challenge:
-          "Improving robustness against generated attacks without sacrificing performance on the original evaluation set.",
+          "Keeping model selection separate from test evaluation and distinguishing clean classification results from historical experiments that used changing adversarial examples.",
         result:
-          "Adversarial detection improved from 91.7% to 95.7% while clean accuracy remained at 96.5%.",
+          "The September 26, 2026 evaluation recorded BERT at 98.2% accuracy and 0.92 spam F1 versus SVM at 96.6% and 0.83 on the same 762-message test partition. These are clean classification results; adversarial robustness requires a separate fixed evaluation.",
       },
     },
     {
@@ -308,7 +309,7 @@ export const portfolio = {
       },
       description:
         "Award-winning carbon management platform that tracks environmental impact, visualizes sustainability data, and uses Gemini to generate personalized reduction strategies.",
-      tech: ["React", "TypeScript", "Express", "MongoDB", "Gemini", "Python ML"],
+      tech: ["React", "TypeScript", "Node.js", "Express", "SQLite", "Drizzle", "Gemini", "Python (optional ML)"],
       links: [
         { label: "GitHub", href: "https://github.com/Param-10/CarbonCTRL", kind: "github" },
         { label: "Devpost", href: "https://devpost.com/software/carbonctrl", kind: "external" },
@@ -322,12 +323,13 @@ export const portfolio = {
         architecture: [
           "React + TypeScript dashboard",
           "Node.js and Express API",
-          "MongoDB persistence",
+          "SQLite persistence with Drizzle migrations",
+          "Emission-factor-based calculations",
           "Gemini recommendation workflows",
-          "Python ML services",
+          "Optional Python forecasting and ML routes",
         ],
         challenge:
-          "Evolving the original hackathon prototype into a clearer service architecture and migrating persistence from Supabase to MongoDB without losing the core user workflow.",
+          "Evolving the hackathon prototype into a React and Express app with SQLite persistence. Supabase and MongoDB belong to earlier versions; the current app uses emission factors and Gemini, with optional Python ML routes available separately.",
         result:
           "Won the MLH Best Use of Gemini API award at HackaBull 2025, which had 63 submitted projects.",
       },
@@ -381,19 +383,19 @@ export const portfolio = {
     },
     {
       number: "B",
-      title: "Focus Timer PRO",
+      title: "Focus",
       category: "CHROME EXTENSION",
       image: {
         src: withBase("/projects/focus_timer.png"),
         optimizedSrc: withBase("/projects/focus-timer.webp"),
-        alt: "Focus Timer PRO extension interface with a Pomodoro timer and mindful break prompt",
+        alt: "Earlier Focus Timer PRO interface showing a Pomodoro timer and break prompt",
         width: 632,
         height: 948,
         fit: "contain",
         position: "center",
       },
       description:
-        "Built a privacy-first focus extension with customizable Pomodoro cycles, mindful recovery prompts, and local-only settings.",
+        "Built a Pomodoro extension with customizable focus and break cycles, browser-alarm scheduling, notifications, and local-only settings. The current source is named Focus; the earlier Chrome Web Store release is listed as Focus Timer PRO.",
       tech: ["JavaScript", "Chrome Extension", "Manifest V3"],
       links: [
         {
@@ -463,7 +465,7 @@ export const portfolio = {
         position: "center",
       },
       description:
-        "Built an interactive fraud-analysis dashboard for uploading transaction CSVs, visualizing risk distributions, and exploring model predictions alongside a Python and Dash machine-learning workflow.",
+        "Built a transaction CSV dashboard with risk visualizations. The live browser demo uses heuristic scoring with illustrative weights; a separate Python and Dash backend contains the trained Scikit-learn model workflow.",
       tech: ["JavaScript", "Chart.js", "Python", "Dash", "Scikit-learn", "Pandas"],
       links: [
         {
@@ -498,8 +500,8 @@ export const portfolio = {
       period: "Oct 2025 – Jan 2026",
       logo: { src: withBase("/logos/finds-ai.svg"), fallback: "F" },
       bullets: [
-        "Integrated in-house ML models into backend services, building reliable inference workflows for internal image-processing pipelines.",
-        "Designed PostgreSQL schemas, metadata pipelines, and validation checks to improve consistency across image data and model workflows.",
+        "Integrated in-house ML models into Python and PostgreSQL backend services for beta testing of a clothing discovery app, supporting image recognition and visual-search workflows.",
+        "Extracted and processed approximately 5,000 clothing-product links, typically containing two to three images each, and built metadata validation checks for the image-processing pipeline.",
       ],
       websiteUrl: "https://thefinds.ai/",
       linkedinUrl: "https://www.linkedin.com/company/finds-ai/",
@@ -511,7 +513,7 @@ export const portfolio = {
       logo: { src: withBase("/logos/rare-lab.png"), fallback: "R" },
       bullets: [
         "Contributed to human-robot interaction research on protective indicators designed to mitigate robot abuse, collecting, validating, and analyzing experimental data.",
-        "Built an Android research application integrating Gemini and Google Cloud to support structured AI-assisted recipe recommendation study workflows.",
+        "Built an Android tablet app connected to a Misty robot through a local API server hosted on a Raspberry Pi, using Gemini and Google Cloud for an AI-assisted recipe recommendation study.",
       ],
       websiteUrl: "https://therarelab.com/people/paramveer-singh-bhele/",
       linkedinUrl: "https://www.linkedin.com/company/therarelab/",
@@ -591,6 +593,7 @@ export const portfolio = {
       type: "Program",
     },
   ] satisfies Recognition[],
+  academicRecognitionSummary: "$43,000 awarded in scholarships and tuition waivers at USF.",
   academicRecognition: [
     {
       name: "USF Green & Gold Directors Waiver",
@@ -658,7 +661,7 @@ export const portfolio = {
     { label: "Email", href: "mailto:paramveer.bhele@columbia.edu", icon: Mail },
   ] satisfies ContactLink[],
   contactBody:
-    "I’m interested in software engineering, AI/ML engineering, AI infrastructure, research, and product-focused opportunities.",
+    "I’m seeking Summer 2027 internships in software engineering and applied AI, with a focus on backend systems, AI infrastructure, and model workflows.",
   footerStack: "React, TypeScript, Tailwind CSS, and Framer Motion",
   recognitionIcon: Award,
 };

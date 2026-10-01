@@ -56,6 +56,9 @@ export default function LeadershipRecognition() {
               <h3 className="mt-8 text-2xl font-semibold tracking-[-0.045em]">
                 Academic recognition
               </h3>
+              <p className="mt-3 text-sm leading-6 text-background/80">
+                {portfolio.academicRecognitionSummary}
+              </p>
               <ul className="mt-6 divide-y divide-background/20 border-y border-background/20">
                 {portfolio.academicRecognition.map((item) => (
                   <li
